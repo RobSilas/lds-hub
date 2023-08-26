@@ -242,7 +242,7 @@ _1Home.TextWrapped = true
 
 UICorner_4.Parent = _1Home
 
-_998Settings.Name = "998Settings"
+_998Settings.Name = "299Settings"
 _998Settings.Parent = GButtons
 _998Settings.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _998Settings.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -256,7 +256,7 @@ _998Settings.TextWrapped = true
 
 UICorner_5.Parent = _998Settings
 
-_999UpdateNotes.Name = "999UpdateNotes"
+_999UpdateNotes.Name = "300UpdateNotes"
 _999UpdateNotes.Parent = GButtons
 _999UpdateNotes.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _999UpdateNotes.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -1077,23 +1077,25 @@ end
 local function createMenuButton(name)
 	-- Instances:
 
+
 	local MenuButton = Instance.new("TextButton")
 	local UICorner = Instance.new("UICorner")
 
 	--Properties:
 
-	MenuButton.Name = (tostring(menusCount)..name):gsub(" ","")
-	print(MenuButton.Name)
-	MenuButton.Parent = menusFrame
-	MenuButton.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-	MenuButton.Position = UDim2.new(0.0457652658, 0, 0, 0)
-	MenuButton.Size = UDim2.new(0.899999976, 0, 0.0500000007, 0)
+	MenuButton.Name = name
+	MenuButton.Parent = GButtons
+	MenuButton.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	MenuButton.Position = UDim2.new(0.0382463485, 0, 0, 0)
+	MenuButton.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
 	MenuButton.Font = Enum.Font.DenkOne
 	MenuButton.Text = name
 	MenuButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	MenuButton.TextScaled = true
 	MenuButton.TextSize = 14.000
 	MenuButton.TextWrapped = true
+
+	UICorner.Parent = MenuButton
 
 	UICorner.Parent = MenuButton
 	return MenuButton
@@ -1113,7 +1115,7 @@ local function createToggleButton(text, desc, parent)
 		--Properties:
 
 		ToggleBt.Name = "ToggleBt"
-		ToggleBt.Parent = parent
+		ToggleBt.Parent = parent.ScrollingFrame
 		ToggleBt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		ToggleBt.BackgroundTransparency = 1.000
 		ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1231,9 +1233,14 @@ end
 -- Menu Utilities
 
 local function offMenus()
-	for _,v in pairs(frame:GetChildren()) do
+	for _,v in pairs(Frame:GetChildren()) do
 		if v:IsA("Frame") and v.Name ~= "Warn" and v.Name ~= "LE" then
 			v.Visible = false
+		end
+	end
+	for _,v in pairs(GButtons:GetChildren()) do
+		if v:IsA("TextButton") then
+			v.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 		end
 	end
 end
@@ -1265,18 +1272,16 @@ end
 function module:ConfirmWarn()
 	Warn.Visible = true
 	Dwarn.Visible = true
-	local yFunc = Yes.MouseButton1Click:Connect(function()
+	Yes.MouseButton1Click:Connect(function()
 		Warn.Visible = false
 		Dwarn.Visible = false
 		return true
 	end)
-	local nFunc = No.MouseButton1Click:Connect(function()
+	No.MouseButton1Click:Connect(function()
 		Warn.Visible = false
 		Dwarn.Visible = false
 		return false
 	end)
-	yFunc:Disconnect()
-	nFunc:Disconnect()
 end
 
 function module:start(gameName, Hversion)
@@ -1295,22 +1300,35 @@ function module:start(gameName, Hversion)
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
 		offMenus()
+		_1Home.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 		HomeUi.Visible = true
 	end)
 	_998Settings.MouseButton1Click:Connect(function()
 		offMenus()
+		_998Settings.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 		SettingsUI.Visible = true
 	end)
 	_999UpdateNotes.MouseButton1Click:Connect(function()
 		offMenus()
+		_999UpdateNotes.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 		UpdateNoteUi.Visible = true
 	end)
 		-- Créditos botões
 	TextButtonYT.MouseButton1Click:Connect(function()
 		setclipboard("https://www.youtube.com/@Sr_LDS")
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Youtube";
+			Text = "Copied! Paste in your browser!";
+			Duration = 6;
+		})
 	end)
 	TextButtonDC.MouseButton1Click:Connect(function()
 		setclipboard("https://discord.gg/srlds")
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Discord";
+			Text = "Copied! Paste in your browser!";
+			Duration = 6;
+		})
 	end)
 		-- Settings botões
 	AntAFKButton.MouseButton1Click:Connect(function()
@@ -1345,31 +1363,44 @@ function module:start(gameName, Hversion)
 		Frame.Visible = not Frame.Visible
 	end)
 	
-end
+	-- Creating menu options
+	local window = {}
+	
+	function window:addTab(name)
+		menusCount += 1
+		local cloneFrame = createMenuFrame(name)
 
-function module:addMenu(name)
-	menusCount += 1
-	local cloneFrame = createMenuFrame(name)
-
-	local cloneBt = createMenuButton(name)
-	cloneBt.MouseButton1Click:Connect(function()
-		offMenus()
-		cloneFrame.Visible = true
-	end)
-end
-
-function module:addToggle(MenuName, text, description, callback)
-	local togBt, modBt = createToggleButton(text, description, Frame:FindFirstChild(MenuName))
-	local value = false
-	togBt.MouseButton1Click:Connect(function()
-		value = not value
-		if value == true then
-			modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-		else
-			modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+		local cloneBt = createMenuButton(name)
+		cloneBt.MouseButton1Click:Connect(function()
+			offMenus()
+			cloneBt.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+			cloneFrame.Visible = true
+		end)
+		
+		local tab = {}
+		
+		tab.MenuFrame = cloneFrame
+		
+		function tab:addToggle(text, description, callback)
+			local togBt, modBt = createToggleButton(text, description, tab.MenuFrame)
+			local value = false
+			togBt.MouseButton1Click:Connect(function()
+				value = not value
+				if value == true then
+					modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+				else
+					modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+				end
+				callback(value)
+			end)
 		end
-		callback(value)
-	end)
+		
+		return tab
+		
+	end
+	
+	return window
+	
 end
 
 return module
