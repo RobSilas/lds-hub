@@ -1075,6 +1075,7 @@ local function createMenuFrame(name)
 end
 
 local function createMenuButton(name)
+	menusCount += 1
 	-- Instances:
 
 
@@ -1083,7 +1084,7 @@ local function createMenuButton(name)
 
 	--Properties:
 
-	MenuButton.Name = name
+	MenuButton.Name = tostring(menusCount)..name
 	MenuButton.Parent = GButtons
 	MenuButton.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 	MenuButton.Position = UDim2.new(0.0382463485, 0, 0, 0)
