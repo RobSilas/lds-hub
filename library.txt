@@ -271,6 +271,7 @@ _300UpdateNotes.TextWrapped = true
 UICorner_6.Parent = _300UpdateNotes
 
 UIListLayout.Parent = GButtons
+UIListLayout.SortOrder = Enum.SortOrder.Name
 UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 UIListLayout.Padding = UDim.new(0.00499999989, 0)
 
