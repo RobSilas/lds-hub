@@ -1269,13 +1269,13 @@ end
 
 -- Warns
 
-function module:ConfirmWarn()
+function module:ConfirmWarn(callback)
 	Warn.Visible = true
 	Dwarn.Visible = true
 	Yes.MouseButton1Click:Connect(function()
 		Warn.Visible = false
 		Dwarn.Visible = false
-		return true
+		callback()
 	end)
 	No.MouseButton1Click:Connect(function()
 		Warn.Visible = false
@@ -1294,7 +1294,7 @@ function module:start(gameName, Hversion)
 		Text = "By Sr LDS and Aliscreative";
 		Duration = 8;
 	})
-	frame = global.Frame
+	local frame = global.Frame
 	frame.HomeUi.Visible = true
 	
 	-- Funções principais da gui global
@@ -1353,9 +1353,7 @@ function module:start(gameName, Hversion)
 	end)
 	
 	DeleteButton.MouseButton1Click:Connect(function()
-		if module:ConfirmWarn() == true then
-			global:Destroy()
-		end
+		module:ConfirmWarn(function() global:Destroy() end)
 	end)
 	
 	-- Hide Button
