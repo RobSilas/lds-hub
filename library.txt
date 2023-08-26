@@ -21,9 +21,9 @@ local UIGradient3 = Instance.new("UIGradient")
 local GButtons = Instance.new("ScrollingFrame")
 local _1Home = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
-local _299Settings = Instance.new("TextButton")
+local _998Settings = Instance.new("TextButton")
 local UICorner_5 = Instance.new("UICorner")
-local _300UpdateNotes = Instance.new("TextButton")
+local _999UpdateNotes = Instance.new("TextButton")
 local UICorner_6 = Instance.new("UICorner")
 local UIListLayout = Instance.new("UIListLayout")
 local SettingsUI = Instance.new("Frame")
@@ -242,33 +242,33 @@ _1Home.TextWrapped = true
 
 UICorner_4.Parent = _1Home
 
-_299Settings.Name = "299Settings"
-_299Settings.Parent = GButtons
-_299Settings.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
-_299Settings.Position = UDim2.new(0.0382463485, 0, 0, 0)
-_299Settings.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
-_299Settings.Font = Enum.Font.DenkOne
-_299Settings.Text = "Settings"
-_299Settings.TextColor3 = Color3.fromRGB(255, 255, 255)
-_299Settings.TextScaled = true
-_299Settings.TextSize = 14.000
-_299Settings.TextWrapped = true
+_998Settings.Name = "998Settings"
+_998Settings.Parent = GButtons
+_998Settings.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+_998Settings.Position = UDim2.new(0.0382463485, 0, 0, 0)
+_998Settings.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
+_998Settings.Font = Enum.Font.DenkOne
+_998Settings.Text = "Settings"
+_998Settings.TextColor3 = Color3.fromRGB(255, 255, 255)
+_998Settings.TextScaled = true
+_998Settings.TextSize = 14.000
+_998Settings.TextWrapped = true
 
-UICorner_5.Parent = _299Settings
+UICorner_5.Parent = _998Settings
 
-_300UpdateNotes.Name = "300UpdateNotes"
-_300UpdateNotes.Parent = GButtons
-_300UpdateNotes.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
-_300UpdateNotes.Position = UDim2.new(0.0382463485, 0, 0, 0)
-_300UpdateNotes.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
-_300UpdateNotes.Font = Enum.Font.DenkOne
-_300UpdateNotes.Text = "Update Notes"
-_300UpdateNotes.TextColor3 = Color3.fromRGB(255, 255, 255)
-_300UpdateNotes.TextScaled = true
-_300UpdateNotes.TextSize = 14.000
-_300UpdateNotes.TextWrapped = true
+_999UpdateNotes.Name = "999UpdateNotes"
+_999UpdateNotes.Parent = GButtons
+_999UpdateNotes.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+_999UpdateNotes.Position = UDim2.new(0.0382463485, 0, 0, 0)
+_999UpdateNotes.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
+_999UpdateNotes.Font = Enum.Font.DenkOne
+_999UpdateNotes.Text = "Update Notes"
+_999UpdateNotes.TextColor3 = Color3.fromRGB(255, 255, 255)
+_999UpdateNotes.TextScaled = true
+_999UpdateNotes.TextSize = 14.000
+_999UpdateNotes.TextWrapped = true
 
-UICorner_6.Parent = _300UpdateNotes
+UICorner_6.Parent = _999UpdateNotes
 
 UIListLayout.Parent = GButtons
 UIListLayout.SortOrder = Enum.SortOrder.Name
@@ -1297,11 +1297,11 @@ function module:start(gameName, Hversion)
 		offMenus()
 		HomeUi.Visible = true
 	end)
-	_299Settings.MouseButton1Click:Connect(function()
+	_998Settings.MouseButton1Click:Connect(function()
 		offMenus()
 		SettingsUI.Visible = true
 	end)
-	_300UpdateNotes.MouseButton1Click:Connect(function()
+	_999UpdateNotes.MouseButton1Click:Connect(function()
 		offMenus()
 		UpdateNoteUi.Visible = true
 	end)
