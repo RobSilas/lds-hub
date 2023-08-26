@@ -1261,7 +1261,7 @@ end
 
 -- Warns
 
-function module.ConfirmWarn()
+function module:ConfirmWarn()
 	Warn.Visible = true
 	Dwarn.Visible = true
 	local yFunc = Yes.MouseButton1Click:Connect(function()
@@ -1278,7 +1278,7 @@ function module.ConfirmWarn()
 	nFunc:Disconnect()
 end
 
-function module.start(gameName, Hversion)
+function module:start(gameName, Hversion)
 	GameName.Text = gameName
 	HubVersion.Text = "v. "..Hversion
 	UpdatesVTXT.Text = "v. "..Hversion
@@ -1334,7 +1334,7 @@ function module.start(gameName, Hversion)
 	end)
 	
 	DeleteButton.MouseButton1Click:Connect(function()
-		if module.ConfirmWarn() == true then
+		if module:ConfirmWarn() == true then
 			global:Destroy()
 		end
 	end)
@@ -1346,7 +1346,7 @@ function module.start(gameName, Hversion)
 	
 end
 
-function module.addMenu(name)
+function module:addMenu(name)
 	menusCount += 1
 	local cloneFrame = createMenuFrame(name)
 
@@ -1357,7 +1357,7 @@ function module.addMenu(name)
 	end)
 end
 
-function module.addToggle(MenuName, text, description, callback)
+function module:addToggle(MenuName, text, description, callback)
 	local togBt, modBt = createToggleButton(text, description, Frame:FindFirstChild(MenuName))
 	local value = false
 	togBt.MouseButton1Click:Connect(function()
