@@ -1034,6 +1034,9 @@ local function createMenuFrame(name)
 	local MenuTitle = Instance.new("TextLabel")
 	local ScrollingFrame = Instance.new("ScrollingFrame")
 	local UIListLayout = Instance.new("UIListLayout")
+	local HelpFrame = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local HelpText = Instance.new("TextLabel")
 
 	--Properties:
 
@@ -1067,10 +1070,37 @@ local function createMenuFrame(name)
 	ScrollingFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ScrollingFrame.BorderSizePixel = 0
 	ScrollingFrame.Position = UDim2.new(0.025253389, 0, 0.0944860876, 0)
-	ScrollingFrame.Size = UDim2.new(0, 268, 0, 159)
+	ScrollingFrame.Size = UDim2.new(0.966852427, 0, 0.877616346, 0)
 
 	UIListLayout.Parent = ScrollingFrame
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 2)
+
+	HelpFrame.Name = "HelpFrame"
+	HelpFrame.Parent = MenuFrame
+	HelpFrame.Visible = false
+	HelpFrame.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+	HelpFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HelpFrame.BorderSizePixel = 0
+	HelpFrame.Position = UDim2.new(0.999321342, 0, -0.0717547983, 0)
+	HelpFrame.Size = UDim2.new(0.685455084, 0, 0.463646352, 0)
+
+	UICorner_2.Parent = HelpFrame
+
+	HelpText.Name = "HelpText"
+	HelpText.Parent = HelpFrame
+	HelpText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HelpText.BackgroundTransparency = 1.000
+	HelpText.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HelpText.BorderSizePixel = 0
+	HelpText.Position = UDim2.new(0.036842104, 0, 0.0804597437, 0)
+	HelpText.Size = UDim2.new(0.931578934, 0, 0.869047642, 0)
+	HelpText.Font = Enum.Font.JosefinSans
+	HelpText.Text = "Aqui é uma ajuda para você, espero que te ajude!"
+	HelpText.TextColor3 = Color3.fromRGB(255, 255, 255)
+	HelpText.TextScaled = true
+	HelpText.TextSize = 14.000
+	HelpText.TextWrapped = true
 	return MenuFrame
 end
 
@@ -1103,132 +1133,73 @@ local function createMenuButton(name)
 end
 
 local function createToggleButton(text, desc, parent)
-	if desc == nil then
-		-- Instances:
+	local ToggleBt = Instance.new("Frame")
+	local Button = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local ButtonMode = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local ButtonTitle = Instance.new("TextLabel")
+	local DescIcon = Instance.new("ImageLabel")
+	local UICorner_3 = Instance.new("UICorner")
 
-		local ToggleBt = Instance.new("Frame")
-		local Button = Instance.new("TextButton")
-		local UICorner = Instance.new("UICorner")
-		local ButtonMode = Instance.new("Frame")
-		local UICorner_2 = Instance.new("UICorner")
-		local ButtonTitle = Instance.new("TextLabel")
+	--Properties:
 
-		--Properties:
+	ToggleBt.Name = "ToggleBt"
+	ToggleBt.Parent = game.ReplicatedStorage.LDSlibrary
+	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ToggleBt.BorderSizePixel = 0
+	ToggleBt.Size = UDim2.new(0, 255, 0, 27)
 
-		ToggleBt.Name = "ToggleBt"
-		ToggleBt.Parent = parent.ScrollingFrame
-		ToggleBt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ToggleBt.BackgroundTransparency = 1.000
-		ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		ToggleBt.BorderSizePixel = 0
-		ToggleBt.Position = UDim2.new(0, 0, 0.408805043, 0)
-		ToggleBt.Size = UDim2.new(0, 255, 0, 32)
+	Button.Name = "Button"
+	Button.Parent = ToggleBt
+	Button.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	Button.Position = UDim2.new(0.0392156877, 0, 0.148148149, 0)
+	Button.Size = UDim2.new(0.176470593, 0, 0.666666687, 0)
+	Button.Font = Enum.Font.SourceSans
+	Button.Text = ""
+	Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Button.TextSize = 14.000
 
-		Button.Name = "Button"
-		Button.Parent = ToggleBt
-		Button.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
-		Button.Position = UDim2.new(0.00392156886, 0, 0.15625, 0)
-		Button.Size = UDim2.new(0.176470593, 0, 0.5625, 0)
-		Button.Font = Enum.Font.SourceSans
-		Button.Text = ""
-		Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-		Button.TextSize = 14.000
+	UICorner.Parent = Button
 
-		UICorner.Parent = Button
+	ButtonMode.Name = "ButtonMode"
+	ButtonMode.Parent = Button
+	ButtonMode.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	ButtonMode.Position = UDim2.new(0.0568263829, 0, 0.0644846261, 0)
+	ButtonMode.Size = UDim2.new(0.434782565, 0, 0.870967805, 0)
 
-		ButtonMode.Name = "ButtonMode"
-		ButtonMode.Parent = Button
-		ButtonMode.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-		ButtonMode.Position = UDim2.new(0.0568263829, 0, 0.0644846261, 0)
-		ButtonMode.Size = UDim2.new(0.434782594, 0, 0.870967805, 0)
+	UICorner_2.Parent = ButtonMode
 
-		UICorner_2.Parent = ButtonMode
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = Button
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(1.06473529, 0, 0, 0)
+	ButtonTitle.Size = UDim2.new(3.69565153, 0, 1, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
 
-		ButtonTitle.Name = "ButtonTitle"
-		ButtonTitle.Parent = Button
-		ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonTitle.BackgroundTransparency = 1.000
-		ButtonTitle.Position = UDim2.new(1.0869565, 0, 0, 0)
-		ButtonTitle.Size = UDim2.new(4.69565201, 0, 1, 0)
-		ButtonTitle.Font = Enum.Font.FredokaOne
-		ButtonTitle.Text = text
-		ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonTitle.TextScaled = true
-		ButtonTitle.TextSize = 14.000
-		ButtonTitle.TextWrapped = true
-		ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
-		return Button, ButtonMode
-	else
-		-- Instances:
-
-		local ToggleBtDesc = Instance.new("Frame")
-		local Button = Instance.new("TextButton")
-		local UICorner = Instance.new("UICorner")
-		local ButtonDesc = Instance.new("TextLabel")
-		local ButtonMode = Instance.new("Frame")
-		local UICorner_2 = Instance.new("UICorner")
-		local ButtonTitle = Instance.new("TextLabel")
-
-		--Properties:
-
-		ToggleBtDesc.Name = "ToggleBtDesc"
-		ToggleBtDesc.Parent = parent
-		ToggleBtDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ToggleBtDesc.BackgroundTransparency = 1.000
-		ToggleBtDesc.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		ToggleBtDesc.BorderSizePixel = 0
-		ToggleBtDesc.Position = UDim2.new(0.0037313432, 0, 0.126397476, 0)
-		ToggleBtDesc.Size = UDim2.new(0, 255, 0, 65)
-
-		Button.Name = "Button"
-		Button.Parent = ToggleBtDesc
-		Button.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
-		Button.Position = UDim2.new(0.00392156886, 0, 0.0769230798, 0)
-		Button.Size = UDim2.new(0.176470593, 0, 0.27692309, 0)
-		Button.Font = Enum.Font.SourceSans
-		Button.Text = ""
-		Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-		Button.TextSize = 14.000
-
-		UICorner.Parent = Button
-
-		ButtonDesc.Name = "ButtonDesc"
-		ButtonDesc.Parent = Button
-		ButtonDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonDesc.BackgroundTransparency = 1.000
-		ButtonDesc.Position = UDim2.new(0.043474663, 0, 1.00000083, 0)
-		ButtonDesc.Size = UDim2.new(5.54807663, 0, 2.2735498, 0)
-		ButtonDesc.Font = Enum.Font.FredokaOne
-		ButtonDesc.Text = desc
-		ButtonDesc.TextColor3 = Color3.fromRGB(170, 0, 255)
-		ButtonDesc.TextScaled = true
-		ButtonDesc.TextSize = 14.000
-		ButtonDesc.TextWrapped = true
-
-		ButtonMode.Name = "ButtonMode"
-		ButtonMode.Parent = Button
-		ButtonMode.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-		ButtonMode.Position = UDim2.new(0.0568263829, 0, 0.0644846261, 0)
-		ButtonMode.Size = UDim2.new(0.434782594, 0, 0.870967805, 0)
-
-		UICorner_2.Parent = ButtonMode
-
-		ButtonTitle.Name = "ButtonTitle"
-		ButtonTitle.Parent = Button
-		ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonTitle.BackgroundTransparency = 1.000
-		ButtonTitle.Position = UDim2.new(1.0869565, 0, 0, 0)
-		ButtonTitle.Size = UDim2.new(4.69565201, 0, 1, 0)
-		ButtonTitle.Font = Enum.Font.FredokaOne
-		ButtonTitle.Text = text
-		ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-		ButtonTitle.TextScaled = true
-		ButtonTitle.TextSize = 14.000
-		ButtonTitle.TextWrapped = true
-		ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
-		return Button, ButtonMode
-	end
+	DescIcon.Name = "DescIcon"
+	DescIcon.Parent = Button
+	DescIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DescIcon.BackgroundTransparency = 1.000
+	DescIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	DescIcon.BorderSizePixel = 0
+	DescIcon.Position = UDim2.new(4.75600004, 0, 0.100000001, 0)
+	DescIcon.Size = UDim2.new(0.378260583, 0, 0.888888896, 0)
+	DescIcon.Image = "rbxassetid://14592412395"
 	
+	
+
+	UICorner_3.Parent = ToggleBt
+	
+	return Button, ButtonMode, DescIcon
 end
 
 -- Menu Utilities
@@ -1382,14 +1353,25 @@ function module:start(gameName, Hversion)
 		tab.MenuFrame = cloneFrame
 		
 		function tab:addToggle(text, description, callback)
-			local togBt, modBt = createToggleButton(text, description, tab.MenuFrame)
+			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame)
 			local value = false
+			if description ~= nil then
+				helpIcon.MouseEnter:Connect(function()
+					cloneFrame.HelpFrame.HelpText.Text = description
+					cloneFrame.HelpFrame.Visible = true
+				end)
+				helpIcon.MouseLeave:Connect(function()
+					cloneFrame.HelpFrame.Visible = false
+				end)
+			end
 			togBt.MouseButton1Click:Connect(function()
 				value = not value
 				if value == true then
 					modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+					modBt:TweenPosition(UDim2.new(0.5, 0,0.064, 0))
 				else
 					modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+					modBt:TweenPosition(UDim2.new(0.057, 0,0.064, 0))
 				end
 				callback(value)
 			end)
