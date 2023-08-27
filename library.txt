@@ -1145,7 +1145,7 @@ local function createToggleButton(text, desc, parent)
 	--Properties:
 
 	ToggleBt.Name = "ToggleBt"
-	ToggleBt.Parent = game.ReplicatedStorage.LDSlibrary
+	ToggleBt.Parent = parent.ScrollingFrame
 	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ToggleBt.BorderSizePixel = 0
