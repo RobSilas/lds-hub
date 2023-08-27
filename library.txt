@@ -130,7 +130,7 @@ local TextLabel_18 = Instance.new("TextLabel")
 
 --Properties:
 
-global.Name = "LDSHUB Global Testes"
+global.Name = "LDSHUB"
 global.Parent = game.CoreGui
 global.Enabled = false
 global.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -1149,7 +1149,7 @@ local function createToggleButton(text, desc, parent)
 	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ToggleBt.BorderSizePixel = 0
-	ToggleBt.Size = UDim2.new(0, 255, 0, 27)
+	ToggleBt.Size = UDim2.new(0.95, 0,0.075, 0)
 
 	Button.Name = "Button"
 	Button.Parent = ToggleBt
