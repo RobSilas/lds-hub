@@ -1690,7 +1690,7 @@ function module:start(gameName, Hversion)
 		end
 		
 		function tab:addCombo(text, description, options, callback)
-			local selectBt, helpIcon = createClickButton(text, description, tab.MenuFrame)
+			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
