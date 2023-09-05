@@ -1694,31 +1694,6 @@ function module:start(gameName, Hversion)
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			print("passou")
-			if description ~= '' then
-				helpIcon.MouseEnter:Connect(function()
-					cloneFrame.HelpFrame.HelpText.Text = description
-					cloneFrame.HelpFrame.Visible = true
-				end)
-				helpIcon.MouseLeave:Connect(function()
-					cloneFrame.HelpFrame.Visible = false
-				end)
-			end
-			selectBt.MouseButton1Click:Connect(function()
-				local scroll = tab.OptionFrame.ScrollableOpt
-				print(scroll)
-				local baseOption = scroll.Option
-				print(baseOption)
-				tab.OptionFrame.ComboTitle.Text = text
-				for _, v in pairs(options) do
-					local clone = baseOption:Clone()
-					clone.Text = options
-					clone.MouseButton1Click:Connect(function()
-						value = options
-						tab.OptionFrame.Visible = false
-					end)
-				end
-				tab.OptionFrame.Visible = true
-			end)
 		end
 		
 		
