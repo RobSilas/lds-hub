@@ -1690,8 +1690,10 @@ function module:start(gameName, Hversion)
 		end
 		
 		function tab:addCombo(text, description, options, callback)
+			print("Esperando")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
+			print("passou")
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
