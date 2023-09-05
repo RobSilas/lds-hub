@@ -1059,7 +1059,7 @@ local function createMenuFrame(name)
 
 	MenuFrame.Name = name
 	MenuFrame.Visible = false
-	MenuFrame.Parent = global
+	MenuFrame.Parent = Frame
 	MenuFrame.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
 	MenuFrame.Position = UDim2.new(0.273959696, 0, 0.0941176489, 0)
 	MenuFrame.Size = UDim2.new(0.707664907, 0, 0.871586502, 0)
@@ -1409,7 +1409,7 @@ local function createToggleButton(text, desc, parent)
 
 	UICorner_3.Parent = ToggleBt
 	
-	return Button, ToggleBt, DescIcon
+	return Button, ButtonMode, DescIcon
 end
 
 local function createComboButton(text, desc, parent)
@@ -1694,7 +1694,7 @@ function module:start(gameName, Hversion)
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			print("passou")
-		end
+			
 		
 		
 		return tab
