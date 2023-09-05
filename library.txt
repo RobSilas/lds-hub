@@ -1703,7 +1703,9 @@ function module:start(gameName, Hversion)
 			end
 			selectBt.MouseButton1Click:Connect(function()
 				local scroll = tab.OptionFrame.ScrollableOpt
+				print(scroll)
 				local baseOption = scroll.Option
+				print(baseOption)
 				tab.OptionFrame.ComboTitle.Text = text
 				for _, v in pairs(options) do
 					local clone = baseOption:Clone()
