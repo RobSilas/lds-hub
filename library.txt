@@ -1727,6 +1727,7 @@ function module:start(gameName, Hversion)
 	
 	return window
 	
+	end
 end
 
 return module
