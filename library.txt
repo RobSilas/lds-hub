@@ -1703,21 +1703,7 @@ function module:start(gameName, Hversion)
 					cloneFrame.HelpFrame.Visible = false
 				end)
 			end
-			selectBt.MouseButton1Click:Connect(function()
-				local scroll = tab.OptionFrame.ScrollableOpt
-				local baseOption = scroll.Option
-				tab.OptionFrame.ComboTitle.Text = text
-				for _, v in pairs(options) do
-					local clone = baseOption:Clone()
-					clone.Text = options
-					clone.MouseButton1Click:Connect(function()
-						value = options
-						tab.OptionFrame.Visible = false
-					end)
-				end
-				tab.OptionFrame.Visible = true
-			end)
-		
+			
 		
 		return tab
 		
