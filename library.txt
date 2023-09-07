@@ -1691,7 +1691,6 @@ function module:start(gameName, Hversion)
 		
 		function tab:addCombo(text, description, options)
 			print("Esperando")
-			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			print("passou")
 			
