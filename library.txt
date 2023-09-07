@@ -1029,6 +1029,11 @@ G.Settings = {
 -- Menu Creation
 
 local function createMenuFrame(name)
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
 	local MenuFrame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local MenuTitle = Instance.new("TextLabel")
@@ -1037,15 +1042,27 @@ local function createMenuFrame(name)
 	local HelpFrame = Instance.new("Frame")
 	local UICorner_2 = Instance.new("UICorner")
 	local HelpText = Instance.new("TextLabel")
+	local Options = Instance.new("Frame")
+	local ScrollableOpt = Instance.new("ScrollingFrame")
+	local UIGridLayout = Instance.new("UIGridLayout")
+	local Option = Instance.new("TextButton")
+	local UICorner_3 = Instance.new("UICorner")
+	local ComboTitle = Instance.new("TextLabel")
+	local Close = Instance.new("TextButton")
+	local UICorner_4 = Instance.new("UICorner")
+	local SearchBox = Instance.new("TextBox")
+	local ImageLabel = Instance.new("ImageLabel")
+	local BackFolder = Instance.new("TextButton")
+	local UICorner_5 = Instance.new("UICorner")
 
 	--Properties:
 
 	MenuFrame.Name = name
+	MenuFrame.Visible = false
 	MenuFrame.Parent = Frame
 	MenuFrame.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
 	MenuFrame.Position = UDim2.new(0.273959696, 0, 0.0941176489, 0)
 	MenuFrame.Size = UDim2.new(0.707664907, 0, 0.871586502, 0)
-	MenuFrame.Visible = false
 
 	UICorner.Parent = MenuFrame
 
@@ -1078,7 +1095,6 @@ local function createMenuFrame(name)
 
 	HelpFrame.Name = "HelpFrame"
 	HelpFrame.Parent = MenuFrame
-	HelpFrame.Visible = false
 	HelpFrame.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
 	HelpFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	HelpFrame.BorderSizePixel = 0
@@ -1101,6 +1117,116 @@ local function createMenuFrame(name)
 	HelpText.TextScaled = true
 	HelpText.TextSize = 14.000
 	HelpText.TextWrapped = true
+
+	Options.Name = "Options"
+	Options.Parent = MenuFrame
+	Options.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+	Options.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Options.BorderSizePixel = 0
+	Options.Position = UDim2.new(0.03968402, 0, 0.0938331932, 0)
+	Options.Size = UDim2.new(0.916345239, 0, 0.833459556, 0)
+	Options.Visible = false
+
+	ScrollableOpt.Name = "ScrollableOpt"
+	ScrollableOpt.Parent = Options
+	ScrollableOpt.Active = true
+	ScrollableOpt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	ScrollableOpt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ScrollableOpt.BorderSizePixel = 0
+	ScrollableOpt.Position = UDim2.new(0.0493908972, 0, 0.400636375, 0)
+	ScrollableOpt.Size = UDim2.new(0.897637784, 0, 0.549668849, 0)
+
+
+	UIGridLayout.Parent = ScrollableOpt
+	UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIGridLayout.CellPadding = UDim2.new(0, 1, 0, 3)
+	UIGridLayout.CellSize = UDim2.new(0, 107, 0, 25)
+
+	Option.Name = "Option"
+	Option.Parent = ScrollableOpt
+	Option.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+	Option.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Option.BorderSizePixel = 0
+	Option.Size = UDim2.new(0, 107, 0, 25)
+	Option.Font = Enum.Font.SourceSans
+	Option.Text = "Option"
+	Option.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Option.TextScaled = true
+	Option.TextSize = 14.000
+	Option.TextWrapped = true
+
+	UICorner_3.Parent = Option
+
+	ComboTitle.Name = "ComboTitle"
+	ComboTitle.Parent = Options
+	ComboTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ComboTitle.BackgroundTransparency = 1.000
+	ComboTitle.Position = UDim2.new(0.031313438, 0, 0.0651936308, 0)
+	ComboTitle.Size = UDim2.new(0.934218049, 0, 0.135214299, 0)
+	ComboTitle.Font = Enum.Font.Unknown
+	ComboTitle.Text = "Title"
+	ComboTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ComboTitle.TextScaled = true
+	ComboTitle.TextSize = 14.000
+	ComboTitle.TextWrapped = true
+	ComboTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	Close.Name = "Close"
+	Close.Parent = Options
+	Close.BackgroundColor3 = Color3.fromRGB(255, 60, 63)
+	Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Close.BorderSizePixel = 0
+	Close.Position = UDim2.new(0.944881916, 0, -0.0722955391, 0)
+	Close.Size = UDim2.new(0.0905511826, 0, 0.132450327, 0)
+	Close.Font = Enum.Font.SourceSansBold
+	Close.Text = "X"
+	Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Close.TextScaled = true
+	Close.TextSize = 14.000
+	Close.TextWrapped = true
+
+	UICorner_4.Parent = Close
+
+	SearchBox.Name = "SearchBox"
+	SearchBox.Parent = Options
+	SearchBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SearchBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SearchBox.BorderSizePixel = 0
+	SearchBox.Position = UDim2.new(0.11055053, 0, 0.227286026, 0)
+	SearchBox.Size = UDim2.new(0.814960659, 0, 0.0993377492, 0)
+	SearchBox.Font = Enum.Font.SourceSans
+	SearchBox.PlaceholderText = "Search"
+	SearchBox.Text = ""
+	SearchBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	SearchBox.TextScaled = true
+	SearchBox.TextSize = 14.000
+	SearchBox.TextWrapped = true
+	SearchBox.TextXAlignment = Enum.TextXAlignment.Left
+
+	ImageLabel.Parent = Options
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ImageLabel.BorderSizePixel = 0
+	ImageLabel.Position = UDim2.new(0.0493908972, 0, 0.227286026, 0)
+	ImageLabel.Size = UDim2.new(0.0590551198, 0, 0.0993377492, 0)
+	ImageLabel.Image = "rbxassetid://14674144115"
+
+	BackFolder.Name = "BackFolder"
+	BackFolder.Parent = MenuFrame
+	BackFolder.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+	BackFolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BackFolder.BorderSizePixel = 0
+	BackFolder.Position = UDim2.new(0.835780859, 0, -0.0739255399, 0)
+	BackFolder.Size = UDim2.new(0.16595228, 0, 0.137989983, 0)
+	BackFolder.Visible = false
+	BackFolder.Font = Enum.Font.FredokaOne
+	BackFolder.Text = "Back"
+	BackFolder.TextColor3 = Color3.fromRGB(255, 255, 255)
+	BackFolder.TextScaled = true
+	BackFolder.TextSize = 14.000
+	BackFolder.TextWrapped = true
+
+	UICorner_5.Parent = BackFolder
 	return MenuFrame
 end
 
@@ -1132,6 +1258,85 @@ local function createMenuButton(name)
 	return MenuButton
 end
 
+local function createClickButton(text, desc, parent)
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local ClickBt = Instance.new("Frame")
+	local Button = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local ButtonTitle = Instance.new("TextLabel")
+	local DescIcon = Instance.new("ImageLabel")
+	local ImageLabel = Instance.new("ImageLabel")
+	local UICorner_2 = Instance.new("UICorner")
+
+	--Properties:
+
+	ClickBt.Name = text
+	ClickBt.Parent = parent
+	ClickBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	ClickBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ClickBt.BorderSizePixel = 0
+	ClickBt.Position = UDim2.new(0.0111940298, 0, 0.189785466, 0)
+	ClickBt.Size = UDim2.new(0.949999988, 0, 0.075000003, 0)
+
+	Button.Name = "Button"
+	Button.Parent = ClickBt
+	Button.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+	Button.Position = UDim2.new(0.0470711477, 0, 0.148147762, 0)
+	Button.Size = UDim2.new(0.129337847, 0, 0.666666627, 0)
+	Button.Font = Enum.Font.SourceSans
+	Button.Text = ""
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.TextScaled = true
+	Button.TextSize = 14.000
+	Button.TextWrapped = true
+
+	UICorner.Parent = Button
+
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = Button
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(1.42729545, 0, 0, 0)
+	ButtonTitle.Size = UDim2.new(5.04108572, 0, 0.993527949, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	DescIcon.Name = "DescIcon"
+	DescIcon.Visible = false
+	DescIcon.Parent = Button
+	DescIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DescIcon.BackgroundTransparency = 1.000
+	DescIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	DescIcon.BorderSizePixel = 0
+	DescIcon.Position = UDim2.new(6.4683814, 0, 0.0551959947, 0)
+	DescIcon.Size = UDim2.new(0.485887796, 0, 0.883135915, 0)
+	DescIcon.Image = "rbxassetid://14592412395"
+	if desc ~= "" then
+		DescIcon.Visible = true
+	end
+
+	ImageLabel.Parent = Button
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ImageLabel.BorderSizePixel = 0
+	ImageLabel.Position = UDim2.new(0.229611576, 0, -0.0551959947, 0)
+	ImageLabel.Size = UDim2.new(0, 18, 0, 18)
+	ImageLabel.Image = "rbxassetid://14673874142"
+
+	UICorner_2.Parent = ClickBt
+	return Button, DescIcon
+end
+
 local function createToggleButton(text, desc, parent)
 	local ToggleBt = Instance.new("Frame")
 	local Button = Instance.new("TextButton")
@@ -1144,7 +1349,7 @@ local function createToggleButton(text, desc, parent)
 
 	--Properties:
 
-	ToggleBt.Name = "ToggleBt"
+	ToggleBt.Name = text
 	ToggleBt.Parent = parent.ScrollingFrame
 	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1185,8 +1390,10 @@ local function createToggleButton(text, desc, parent)
 	ButtonTitle.TextWrapped = true
 	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
 
+
 	DescIcon.Name = "DescIcon"
 	DescIcon.Parent = Button
+	DescIcon.Visible = false
 	DescIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	DescIcon.BackgroundTransparency = 1.000
 	DescIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1194,13 +1401,103 @@ local function createToggleButton(text, desc, parent)
 	DescIcon.Position = UDim2.new(4.75600004, 0, 0.100000001, 0)
 	DescIcon.Size = UDim2.new(0.378260583, 0, 0.888888896, 0)
 	DescIcon.Image = "rbxassetid://14592412395"
-	
-	
+	if desc ~= "" then
+		DescIcon.Visible = true
+	end
+
+
 
 	UICorner_3.Parent = ToggleBt
-	
+
 	return Button, ButtonMode, DescIcon
 end
+
+local function createComboButton(text, desc, parent)
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local ComboBt = Instance.new("Frame")
+	local Button = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local ButtonTitle = Instance.new("TextLabel")
+	local DescIcon = Instance.new("ImageLabel")
+	local Seta = Instance.new("TextLabel")
+	local UICorner_2 = Instance.new("UICorner")
+
+	--Properties:
+
+	ComboBt.Name = "ComboBt"
+	ComboBt.Parent = parent
+	ComboBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	ComboBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ComboBt.BorderSizePixel = 0
+	ComboBt.Size = UDim2.new(0.949999988, 0, 0.075000003, 0)
+
+	Button.Name = "Button"
+	Button.Parent = ComboBt
+	Button.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	Button.Position = UDim2.new(0.0392158069, 0, 0.148148328, 0)
+	Button.Size = UDim2.new(0.310013235, 0, 0.666666627, 0)
+	Button.Font = Enum.Font.SourceSans
+	Button.Text = " Select"
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.TextScaled = true
+	Button.TextSize = 14.000
+	Button.TextWrapped = true
+	Button.TextXAlignment = Enum.TextXAlignment.Left
+
+	UICorner.Parent = Button
+
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = Button
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(1.07691216, 0, 0.0551959947, 0)
+	ButtonTitle.Size = UDim2.new(1.50767708, 0, 0.993527949, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	DescIcon.Name = "DescIcon"
+	DescIcon.Parent = Button
+	DescIcon.Visible = false
+	DescIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DescIcon.BackgroundTransparency = 1.000
+	DescIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	DescIcon.BorderSizePixel = 0
+	DescIcon.Position = UDim2.new(2.71128535, 0, 0, 0)
+	DescIcon.Size = UDim2.new(0.202712893, 0, 0.883135915, 0)
+	DescIcon.Image = "rbxassetid://14592412395"
+	if desc ~= "" then
+		DescIcon.Visible = true
+	end
+
+	Seta.Name = "Seta"
+	Seta.Parent = Button
+	Seta.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Seta.BackgroundTransparency = 1.000
+	Seta.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Seta.BorderSizePixel = 0
+	Seta.Position = UDim2.new(0.772843301, 0, -0.110391989, 0)
+	Seta.Rotation = 90.000
+	Seta.Size = UDim2.new(0.26606068, 0, 1.26950788, 0)
+	Seta.Font = Enum.Font.SourceSansBold
+	Seta.Text = ">"
+	Seta.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Seta.TextScaled = true
+	Seta.TextSize = 14.000
+	Seta.TextWrapped = true
+
+	UICorner_2.Parent = ComboBt
+	return Button, DescIcon
+end
+
 
 -- Menu Utilities
 
@@ -1268,7 +1565,7 @@ function module:start(gameName, Hversion)
 	})
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
-	
+
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
 		offMenus()
@@ -1285,7 +1582,7 @@ function module:start(gameName, Hversion)
 		_999UpdateNotes.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 		UpdateNoteUi.Visible = true
 	end)
-		-- Créditos botões
+	-- Créditos botões
 	TextButtonYT.MouseButton1Click:Connect(function()
 		setclipboard("https://www.youtube.com/@Sr_LDS")
 		game.StarterGui:SetCore("SendNotification", {
@@ -1302,7 +1599,7 @@ function module:start(gameName, Hversion)
 			Duration = 6;
 		})
 	end)
-		-- Settings botões
+	-- Settings botões
 	AntAFKButton.MouseButton1Click:Connect(function()
 		afkActive = not afkActive
 		local bb=game:service('VirtualUser')
@@ -1319,26 +1616,26 @@ function module:start(gameName, Hversion)
 			afkFunc = nil
 		end
 	end)
-	
+
 	SaveButton.MouseButton1Click:Connect(function()
 		-- Em Desenvolvimento
 	end)
-	
+
 	DeleteButton.MouseButton1Click:Connect(function()
 		local function dstroy() global:Destroy() end
 		module:ConfirmWarn(dstroy)
 	end)
-	
+
 	-- Hide Button
 	MenuH.TextButton.MouseButton1Click:Connect(function()
 		Frame.Visible = not Frame.Visible
 	end)
-	
+
+	-- Creating menu options
 	-- Creating menu options
 	local window = {}
-	
+
 	function window:addTab(name)
-		menusCount += 1
 		local cloneFrame = createMenuFrame(name)
 
 		local cloneBt = createMenuButton(name)
@@ -1349,40 +1646,46 @@ function module:start(gameName, Hversion)
 		end)
 		
 		local tab = {}
-		
-		tab.MenuFrame = cloneFrame
-		
+
+		-- Define menusCount locally if it's intended to be local to this tab
+		local menusCount = 0
+
 		function tab:addToggle(text, description, callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame)
 			local value = false
-			if description ~= nil then
+
+			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
 					cloneFrame.HelpFrame.Visible = true
 				end)
+
 				helpIcon.MouseLeave:Connect(function()
 					cloneFrame.HelpFrame.Visible = false
 				end)
 			end
+
 			togBt.MouseButton1Click:Connect(function()
 				value = not value
 				if value == true then
 					modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-					modBt:TweenPosition(UDim2.new(0.5, 0,0.064, 0))
+					modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
 				else
 					modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-					modBt:TweenPosition(UDim2.new(0.057, 0,0.064, 0))
+					modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
 				end
 				callback(value)
 			end)
 		end
-		
+
+		-- Add other functions like addClick and addCombo here
+
 		return tab
-		
 	end
-	
+
 	return window
-	
+
+
 end
 
 return module
