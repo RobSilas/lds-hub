@@ -1694,14 +1694,7 @@ function module:start(gameName, Hversion)
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			print("passou")
-			if description ~= '' then
-				helpIcon.MouseEnter:Connect(function()
-					cloneFrame.HelpFrame.HelpText.Text = description
-					cloneFrame.HelpFrame.Visible = true
-				end)
-				helpIcon.MouseLeave:Connect(function()
-					cloneFrame.HelpFrame.Visible = false
-				end)
+			
 			end
 			
 		
@@ -1713,7 +1706,7 @@ function module:start(gameName, Hversion)
 	
 	return window
 	
-	end
+	
 end
 
 return module
