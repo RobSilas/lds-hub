@@ -1136,7 +1136,7 @@ local function createMenuFrame(name)
 	ScrollableOpt.BorderSizePixel = 0
 	ScrollableOpt.Position = UDim2.new(0.0493908972, 0, 0.400636375, 0)
 	ScrollableOpt.Size = UDim2.new(0.897637784, 0, 0.549668849, 0)
-
+	
 
 	UIGridLayout.Parent = ScrollableOpt
 	UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -1390,8 +1390,8 @@ local function createToggleButton(text, desc, parent)
 	ButtonTitle.TextSize = 14.000
 	ButtonTitle.TextWrapped = true
 	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
-
-
+	
+	
 	DescIcon.Name = "DescIcon"
 	DescIcon.Parent = Button
 	DescIcon.Visible = false
@@ -1405,11 +1405,11 @@ local function createToggleButton(text, desc, parent)
 	if desc ~= "" then
 		DescIcon.Visible = true
 	end
-
-
+	
+	
 
 	UICorner_3.Parent = ToggleBt
-
+	
 	return Button, ButtonMode, DescIcon
 end
 
@@ -1566,7 +1566,7 @@ function module:start(gameName, Hversion)
 	})
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
-
+	
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
 		offMenus()
@@ -1583,7 +1583,7 @@ function module:start(gameName, Hversion)
 		_999UpdateNotes.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 		UpdateNoteUi.Visible = true
 	end)
-	-- Créditos botões
+		-- Créditos botões
 	TextButtonYT.MouseButton1Click:Connect(function()
 		setclipboard("https://www.youtube.com/@Sr_LDS")
 		game.StarterGui:SetCore("SendNotification", {
@@ -1600,7 +1600,7 @@ function module:start(gameName, Hversion)
 			Duration = 6;
 		})
 	end)
-	-- Settings botões
+		-- Settings botões
 	AntAFKButton.MouseButton1Click:Connect(function()
 		afkActive = not afkActive
 		local bb=game:service('VirtualUser')
@@ -1617,24 +1617,24 @@ function module:start(gameName, Hversion)
 			afkFunc = nil
 		end
 	end)
-
+	
 	SaveButton.MouseButton1Click:Connect(function()
 		-- Em Desenvolvimento
 	end)
-
+	
 	DeleteButton.MouseButton1Click:Connect(function()
 		local function dstroy() global:Destroy() end
 		module:ConfirmWarn(dstroy)
 	end)
-
+	
 	-- Hide Button
 	MenuH.TextButton.MouseButton1Click:Connect(function()
 		Frame.Visible = not Frame.Visible
 	end)
-
+	
 	-- Creating menu options
 	local window = {}
-
+	
 	function window:addTab(name)
 		menusCount += 1
 		local cloneFrame = createMenuFrame(name)
@@ -1645,12 +1645,12 @@ function module:start(gameName, Hversion)
 			cloneBt.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 			cloneFrame.Visible = true
 		end)
-
+		
 		local tab = {}
-
+		
 		tab.MenuFrame = cloneFrame
 		tab.OptionFrame = cloneFrame.Options
-
+		
 		function tab:addToggle(text, description,  callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame)
 			local value = false
@@ -1675,7 +1675,7 @@ function module:start(gameName, Hversion)
 				callback(value)
 			end)
 		end
-
+		
 		function tab:addClick(text, description, callback)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame)
 			if description ~= '' then
@@ -1689,10 +1689,10 @@ function module:start(gameName, Hversion)
 			end
 			clickBt.MouseButton1Click:Connect(callback)
 		end
-
+		
 		function tab:addCombo(text, description, options)
-			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			print("Esperando")
+			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
 			print("passou")
 			if description ~= '' then
@@ -1717,13 +1717,18 @@ function module:start(gameName, Hversion)
 					end)
 				end
 				tab.OptionFrame.Visible = true
-			end
-
-			return tab
-		end
-
-		return window
-
+			end)
+		
+		
+		return tab
+		
 	end
+	
+	
+	
+	return window
+	
+	end
+end
 
 return module
