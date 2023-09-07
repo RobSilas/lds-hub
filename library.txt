@@ -1703,17 +1703,18 @@ function module:start(gameName, Hversion)
 					cloneFrame.HelpFrame.Visible = false
 				end)
 			end
-
-
-			return tab
-
 		end
 
 
-
-		return window
+		return tab
 
 	end
+	
+
+
+
+	return window
+
 end
 
 return module
