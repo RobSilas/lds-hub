@@ -1232,8 +1232,6 @@ local function createMenuFrame(name)
 	return MenuFrame
 end
 
-
-
 local function createMenuButton(name)
 	-- Instances:
 
@@ -1342,7 +1340,7 @@ local function createClickButton(text, desc, parent)
 	--Properties:
 
 	ClickBt.Name = text
-	ClickBt.Parent = parent.ScrollingFrame
+	ClickBt.Parent = parent
 	ClickBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ClickBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ClickBt.BorderSizePixel = 0
@@ -1417,7 +1415,7 @@ local function createToggleButton(text, desc, parent)
 	--Properties:
 
 	ToggleBt.Name = text
-	ToggleBt.Parent = parent.ScrollingFrame
+	ToggleBt.Parent = parent
 	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ToggleBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ToggleBt.BorderSizePixel = 0
@@ -1496,7 +1494,7 @@ local function createComboButton(text, desc, parent)
 	--Properties:
 
 	ComboBt.Name = "ComboBt"
-	ComboBt.Parent = parent.ScrollingFrame
+	ComboBt.Parent = parent
 	ComboBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ComboBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ComboBt.BorderSizePixel = 0
@@ -1722,7 +1720,7 @@ function module:start(gameName, Hversion)
 		tab.OptionFrame = cloneFrame.Options
 
 		function tab:addToggle(text, description, callback)
-			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame)
+			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame.ScrollingFrame)
 			local value = false
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
@@ -1747,7 +1745,7 @@ function module:start(gameName, Hversion)
 		end
 
 		function tab:addClick(text, description, callback)
-			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame)
+			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -1761,7 +1759,7 @@ function module:start(gameName, Hversion)
 		end
 
 		function tab:addCombo(text, description, opts)
-			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
+			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame.ScrollingFrame)
 			local value = ""
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
@@ -1858,7 +1856,7 @@ function module:start(gameName, Hversion)
 		end
 		
 		function tab:addFolder(text)
-			local folderBt = createFolderButton(text, tab.MenuFrame)
+			local folderBt = createFolderButton(text, tab.MenuFrame.ScrollingFrame)
 			-- Função / Criação do scrollFrame
 			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
 			cloneScroll.Parent = tab.MenuFrame
