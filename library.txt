@@ -1694,10 +1694,11 @@ function module:start(gameName, Hversion)
 			clickBt.MouseButton1Click:Connect(callback)
 		end
 
-		function tab:addCombo(text, description, options)
+		function tab:addCombo(text, description, opts)
 			print("Esperando")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
+			print(opts.." Batata")
 			print(selectBt)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
@@ -1712,11 +1713,11 @@ function module:start(gameName, Hversion)
 				local scroll = tab.OptionFrame.ScrollableOpt
 				local baseOption = scroll.Option
 				tab.OptionFrame.ComboTitle.Text = text
-				for _, v in pairs(options) do
+				for _, v in pairs(opts) do
 					local clone = baseOption:Clone()
-					clone.Text = options
+					clone.Text = opts
 					clone.MouseButton1Click:Connect(function()
-						value = options
+						value = opts
 						tab.OptionFrame.Visible = false
 					end)
 				end
