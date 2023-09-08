@@ -1695,10 +1695,8 @@ function module:start(gameName, Hversion)
 		end
 
 		function tab:addCombo(text, description, opts)
-			print("Novo")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
-			print(opts)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -1714,6 +1712,28 @@ function module:start(gameName, Hversion)
 				local baseOption = scroll.Option
 				tab.OptionFrame.ComboTitle.Text = text
 				
+				-- Funções da gui
+				
+				local searchBox = tab.OptionFrame.SearchBox
+				local searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+					for _, v in pairs(scroll:GetChildren()) do
+						if v.Name == "NewOption" then
+							v:Destroy()
+						end
+					end
+
+					local search = searchBox.Text:lower()
+					for i, v in pairs(opts) do
+						if string.sub(v:lower(), 1, #search) == search then
+							local newOpt = baseOption:Clone()
+							newOpt.Name = "NewOption"
+							newOpt.OptionText.Text = v
+							newOpt.Parent = scroll
+							newOpt.Visible = true
+						end
+					end
+				end)
+				
 				local closeF
 				closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
 					tab.OptionFrame.Visible = false
@@ -1723,9 +1743,11 @@ function module:start(gameName, Hversion)
 						end
 					end
 					tab.MenuFrame.ScrollingFrame.Visible = true
+					searchF:Disconnect()
 					closeF:Disconnect()
 				end)
 				
+				--  Funções / Opções
 				for _, v in pairs(opts) do
 					print(v)
 					local clone = baseOption:Clone()
@@ -1743,6 +1765,7 @@ function module:start(gameName, Hversion)
 								v:Destroy()
 							end
 						end
+						searchF:Disconnect()
 					end)
 				end
 				tab.OptionFrame.Visible = true
