@@ -1711,6 +1711,7 @@ function module:start(gameName, Hversion)
 				end)
 			end
 			selectBt.MouseButton1Click:Connect(function()
+				tab.MenuFrame.ScrollingFrame.Visible = false
 				local scroll = tab.OptionFrame.ScrollableOpt
 				local baseOption = scroll.Option
 				tab.OptionFrame.ComboTitle.Text = text
@@ -1723,10 +1724,12 @@ function module:start(gameName, Hversion)
 							v:Destroy()
 						end
 					end
+					tab.MenuFrame.ScrollingFrame.Visible = true
 					closeF:Disconnect()
 				end)
 				
 				for _, v in pairs(opts) do
+					print(v)
 					local clone = baseOption:Clone()
 					clone.Visible = true
 					clone.Name = "NewOption"
@@ -1734,6 +1737,7 @@ function module:start(gameName, Hversion)
 					clone.MouseButton1Click:Connect(function()
 						value = v
 						tab.OptionFrame.Visible = false
+						tab.MenuFrame.ScrollingFrame.Visible = true
 						for _, v in pairs(scroll:GetChildren()) do
 							if v.Name == "NewOption" then
 								v:Destroy()
