@@ -1727,7 +1727,7 @@ function module:start(gameName, Hversion)
 						if string.sub(v:lower(), 1, #search) == search then
 							local newOpt = baseOption:Clone()
 							newOpt.Name = "NewOption"
-							newOpt.OptionText.Text = v
+							newOpt.Text = v
 							newOpt.Parent = scroll
 							newOpt.Visible = true
 						end
