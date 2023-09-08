@@ -1149,7 +1149,7 @@ local function createMenuFrame(name)
 	Option.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
 	Option.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Option.BorderSizePixel = 0
-	Option.Size = UDim2.new(0, 107, 0, 25)
+	Option.Size = UDim2.new(0.48, 0,0.35, 0)
 	Option.Font = Enum.Font.SourceSans
 	Option.Text = "Option"
 	Option.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1729,6 +1729,7 @@ function module:start(gameName, Hversion)
 				for _, v in pairs(opts) do
 					print(v)
 					local clone = baseOption:Clone()
+					clone.Parent = scroll
 					clone.Visible = true
 					clone.Name = "NewOption"
 					clone.Text = v
