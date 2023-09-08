@@ -1856,7 +1856,7 @@ function module:start(gameName, Hversion)
 		end
 		
 		function tab:addFolder(text)
-			local folderBt = createFolderButton(text, tab.MenuFrame.ScrollingFrame)
+			local folderBt = createFolderButton(text, tab.MenuFrame)
 			-- Função / Criação do scrollFrame
 			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
 			cloneScroll.Parent = tab.MenuFrame
