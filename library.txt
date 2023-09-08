@@ -1746,12 +1746,12 @@ function module:start(gameName, Hversion)
 					end)
 				end
 				tab.OptionFrame.Visible = true
-				local combo = {}
-				function combo:getValue()
-					return value
-				end
-				return combo
 			end)
+			local combo = {}
+			function combo:getValue()
+				return value
+			end
+			return combo
 		end
 
 		return tab
