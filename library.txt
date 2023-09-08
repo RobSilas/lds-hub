@@ -1715,7 +1715,8 @@ function module:start(gameName, Hversion)
 				-- Funções da gui
 				
 				local searchBox = tab.OptionFrame.SearchBox
-				local searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+				local searchF
+				searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
 					for _, v in pairs(scroll:GetChildren()) do
 						if v.Name == "NewOption" then
 							v:Destroy()
@@ -1730,6 +1731,19 @@ function module:start(gameName, Hversion)
 							newOpt.Text = v
 							newOpt.Parent = scroll
 							newOpt.Visible = true
+							
+							newOpt.MouseButton1Click:Connect(function()
+								value = v
+								selectBt.Text = tostring(v)
+								tab.OptionFrame.Visible = false
+								tab.MenuFrame.ScrollingFrame.Visible = true
+								for _, v in pairs(scroll:GetChildren()) do
+									if v.Name == "NewOption" then
+										v:Destroy()
+									end
+								end
+								searchF:Disconnect()
+							end)
 						end
 					end
 				end)
