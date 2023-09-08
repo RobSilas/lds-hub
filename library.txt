@@ -1723,6 +1723,7 @@ function module:start(gameName, Hversion)
 							v:Destroy()
 						end
 					end
+					closeF:Disconnect()
 				end)
 				
 				for _, v in pairs(opts) do
