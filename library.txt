@@ -1555,13 +1555,13 @@ end
 
 function module:start(gameName, Hversion)
 	GameName.Text = gameName
-	HubVersion.Text = "v. "..Hversion
-	UpdatesVTXT.Text = "v. "..Hversion
+	HubVersion.Text = "v. " .. Hversion
+	UpdatesVTXT.Text = "v. " .. Hversion
 	global.Enabled = true
 	game.StarterGui:SetCore("SendNotification", {
-		Title = "LDS HUB";
-		Text = "By Sr LDS and Aliscreative";
-		Duration = 8;
+		Title = "LDS HUB",
+		Text = "By Sr LDS and Aliscreative",
+		Duration = 8,
 	})
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
@@ -1570,43 +1570,45 @@ function module:start(gameName, Hversion)
 	_1Home.MouseButton1Click:Connect(function()
 		offMenus()
 		_1Home.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-		HomeUi.Visible = true
+		frame.HomeUi.Visible = true
 	end)
 	_998Settings.MouseButton1Click:Connect(function()
 		offMenus()
 		_998Settings.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-		SettingsUI.Visible = true
+		frame.SettingsUI.Visible = true
 	end)
 	_999UpdateNotes.MouseButton1Click:Connect(function()
 		offMenus()
 		_999UpdateNotes.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-		UpdateNoteUi.Visible = true
+		frame.UpdateNoteUi.Visible = true
 	end)
+
 	-- Créditos botões
 	TextButtonYT.MouseButton1Click:Connect(function()
 		setclipboard("https://www.youtube.com/@Sr_LDS")
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Youtube";
-			Text = "Copied! Paste in your browser!";
-			Duration = 6;
+			Title = "Youtube",
+			Text = "Copied! Paste in your browser!",
+			Duration = 6,
 		})
 	end)
 	TextButtonDC.MouseButton1Click:Connect(function()
 		setclipboard("https://discord.gg/srlds")
 		game.StarterGui:SetCore("SendNotification", {
-			Title = "Discord";
-			Text = "Copied! Paste in your browser!";
-			Duration = 6;
+			Title = "Discord",
+			Text = "Copied! Paste in your browser!",
+			Duration = 6,
 		})
 	end)
+
 	-- Settings botões
 	AntAFKButton.MouseButton1Click:Connect(function()
 		afkActive = not afkActive
-		local bb=game:service('VirtualUser')
+		local bb = game:GetService('VirtualUser')
 		local afkFunc
 		if afkActive then
 			AntiAFKFrameColor.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-			afkFunc = game:service('Players').LocalPlayer.Idled:connect(function()
+			afkFunc = game:GetService('Players').LocalPlayer.Idled:Connect(function()
 				bb:CaptureController()
 				bb:ClickButton2(Vector2.new())
 			end)
@@ -1622,20 +1624,22 @@ function module:start(gameName, Hversion)
 	end)
 
 	DeleteButton.MouseButton1Click:Connect(function()
-		local function dstroy() global:Destroy() end
+		local function dstroy()
+			global:Destroy()
+		end
 		module:ConfirmWarn(dstroy)
 	end)
 
 	-- Hide Button
 	MenuH.TextButton.MouseButton1Click:Connect(function()
-		Frame.Visible = not Frame.Visible
+		frame.Frame.Visible = not frame.Frame.Visible
 	end)
 
-	-- Creating menu options
 	-- Creating menu options
 	local window = {}
 
 	function window:addTab(name)
+		menusCount = menusCount + 1
 		local cloneFrame = createMenuFrame(name)
 
 		local cloneBt = createMenuButton(name)
@@ -1644,27 +1648,24 @@ function module:start(gameName, Hversion)
 			cloneBt.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 			cloneFrame.Visible = true
 		end)
-		
+
 		local tab = {}
 
-		-- Define menusCount locally if it's intended to be local to this tab
-		local menusCount = 0
+		tab.MenuFrame = cloneFrame
+		tab.OptionFrame = cloneFrame.Options
 
 		function tab:addToggle(text, description, callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame)
 			local value = false
-
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
 					cloneFrame.HelpFrame.Visible = true
 				end)
-
 				helpIcon.MouseLeave:Connect(function()
 					cloneFrame.HelpFrame.Visible = false
 				end)
 			end
-
 			togBt.MouseButton1Click:Connect(function()
 				value = not value
 				if value == true then
@@ -1678,14 +1679,31 @@ function module:start(gameName, Hversion)
 			end)
 		end
 
-		-- Add other functions like addClick and addCombo here
+		function tab:addClick(text, description, callback)
+			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame)
+			if description ~= '' then
+				helpIcon.MouseEnter:Connect(function()
+					cloneFrame.HelpFrame.HelpText.Text = description
+					cloneFrame.HelpFrame.Visible = true
+				end)
+				helpIcon.MouseLeave:Connect(function()
+					cloneFrame.HelpFrame.Visible = false
+				end)
+			end
+			clickBt.MouseButton1Click:Connect(callback)
+		end
+
+		function tab:addCombo(text, description, options)
+			print("Esperando")
+			local value = ""
+			print("passou")
+		end
 
 		return tab
 	end
 
 	return window
-
-
 end
+
 
 return module
