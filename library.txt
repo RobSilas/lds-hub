@@ -1242,7 +1242,6 @@ local function createMenuButton(name)
 	--Properties:
 
 	MenuButton.Name = tostring(menusCount)..name
-	print(MenuButton.Name)
 	MenuButton.Parent = GButtons
 	MenuButton.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 	MenuButton.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -1696,11 +1695,9 @@ function module:start(gameName, Hversion)
 		end
 
 		function tab:addCombo(text, description, opts)
-			print("Esperando")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
-			print("gui")
-			print(selectBt)
+			print(opts)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
