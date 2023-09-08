@@ -1232,6 +1232,8 @@ local function createMenuFrame(name)
 	return MenuFrame
 end
 
+
+
 local function createMenuButton(name)
 	-- Instances:
 
@@ -1258,7 +1260,71 @@ local function createMenuButton(name)
 	UICorner.Parent = MenuButton
 	return MenuButton
 end
+	
+local function createFolderButton(text, parent)	
+	-- Gui to Lua
+	-- Version: 3.2
 
+	-- Instances:
+
+	local FolderBt = Instance.new("Frame")
+	local Button = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local ButtonTitle = Instance.new("TextLabel")
+	local ImageLabel = Instance.new("ImageLabel")
+	local UICorner_2 = Instance.new("UICorner")
+
+	--Properties:
+
+	FolderBt.Name = text
+	FolderBt.Parent = parent.ScrollingFrame
+	FolderBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	FolderBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FolderBt.BorderSizePixel = 0
+	FolderBt.Position = UDim2.new(0.0111940298, 0, 0.189785466, 0)
+	FolderBt.Size = UDim2.new(0.949999988, 0, 0.075000003, 0)
+
+	Button.Name = "Button"
+	Button.Parent = FolderBt
+	Button.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+	Button.Position = UDim2.new(0.0470711477, 0, 0.148147762, 0)
+	Button.Size = UDim2.new(0.129337847, 0, 0.666666627, 0)
+	Button.Font = Enum.Font.SourceSans
+	Button.Text = ""
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.TextScaled = true
+	Button.TextSize = 14.000
+	Button.TextWrapped = true
+
+	UICorner.Parent = Button
+
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = Button
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(1.42729545, 0, 0, 0)
+	ButtonTitle.Size = UDim2.new(5.04108572, 0, 0.993527949, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	ImageLabel.Parent = Button
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ImageLabel.BorderSizePixel = 0
+	ImageLabel.Position = UDim2.new(0.229611576, 0, -0.0551959947, 0)
+	ImageLabel.Size = UDim2.new(0, 18, 0, 18)
+	ImageLabel.Image = "rbxassetid://14674373054"
+
+	UICorner_2.Parent = FolderBt
+	return Button
+end
+	
 local function createClickButton(text, desc, parent)
 	-- Gui to Lua
 	-- Version: 3.2
@@ -1789,6 +1855,172 @@ function module:start(gameName, Hversion)
 				return value
 			end
 			return combo
+		end
+		
+		function tab:addFolder(text)
+			local folderBt = createFolderButton(text, tab.MenuFrame)
+			-- Função / Criação do scrollFrame
+			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
+			cloneScroll.Visible = false
+			cloneScroll.Name = "folderScroll"
+			-- Limpar scroll novo
+			for _,v in pairs(cloneScroll:GetChildren()) do
+				if not v:IsA("UIListLayout") then
+					v:Destroy()
+				end
+			end
+			
+			-- Função / Botão
+			folderBt.MouseButton1Click:Connect(function()
+				tab.MenuFrame.ScrollingFrame.Visible = false
+				cloneScroll.Visible = true
+				tab.MenuFrame.BackFolder.Visible = true
+				tab.MenuFrame.BackFolder.MouseButton1Click:Connect(function()
+					tab.MenuFrame.ScrollingFrame.Visible = true
+					cloneScroll.Visible = false
+					tab.MenuFrame.BackFolder.Visible = false
+				end)
+			end)
+			-- Funções / Folder
+			local folder = {}
+			
+			function folder:addToggle(text, description, callback)
+				local togBt, modBt, helpIcon = createToggleButton(text, description, cloneScroll)
+				local value = false
+				if description ~= '' then
+					helpIcon.MouseEnter:Connect(function()
+						cloneFrame.HelpFrame.HelpText.Text = description
+						cloneFrame.HelpFrame.Visible = true
+					end)
+					helpIcon.MouseLeave:Connect(function()
+						cloneFrame.HelpFrame.Visible = false
+					end)
+				end
+				togBt.MouseButton1Click:Connect(function()
+					value = not value
+					if value == true then
+						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+					else
+						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+					end
+					callback(value)
+				end)
+			end
+			
+			function folder:addClick(text, description, callback)
+				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
+				if description ~= '' then
+					helpIcon.MouseEnter:Connect(function()
+						cloneFrame.HelpFrame.HelpText.Text = description
+						cloneFrame.HelpFrame.Visible = true
+					end)
+					helpIcon.MouseLeave:Connect(function()
+						cloneFrame.HelpFrame.Visible = false
+					end)
+				end
+				clickBt.MouseButton1Click:Connect(callback)
+			end
+			
+			function folder:addCombo(text, description, opts)
+				local selectBt, helpIcon = createComboButton(text, description, cloneScroll)
+				local value = ""
+				if description ~= '' then
+					helpIcon.MouseEnter:Connect(function()
+						cloneFrame.HelpFrame.HelpText.Text = description
+						cloneFrame.HelpFrame.Visible = true
+					end)
+					helpIcon.MouseLeave:Connect(function()
+						cloneFrame.HelpFrame.Visible = false
+					end)
+				end
+				selectBt.MouseButton1Click:Connect(function()
+					tab.MenuFrame.ScrollingFrame.Visible = false
+					local scroll = tab.OptionFrame.ScrollableOpt
+					local baseOption = scroll.Option
+					tab.OptionFrame.ComboTitle.Text = text
+
+					-- Funções da gui
+
+					local searchBox = tab.OptionFrame.SearchBox
+					local searchF
+					searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+						for _, v in pairs(scroll:GetChildren()) do
+							if v.Name == "NewOption" then
+								v:Destroy()
+							end
+						end
+
+						local search = searchBox.Text:lower()
+						for i, v in pairs(opts) do
+							if string.sub(v:lower(), 1, #search) == search then
+								local newOpt = baseOption:Clone()
+								newOpt.Name = "NewOption"
+								newOpt.Text = v
+								newOpt.Parent = scroll
+								newOpt.Visible = true
+
+								newOpt.MouseButton1Click:Connect(function()
+									value = v
+									selectBt.Text = tostring(v)
+									tab.OptionFrame.Visible = false
+									tab.MenuFrame.ScrollingFrame.Visible = true
+									for _, v in pairs(scroll:GetChildren()) do
+										if v.Name == "NewOption" then
+											v:Destroy()
+										end
+									end
+									searchF:Disconnect()
+								end)
+							end
+						end
+					end)
+
+					local closeF
+					closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
+						tab.OptionFrame.Visible = false
+						for _, v in pairs(scroll:GetChildren()) do
+							if v.Name == "NewOption" then
+								v:Destroy()
+							end
+						end
+						tab.MenuFrame.ScrollingFrame.Visible = true
+						searchF:Disconnect()
+						closeF:Disconnect()
+					end)
+
+					--  Funções / Opções
+					for _, v in pairs(opts) do
+						print(v)
+						local clone = baseOption:Clone()
+						clone.Parent = scroll
+						clone.Visible = true
+						clone.Name = "NewOption"
+						clone.Text = v
+						clone.MouseButton1Click:Connect(function()
+							value = v
+							selectBt.Text = tostring(v)
+							tab.OptionFrame.Visible = false
+							tab.MenuFrame.ScrollingFrame.Visible = true
+							for _, v in pairs(scroll:GetChildren()) do
+								if v.Name == "NewOption" then
+									v:Destroy()
+								end
+							end
+							searchF:Disconnect()
+						end)
+					end
+					tab.OptionFrame.Visible = true
+				end)
+				local combo = {}
+				function combo:getValue()
+					return value
+				end
+				return combo
+			end
+			
+			return folder
 		end
 
 		return tab
