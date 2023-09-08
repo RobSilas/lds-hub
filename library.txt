@@ -1671,8 +1671,9 @@ function module:start(gameName, Hversion)
 			Duration = 6,
 		})
 	end)
-
+	
 	-- Settings botões
+	LoadSettings()
 	AntAFKButton.MouseButton1Click:Connect(function()
 		afkActive = not afkActive
 		local bb = game:GetService('VirtualUser')
@@ -1770,11 +1771,15 @@ function module:start(gameName, Hversion)
 				value = not value
 				G.Settings[text] = value
 				if value == true then
-					modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-					modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+					task.spawn(function()
+						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+					end)
 				else
-					modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-					modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+					task.spawn(function()
+						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+					end)
 				end
 				callback(value)
 			end)
@@ -1911,6 +1916,8 @@ function module:start(gameName, Hversion)
 			
 			-- Função / Botão
 			folderBt.MouseButton1Click:Connect(function()
+				local menuName = tab.MenuFrame.MenuTitle.Text
+				tab.MenuFrame.MenuTitle.Text = text
 				tab.MenuFrame.ScrollingFrame.Visible = false
 				cloneScroll.Visible = true
 				tab.MenuFrame.BackFolder.Visible = true
@@ -1918,6 +1925,7 @@ function module:start(gameName, Hversion)
 					tab.MenuFrame.ScrollingFrame.Visible = true
 					cloneScroll.Visible = false
 					tab.MenuFrame.BackFolder.Visible = false
+					tab.MenuFrame.MenuTitle.Text = menuName
 				end)
 			end)
 			-- Funções / Folder
@@ -1939,11 +1947,15 @@ function module:start(gameName, Hversion)
 					value = not value
 					G.Settings[text] = value
 					if value == true then
-						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+						task.spawn(function()
+							modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+							modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+						end)
 					else
-						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+						task.spawn(function()
+							modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+							modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+						end)
 					end
 					callback(value)
 				end)
