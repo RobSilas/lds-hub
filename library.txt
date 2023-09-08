@@ -1276,7 +1276,7 @@ local function createClickButton(text, desc, parent)
 	--Properties:
 
 	ClickBt.Name = text
-	ClickBt.Parent = parent
+	ClickBt.Parent = parent.ScrollingFrame
 	ClickBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ClickBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ClickBt.BorderSizePixel = 0
@@ -1430,7 +1430,7 @@ local function createComboButton(text, desc, parent)
 	--Properties:
 
 	ComboBt.Name = "ComboBt"
-	ComboBt.Parent = parent
+	ComboBt.Parent = parent.ScrollingFrame
 	ComboBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
 	ComboBt.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ComboBt.BorderSizePixel = 0
@@ -1698,7 +1698,6 @@ function module:start(gameName, Hversion)
 			print("Esperando")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
-			print(opts)
 			print("gui")
 			print(selectBt)
 			if description ~= '' then
