@@ -1735,6 +1735,7 @@ function module:start(gameName, Hversion)
 					clone.Text = v
 					clone.MouseButton1Click:Connect(function()
 						value = v
+						selectBt.Text = tostring(v)
 						tab.OptionFrame.Visible = false
 						tab.MenuFrame.ScrollingFrame.Visible = true
 						for _, v in pairs(scroll:GetChildren()) do
@@ -1745,6 +1746,11 @@ function module:start(gameName, Hversion)
 					end)
 				end
 				tab.OptionFrame.Visible = true
+				local combo = {}
+				function combo:getValue()
+					return value
+				end
+				return combo
 			end)
 		end
 
