@@ -1144,6 +1144,7 @@ local function createMenuFrame(name)
 	UIGridLayout.CellSize = UDim2.new(0, 107, 0, 25)
 
 	Option.Name = "Option"
+	Option.Visible = false
 	Option.Parent = ScrollableOpt
 	Option.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
 	Option.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1713,12 +1714,30 @@ function module:start(gameName, Hversion)
 				local scroll = tab.OptionFrame.ScrollableOpt
 				local baseOption = scroll.Option
 				tab.OptionFrame.ComboTitle.Text = text
+				
+				local closeF
+				closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
+					tab.OptionFrame.Visible = false
+					for _, v in pairs(scroll:GetChildren()) do
+						if v.Name == "NewOption" then
+							v:Destroy()
+						end
+					end
+				end)
+				
 				for _, v in pairs(opts) do
 					local clone = baseOption:Clone()
-					clone.Text = opts
+					clone.Visible = true
+					clone.Name = "NewOption"
+					clone.Text = v
 					clone.MouseButton1Click:Connect(function()
-						value = opts
+						value = v
 						tab.OptionFrame.Visible = false
+						for _, v in pairs(scroll:GetChildren()) do
+							if v.Name == "NewOption" then
+								v:Destroy()
+							end
+						end
 					end)
 				end
 				tab.OptionFrame.Visible = true
