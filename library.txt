@@ -1698,7 +1698,7 @@ function module:start(gameName, Hversion)
 			print("Esperando")
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame)
 			local value = ""
-			print(opts.." Batata")
+			print(opts)
 			print(selectBt)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
