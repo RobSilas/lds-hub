@@ -1861,6 +1861,7 @@ function module:start(gameName, Hversion)
 			local folderBt = createFolderButton(text, tab.MenuFrame)
 			-- Função / Criação do scrollFrame
 			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
+			cloneScroll.Parent = tab.MenuFrame
 			cloneScroll.Visible = false
 			cloneScroll.Name = "folderScroll"
 			-- Limpar scroll novo
