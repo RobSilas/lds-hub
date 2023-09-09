@@ -1316,7 +1316,7 @@ local function createFolderButton(text, parent)
 	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ImageLabel.BorderSizePixel = 0
 	ImageLabel.Position = UDim2.new(0.229611576, 0, -0.0551959947, 0)
-	ImageLabel.Size = UDim2.new(0, 18, 0, 18)
+	ImageLabel.Size = UDim2.new(0.602, 0,0.994, 0)
 	ImageLabel.Image = "rbxassetid://14674373054"
 
 	UICorner_2.Parent = FolderBt
@@ -1395,7 +1395,7 @@ local function createClickButton(text, desc, parent)
 	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ImageLabel.BorderSizePixel = 0
 	ImageLabel.Position = UDim2.new(0.229611576, 0, -0.0551959947, 0)
-	ImageLabel.Size = UDim2.new(0, 18, 0, 18)
+	ImageLabel.Size = UDim2.new(0.602, 0,0.994, 0)
 	ImageLabel.Image = "rbxassetid://14673874142"
 
 	UICorner_2.Parent = ClickBt
@@ -1563,8 +1563,108 @@ local function createComboButton(text, desc, parent)
 	return Button, DescIcon
 end
 
+local function createSlider(text, desc, parent)
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local Slider = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local DescIcon = Instance.new("ImageLabel")
+	local ButtonTitle = Instance.new("TextLabel")
+	local SliderBg = Instance.new("Frame")
+	local SliderClick = Instance.new("TextButton")
+	local UICorner_2 = Instance.new("UICorner")
+	local UICorner_3 = Instance.new("UICorner")
+	local SliderValue = Instance.new("TextLabel")
+
+	--Properties:
+
+	Slider.Name = text
+	Slider.Parent = parent
+	Slider.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	Slider.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Slider.BorderSizePixel = 0
+	Slider.Position = UDim2.new(0, 0, 0.77172029, 0)
+	Slider.Size = UDim2.new(0.949999928, 0, 0.0891564861, 0)
+
+	UICorner.Parent = Slider
+
+	DescIcon.Name = "DescIcon"
+	DescIcon.Parent = Slider
+	DescIcon.Visible = false
+	DescIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DescIcon.BackgroundTransparency = 1.000
+	DescIcon.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	DescIcon.BorderSizePixel = 0
+	DescIcon.Position = UDim2.new(0.897049904, 0, 0.0881248638, 0)
+	DescIcon.Size = UDim2.new(0.0476812646, 0, 0.33101964, 0)
+	DescIcon.Image = "rbxassetid://14592412395"
+	if desc ~= "" then
+		DescIcon.Visible = true
+	end
+
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = Slider
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(0.0549881794, 0, 0.0928646326, 0)
+	ButtonTitle.Size = UDim2.new(0.756441236, 0, 0.423853993, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	SliderBg.Name = "SliderBg"
+	SliderBg.Parent = Slider
+	SliderBg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SliderBg.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	SliderBg.BorderSizePixel = 0
+	SliderBg.Position = UDim2.new(0.0513633899, 0, 0.619090021, 0)
+	SliderBg.Size = UDim2.new(0.797286272, 0, 0.0999726132, 0)
+
+	SliderClick.Name = "SliderClick"
+	SliderClick.Parent = SliderBg
+	SliderClick.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+	SliderClick.Position = UDim2.new(0, 0, -1.02400005, 0)
+	SliderClick.Size = UDim2.new(0.0774314776, 0, 2.80767822, 0)
+	SliderClick.Font = Enum.Font.SourceSans
+	SliderClick.Text = ""
+	SliderClick.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SliderClick.TextScaled = true
+	SliderClick.TextSize = 14.000
+	SliderClick.TextWrapped = true
+
+	UICorner_2.Parent = SliderClick
+
+	UICorner_3.CornerRadius = UDim.new(0, 20)
+	UICorner_3.Parent = SliderBg
+
+	SliderValue.Name = "SliderValue"
+	SliderValue.Parent = Slider
+	SliderValue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SliderValue.BackgroundTransparency = 1.000
+	SliderValue.Position = UDim2.new(0.867358387, 0, 0.409443915, 0)
+	SliderValue.Size = UDim2.new(0.102826215, 0, 0.490582168, 0)
+	SliderValue.Font = Enum.Font.Ubuntu
+	SliderValue.Text = "0"
+	SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SliderValue.TextScaled = true
+	SliderValue.TextSize = 14.000
+	SliderValue.TextWrapped = true
+	SliderValue.TextXAlignment = Enum.TextXAlignment.Left
+	return SliderClick, DescIcon, SliderBg, SliderValue
+end
 
 -- Menu Utilities
+
+local function updateCanvasSize(Canvas, Constraint)
+	Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
+end
 
 local function offMenus()
 	for _,v in pairs(Frame:GetChildren()) do
@@ -1757,7 +1857,29 @@ function module:start(gameName, Hversion)
 
 		function tab:addToggle(text, description, callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame.ScrollingFrame)
-			local value = false
+			local value
+			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
+			local function changeVisual() 
+				if value == true then
+					task.spawn(function()
+						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+					end)
+				else
+					task.spawn(function()
+						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+					end)
+				end
+			end
+			
+			if table.find(G.Settings, text) then
+				value = G.Settings[text]
+				changeVisual()
+			else
+				value = false
+			end
+			 
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -1770,23 +1892,14 @@ function module:start(gameName, Hversion)
 			togBt.MouseButton1Click:Connect(function()
 				value = not value
 				G.Settings[text] = value
-				if value == true then
-					task.spawn(function()
-						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
-					end)
-				else
-					task.spawn(function()
-						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
-					end)
-				end
+				changeVisual()
 				callback(value)
 			end)
 		end
 
 		function tab:addClick(text, description, callback)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
+			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -1801,7 +1914,14 @@ function module:start(gameName, Hversion)
 
 		function tab:addCombo(text, description, opts)
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame.ScrollingFrame)
-			local value = ""
+			local value
+			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
+			if table.find(G.Settings, text) then
+				value = G.Settings[text]
+				selectBt.Text = value
+			else
+				value = ""
+			end
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -1869,6 +1989,8 @@ function module:start(gameName, Hversion)
 					closeF:Disconnect()
 				end)
 				
+				
+				
 				--  Funções / Opções
 				for _, v in pairs(opts) do
 					print(v)
@@ -1891,6 +2013,7 @@ function module:start(gameName, Hversion)
 						searchF:Disconnect()
 					end)
 				end
+				updateCanvasSize(scroll, scroll.UIGridLayout)
 				tab.OptionFrame.Visible = true
 			end)
 			local combo = {}
@@ -1900,8 +2023,71 @@ function module:start(gameName, Hversion)
 			return combo
 		end
 		
+		function tab:addSlider(text, description, min, max, callback)
+			local mouse = game.Players.LocalPlayer:GetMouse()
+			local movingSlider = false
+			local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, tab.MenuFrame.ScrollingFrame)
+			local value = min
+			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
+			if description ~= '' then
+				DescIcon.MouseEnter:Connect(function()
+					cloneFrame.HelpFrame.HelpText.Text = description
+					cloneFrame.HelpFrame.Visible = true
+				end)
+				DescIcon.MouseLeave:Connect(function()
+					cloneFrame.HelpFrame.Visible = false
+				end)
+			end
+			-- muda a pos da agulha
+			SliderClick.MouseButton1Down:Connect(function()
+				movingSlider = true
+			end)
+			SliderClick.MouseButton1Up:Connect(function()
+				movingSlider = false
+			end)
+			mouse.Button1Up:Connect(function()
+				movingSlider = false
+			end)
+			
+			local snapAmount = 100
+			local pixelsFromEdge = 10
+			
+			mouse.Move:Connect(function()
+
+				if movingSlider then
+
+					local xOffset = math.floor((mouse.X - sliderBG.AbsolutePosition.X) / snapAmount + 0.5) * snapAmount
+					local xOffsetClamped = math.clamp(xOffset, pixelsFromEdge, sliderBG.AbsoluteSize.X - pixelsFromEdge)
+
+					local sliderPosNew = UDim2.new(0, xOffsetClamped, SliderClick.Position.Y)
+
+					SliderClick.Position = sliderPosNew
+
+					local roundedAbsSize = math.floor(sliderBG.AbsoluteSize.X / snapAmount + 0.5) * snapAmount
+					local roundedOffsetClamped = math.floor(xOffsetClamped / snapAmount + 0.5) * snapAmount
+
+					local sliderValue = roundedOffsetClamped / roundedAbsSize
+
+					value = sliderValue
+					SliderValue.Text = value
+					if callback ~= nil then
+						callback(value)
+					end
+				end
+			end)
+			
+			local sliderReturn = {}
+			
+			function sliderReturn:getValue()
+				return value
+			end
+			
+			return sliderReturn
+		end
+		
 		function tab:addFolder(text)
 			local folderBt = createFolderButton(text, tab.MenuFrame)
+			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			-- Função / Criação do scrollFrame
 			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
 			cloneScroll.Parent = tab.MenuFrame
@@ -1933,7 +2119,29 @@ function module:start(gameName, Hversion)
 			
 			function folder:addToggle(text, description, callback)
 				local togBt, modBt, helpIcon = createToggleButton(text, description, cloneScroll)
-				local value = false
+				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
+				local value
+				local function changeVisual() 
+					if value == true then
+						task.spawn(function()
+							modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+							modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+						end)
+					else
+						task.spawn(function()
+							modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+							modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+						end)
+					end
+				end
+
+				if table.find(G.Settings, text) then
+					value = G.Settings[text]
+					changeVisual()
+				else
+					value = false
+				end
+
 				if description ~= '' then
 					helpIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -1946,23 +2154,14 @@ function module:start(gameName, Hversion)
 				togBt.MouseButton1Click:Connect(function()
 					value = not value
 					G.Settings[text] = value
-					if value == true then
-						task.spawn(function()
-							modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-							modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
-						end)
-					else
-						task.spawn(function()
-							modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-							modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
-						end)
-					end
+					changeVisual()
 					callback(value)
 				end)
 			end
 			
 			function folder:addClick(text, description, callback)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
+				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
 				if description ~= '' then
 					helpIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -1977,7 +2176,14 @@ function module:start(gameName, Hversion)
 			
 			function folder:addCombo(text, description, opts)
 				local selectBt, helpIcon = createComboButton(text, description, cloneScroll)
-				local value = ""
+				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
+				local value
+				if table.find(G.Settings, text) then
+					value = G.Settings[text]
+					selectBt.Text = value
+				else
+					value = ""
+				end
 				if description ~= '' then
 					helpIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -2067,6 +2273,7 @@ function module:start(gameName, Hversion)
 							searchF:Disconnect()
 						end)
 					end
+					updateCanvasSize(scroll, scroll.UIGridLayout)
 					tab.OptionFrame.Visible = true
 				end)
 				local combo = {}
@@ -2074,6 +2281,68 @@ function module:start(gameName, Hversion)
 					return value
 				end
 				return combo
+			end
+			
+			function tab:addSlider(text, description, min, max, callback)
+				local mouse = game.Players.LocalPlayer:GetMouse()
+				local movingSlider = false
+				local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, cloneScroll)
+				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
+				local value = min
+				if description ~= '' then
+					DescIcon.MouseEnter:Connect(function()
+						cloneFrame.HelpFrame.HelpText.Text = description
+						cloneFrame.HelpFrame.Visible = true
+					end)
+					DescIcon.MouseLeave:Connect(function()
+						cloneFrame.HelpFrame.Visible = false
+					end)
+				end
+				-- muda a pos da agulha
+				SliderClick.MouseButton1Down:Connect(function()
+					movingSlider = true
+				end)
+				SliderClick.MouseButton1Up:Connect(function()
+					movingSlider = false
+				end)
+				mouse.Button1Up:Connect(function()
+					movingSlider = false
+				end)
+
+				local snapAmount = 100
+				local pixelsFromEdge = 10
+
+				mouse.Move:Connect(function()
+
+					if movingSlider then
+
+						local xOffset = math.floor((mouse.X - sliderBG.AbsolutePosition.X) / snapAmount + 0.5) * snapAmount
+						local xOffsetClamped = math.clamp(xOffset, pixelsFromEdge, sliderBG.AbsoluteSize.X - pixelsFromEdge)
+
+						local sliderPosNew = UDim2.new(0, xOffsetClamped, SliderClick.Position.Y)
+
+						SliderClick.Position = sliderPosNew
+
+						local roundedAbsSize = math.floor(sliderBG.AbsoluteSize.X / snapAmount + 0.5) * snapAmount
+						local roundedOffsetClamped = math.floor(xOffsetClamped / snapAmount + 0.5) * snapAmount
+
+						local sliderValue = roundedOffsetClamped / roundedAbsSize
+
+						value = sliderValue
+						SliderValue.Text = value
+						if callback ~= nil then
+							callback(value)
+						end
+					end
+				end)
+
+				local sliderReturn = {}
+
+				function sliderReturn:getValue()
+					return value
+				end
+
+				return sliderReturn
 			end
 			
 			return folder
