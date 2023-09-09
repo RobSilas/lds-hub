@@ -1665,8 +1665,6 @@ end
 local function updateCanvasSize(Canvas, Constraint)
 	if Constraint:IsA("UIGridLayout") then
 		Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
-	else
-		Canvas.CanvasSize = UDim2.new(0, 0, 0, Constraint.AbsoluteContentSize.Y+50)
 	end
 end
 
@@ -1729,6 +1727,7 @@ function module:ConfirmWarn(callback)
 end
 
 function module:start(gameName, Hversion)
+	Frame.Draggable = true
 	GameName.Text = gameName
 	HubVersion.Text = "v. " .. Hversion
 	UpdatesVTXT.Text = "v. " .. Hversion
