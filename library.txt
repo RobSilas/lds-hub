@@ -1663,7 +1663,11 @@ end
 -- Menu Utilities
 
 local function updateCanvasSize(Canvas, Constraint)
-	Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
+	if Constraint:IsA("UIGridLayout") then
+		Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
+	else
+		Canvas.CanvasSize = UDim2.new(0, 0, 0, Constraint.AbsoluteContentSize.Y+20)
+	end
 end
 
 local function offMenus()
@@ -2049,8 +2053,8 @@ function module:start(gameName, Hversion)
 				movingSlider = false
 			end)
 			
-			local snapAmount = 100
-			local pixelsFromEdge = 10
+			local snapAmount = 1
+			local pixelsFromEdge = 0
 			
 			mouse.Move:Connect(function()
 
