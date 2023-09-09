@@ -1666,7 +1666,7 @@ local function updateCanvasSize(Canvas, Constraint)
 	if Constraint:IsA("UIGridLayout") then
 		Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
 	else
-		Canvas.CanvasSize = UDim2.new(0, 0, 0, Constraint.AbsoluteContentSize.Y+20)
+		Canvas.CanvasSize = UDim2.new(0, 0, 0, Constraint.AbsoluteContentSize.Y+50)
 	end
 end
 
@@ -2072,7 +2072,10 @@ function module:start(gameName, Hversion)
 
 					local sliderValue = roundedOffsetClamped / roundedAbsSize
 
-					value = sliderValue
+					value = math.round(sliderValue * max)
+					if value < min then
+						value = min
+					end
 					SliderValue.Text = value
 					if callback ~= nil then
 						callback(value)
