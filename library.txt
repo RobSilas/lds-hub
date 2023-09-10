@@ -228,7 +228,7 @@ GButtons.Size = UDim2.new(0.975000679, 0, 0.629705727, 0)
 GButtons.CanvasSize = UDim2.new(0, 0, 3, 0)
 GButtons.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 
-_1Home.Name = "1Home"
+_1Home.Name = "000Home"
 _1Home.Parent = GButtons
 _1Home.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 _1Home.Position = UDim2.new(-0.0751205236, 0, 0, 0)
@@ -1884,7 +1884,7 @@ function module:start(gameName, Hversion)
 			else
 				value = false
 			end
-			 
+			
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
