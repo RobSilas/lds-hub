@@ -1728,6 +1728,8 @@ end
 
 function module:start(gameName, Hversion)
 	Frame.Draggable = true
+	Frame.Selectable = true
+	Frame.Active = true
 	GameName.Text = gameName
 	HubVersion.Text = "v. " .. Hversion
 	UpdatesVTXT.Text = "v. " .. Hversion
