@@ -242,7 +242,7 @@ _1Home.TextWrapped = true
 
 UICorner_4.Parent = _1Home
 
-_998Settings.Name = "998Settings"
+_998Settings.Name = "YSettings"
 _998Settings.Parent = GButtons
 _998Settings.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _998Settings.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -256,7 +256,7 @@ _998Settings.TextWrapped = true
 
 UICorner_5.Parent = _998Settings
 
-_999UpdateNotes.Name = "999UpdateNotes"
+_999UpdateNotes.Name = "ZUpdateNotes"
 _999UpdateNotes.Parent = GButtons
 _999UpdateNotes.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _999UpdateNotes.Position = UDim2.new(0.0382463485, 0, 0, 0)
