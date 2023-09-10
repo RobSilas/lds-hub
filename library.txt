@@ -1726,7 +1726,22 @@ function module:ConfirmWarn(callback)
 	end)
 end
 
+local defaultButtonSize = UDim2.new(0.943, 0,0.033, 0)
+
+function activeMobileUi()
+	_1Home.Size = UDim2.new(0.854, 0,0.047, 0)
+	_998Settings.Size = UDim2.new(0.854, 0,0.047, 0)
+	_999UpdateNotes.Size = UDim2.new(0.854, 0,0.047, 0)
+	defaultButtonSize = UDim2.new(0.854, 0,0.047, 0)
+	LE.Size = UDim2.new(0.362, 0,1, 0)
+end
+
+local UIS = game:GetService("UserInputService")
+
 function module:start(gameName, Hversion)
+	if UIS.TouchEnabled then
+		activeMobileUi()
+	end
 	Frame.Draggable = true
 	Frame.Selectable = true
 	Frame.Active = true
@@ -1852,6 +1867,7 @@ function module:start(gameName, Hversion)
 		cloneBt.MouseButton1Click:Connect(function()
 			offMenus()
 			cloneBt.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
+			cloneBt.Size = defaultButtonSize
 			cloneFrame.Visible = true
 		end)
 
