@@ -228,7 +228,7 @@ GButtons.Size = UDim2.new(0.975000679, 0, 0.629705727, 0)
 GButtons.CanvasSize = UDim2.new(0, 0, 3, 0)
 GButtons.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 
-_1Home.Name = "000Home"
+_1Home.Name = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000Home"
 _1Home.Parent = GButtons
 _1Home.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
 _1Home.Position = UDim2.new(-0.0751205236, 0, 0, 0)
@@ -242,7 +242,7 @@ _1Home.TextWrapped = true
 
 UICorner_4.Parent = _1Home
 
-_998Settings.Name = "YSettings"
+_998Settings.Name = "YYYSettings"
 _998Settings.Parent = GButtons
 _998Settings.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _998Settings.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -256,7 +256,7 @@ _998Settings.TextWrapped = true
 
 UICorner_5.Parent = _998Settings
 
-_999UpdateNotes.Name = "ZUpdateNotes"
+_999UpdateNotes.Name = "ZZZUpdateNotes"
 _999UpdateNotes.Parent = GButtons
 _999UpdateNotes.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 _999UpdateNotes.Position = UDim2.new(0.0382463485, 0, 0, 0)
@@ -1240,8 +1240,14 @@ local function createMenuButton(name)
 	local UICorner = Instance.new("UICorner")
 
 	--Properties:
+	
+	local numberZeros = ""
+	
+	for i=0, menusCount+1, 1 do
+		numberZeros = numberZeros.."0"
+	end
 
-	MenuButton.Name = tostring(menusCount+1)..name
+	MenuButton.Name = numberZeros..name
 	MenuButton.Parent = GButtons
 	MenuButton.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 	MenuButton.Position = UDim2.new(0.0382463485, 0, 0, 0)
