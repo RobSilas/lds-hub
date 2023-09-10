@@ -1243,7 +1243,7 @@ local function createMenuButton(name)
 	
 	local numberZeros = ""
 	
-	for i=0, menusCount+1, 1 do
+	for i=92, menusCount+1, -1 do
 		numberZeros = numberZeros.."0"
 	end
 
