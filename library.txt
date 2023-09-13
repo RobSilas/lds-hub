@@ -2111,6 +2111,10 @@ function module:start(gameName, Hversion)
 			local movingSlider = false
 			local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, tab.MenuFrame.ScrollingFrame)
 			local value = min
+			
+			local snapAmount = 1
+			local pixelsFromEdge = 0
+			
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			if description ~= '' then
 				DescIcon.MouseEnter:Connect(function()
@@ -2133,9 +2137,6 @@ function module:start(gameName, Hversion)
 					movingSlider = false
 				end
 			end)
-			
-			local snapAmount = 1
-			local pixelsFromEdge = 0
 			
 			mouse.Move:Connect(function()
 				if movingSlider then
@@ -2173,7 +2174,7 @@ function module:start(gameName, Hversion)
 		end
 		
 		function tab:addInputBox(text)
-			local TextBox = createSlider(text, tab.MenuFrame.ScrollingFrame)
+			local TextBox = createInputBox(text, tab.MenuFrame.ScrollingFrame)
 			local textboxM = {}
 			function textboxM:getValue()
 				return TextBox.Text
@@ -2447,7 +2448,7 @@ function module:start(gameName, Hversion)
 			end
 			
 			function tab:addInputBox(text)
-				local TextBox = createSlider(text, cloneScroll)
+				local TextBox = createInputBox(text, cloneScroll)
 				local textboxM = {}
 				function textboxM:getValue()
 					return TextBox.Text
