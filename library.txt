@@ -1666,6 +1666,62 @@ local function createSlider(text, desc, parent)
 	return SliderClick, DescIcon, SliderBg, SliderValue
 end
 
+local function createInputBox(text, parent)
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local InputBox = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local ButtonTitle = Instance.new("TextLabel")
+	local TextBox = Instance.new("TextBox")
+	local UICorner_2 = Instance.new("UICorner")
+
+	--Properties:
+
+	InputBox.Name = "InputBox"
+	InputBox.Parent = parent
+	InputBox.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	InputBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	InputBox.BorderSizePixel = 0
+	InputBox.Position = UDim2.new(0.0111940298, 0, 0.189785466, 0)
+	InputBox.Size = UDim2.new(0.949999988, 0, 0.075000003, 0)
+
+	UICorner.Parent = InputBox
+
+	ButtonTitle.Name = "ButtonTitle"
+	ButtonTitle.Parent = InputBox
+	ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.BackgroundTransparency = 1.000
+	ButtonTitle.Position = UDim2.new(0.467755377, 0, 0.147189319, 0)
+	ButtonTitle.Size = UDim2.new(0.498815715, 0, 0.662351906, 0)
+	ButtonTitle.Font = Enum.Font.FredokaOne
+	ButtonTitle.Text = text
+	ButtonTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ButtonTitle.TextScaled = true
+	ButtonTitle.TextSize = 14.000
+	ButtonTitle.TextWrapped = true
+	ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	TextBox.Parent = InputBox
+	TextBox.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+	TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.BorderSizePixel = 0
+	TextBox.Position = UDim2.new(0.0392156392, 0, 0.147189319, 0)
+	TextBox.Size = UDim2.new(0.404863805, 0, 0.662351906, 0)
+	TextBox.Font = Enum.Font.SourceSans
+	TextBox.PlaceholderText = "Insert your text..."
+	TextBox.Text = ""
+	TextBox.TextColor3 = Color3.fromRGB(209, 209, 209)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+
+	UICorner_2.Parent = TextBox
+	return TextBox
+end
+
 -- Menu Utilities
 
 local function updateCanvasSize(Canvas, Constraint)
@@ -2072,21 +2128,22 @@ function module:start(gameName, Hversion)
 			SliderClick.MouseButton1Up:Connect(function()
 				movingSlider = false
 			end)
-			mouse.Button1Up:Connect(function()
-				movingSlider = false
+			UIS.InputEnded:Connect(function(input, gameProcessedEvent)
+				if not gameProcessedEvent and input.UserInputType == Enum.UserInputType.MouseButton1 then
+					movingSlider = false
+				end
 			end)
 			
 			local snapAmount = 1
 			local pixelsFromEdge = 0
 			
 			mouse.Move:Connect(function()
-
 				if movingSlider then
 
 					local xOffset = math.floor((mouse.X - sliderBG.AbsolutePosition.X) / snapAmount + 0.5) * snapAmount
 					local xOffsetClamped = math.clamp(xOffset, pixelsFromEdge, sliderBG.AbsoluteSize.X - pixelsFromEdge)
 
-					local sliderPosNew = UDim2.new(0, xOffsetClamped, SliderClick.Position.Y)
+					local sliderPosNew = UDim2.new(0, xOffsetClamped, 0, SliderClick.Position.Y)
 
 					SliderClick.Position = sliderPosNew
 
@@ -2113,6 +2170,15 @@ function module:start(gameName, Hversion)
 			end
 			
 			return sliderReturn
+		end
+		
+		function tab:addInputBox(text)
+			local TextBox = createSlider(text, tab.MenuFrame.ScrollingFrame)
+			local textboxM = {}
+			function textboxM:getValue()
+				return TextBox.Text
+			end
+			return textboxM
 		end
 		
 		function tab:addFolder(text)
@@ -2319,6 +2385,7 @@ function module:start(gameName, Hversion)
 				local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, cloneScroll)
 				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
 				local value = min
+				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 				if description ~= '' then
 					DescIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -2335,21 +2402,22 @@ function module:start(gameName, Hversion)
 				SliderClick.MouseButton1Up:Connect(function()
 					movingSlider = false
 				end)
-				mouse.Button1Up:Connect(function()
-					movingSlider = false
+				UIS.InputEnded:Connect(function(input, gameProcessedEvent)
+					if not gameProcessedEvent and input.UserInputType == Enum.UserInputType.MouseButton1 then
+						movingSlider = false
+					end
 				end)
 
-				local snapAmount = 100
-				local pixelsFromEdge = 10
+				local snapAmount = 1
+				local pixelsFromEdge = 0
 
 				mouse.Move:Connect(function()
-
 					if movingSlider then
 
 						local xOffset = math.floor((mouse.X - sliderBG.AbsolutePosition.X) / snapAmount + 0.5) * snapAmount
 						local xOffsetClamped = math.clamp(xOffset, pixelsFromEdge, sliderBG.AbsoluteSize.X - pixelsFromEdge)
 
-						local sliderPosNew = UDim2.new(0, xOffsetClamped, SliderClick.Position.Y)
+						local sliderPosNew = UDim2.new(0, xOffsetClamped, 0, SliderClick.Position.Y)
 
 						SliderClick.Position = sliderPosNew
 
@@ -2358,7 +2426,10 @@ function module:start(gameName, Hversion)
 
 						local sliderValue = roundedOffsetClamped / roundedAbsSize
 
-						value = sliderValue
+						value = math.round(sliderValue * max)
+						if value < min then
+							value = min
+						end
 						SliderValue.Text = value
 						if callback ~= nil then
 							callback(value)
@@ -2373,6 +2444,15 @@ function module:start(gameName, Hversion)
 				end
 
 				return sliderReturn
+			end
+			
+			function tab:addInputBox(text)
+				local TextBox = createSlider(text, cloneScroll)
+				local textboxM = {}
+				function textboxM:getValue()
+					return TextBox.Text
+				end
+				return textboxM
 			end
 			
 			return folder
