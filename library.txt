@@ -1986,6 +1986,7 @@ function module:start(gameName, Hversion, isPremium)
 			local value
 			if premium then
 				createPremiumBg(togBt.Parent)
+				togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			local function changeVisual() 
@@ -2042,6 +2043,7 @@ function module:start(gameName, Hversion, isPremium)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
 			if premium then
 				createPremiumBg(clickBt.Parent)
+				clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			if description ~= '' then
@@ -2292,6 +2294,7 @@ function module:start(gameName, Hversion, isPremium)
 				local value
 				if premium then
 					createPremiumBg(togBt.Parent)
+					togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
 				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 				local function changeVisual() 
@@ -2348,6 +2351,7 @@ function module:start(gameName, Hversion, isPremium)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
 				if premium then
 					createPremiumBg(clickBt.Parent)
+					clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
 				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 				if description ~= '' then
