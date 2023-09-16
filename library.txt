@@ -1264,7 +1264,40 @@ local function createMenuButton(name)
 	UICorner.Parent = MenuButton
 	return MenuButton
 end
-	
+
+local function createPremiumBg(parent)
+	local ImageLabel = Instance.new("ImageLabel")
+	local UICorner = Instance.new("UICorner")
+
+	--Properties:
+
+	ImageLabel.Parent = parent
+	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ImageLabel.BackgroundTransparency = 1.000
+	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ImageLabel.BorderSizePixel = 0
+	ImageLabel.Position = UDim2.new(1.19955956e-07, 0, 5.61482693e-07, 0)
+	ImageLabel.Size = UDim2.new(1, 0, 1, 0)
+	ImageLabel.ZIndex = 0
+	ImageLabel.Image = "rbxassetid://14762391343"
+	ImageLabel.ImageTransparency = 0.510
+
+	UICorner.Parent = ImageLabel
+
+	-- Scripts:
+
+	local function ENAIZ_fake_script() -- ImageLabel.LocalScript 
+		local script = Instance.new('LocalScript', ImageLabel)
+
+		local img = script.Parent
+		local TweenService = game:GetService("TweenService")
+
+		TweenService:Create(img, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1), {Position = UDim2.new(0, -52, 0, -52)}):Play()
+	end
+	coroutine.wrap(ENAIZ_fake_script)()
+
+end
+
 local function createFolderButton(text, parent)	
 	-- Gui to Lua
 	-- Version: 3.2
@@ -1788,6 +1821,16 @@ function module:ConfirmWarn(callback)
 	end)
 end
 
+function module:OkWarn(text)
+	Warn.Visible = true
+	Swarn.Visible = true
+	TextLabel_13.Text = text
+	Okay_2.MouseButton1Click:Connect(function()
+		Warn.Visible = false
+		Swarn.Visible = false
+	end)
+end
+
 local defaultButtonSize = UDim2.new(0.943, 0,0.033, 0)
 
 function activeMobileUi()
@@ -1800,7 +1843,7 @@ end
 
 local UIS = game:GetService("UserInputService")
 
-function module:start(gameName, Hversion)
+function module:start(gameName, Hversion, isPremium)
 	if UIS.TouchEnabled then
 		activeMobileUi()
 	end
@@ -1938,9 +1981,12 @@ function module:start(gameName, Hversion)
 		tab.MenuFrame = cloneFrame
 		tab.OptionFrame = cloneFrame.Options
 
-		function tab:addToggle(text, description, callback)
+		function tab:addToggle(text, description, premium, callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame.ScrollingFrame)
 			local value
+			if premium then
+				createPremiumBg(togBt.Parent)
+			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			local function changeVisual() 
 				if value == true then
@@ -1973,15 +2019,30 @@ function module:start(gameName, Hversion)
 				end)
 			end
 			togBt.MouseButton1Click:Connect(function()
-				value = not value
-				G.Settings[text] = value
-				changeVisual()
-				callback(value)
+				local execute = true
+				if typeof(premium) == "boolean" and premium and not isPremium then
+					execute = false
+				end
+				if execute then
+					value = not value
+					G.Settings[text] = value
+					changeVisual()
+					if typeof(premium) == "function" then
+						premium(value)
+					elseif typeof(premium) == "boolean" then
+						callback(value)
+					end
+				else
+					module:OkWarn("This is a premium feature!")
+				end
 			end)
 		end
 
-		function tab:addClick(text, description, callback)
+		function tab:addClick(text, description, premium, callback)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
+			if premium then
+				createPremiumBg(clickBt.Parent)
+			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
@@ -1992,7 +2053,17 @@ function module:start(gameName, Hversion)
 					cloneFrame.HelpFrame.Visible = false
 				end)
 			end
-			clickBt.MouseButton1Click:Connect(callback)
+			clickBt.MouseButton1Click:Connect(function()
+				local execute = true
+
+				if execute then
+					if typeof(premium) == "function" then
+						premium()
+					elseif typeof(premium) == "boolean" then
+						callback()
+					end
+				end
+			end)	
 		end
 
 		function tab:addCombo(text, description, opts)
@@ -2015,6 +2086,8 @@ function module:start(gameName, Hversion)
 				end)
 			end
 			selectBt.MouseButton1Click:Connect(function()
+				local execute = true
+				
 				tab.MenuFrame.ScrollingFrame.Visible = false
 				local scroll = tab.OptionFrame.ScrollableOpt
 				local baseOption = scroll.Option
@@ -2214,10 +2287,13 @@ function module:start(gameName, Hversion)
 			-- Funções / Folder
 			local folder = {}
 			
-			function folder:addToggle(text, description, callback)
+			function folder:addToggle(text, description, premium, callback)
 				local togBt, modBt, helpIcon = createToggleButton(text, description, cloneScroll)
-				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
 				local value
+				if premium then
+					createPremiumBg(togBt.Parent)
+				end
+				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 				local function changeVisual() 
 					if value == true then
 						task.spawn(function()
@@ -2249,16 +2325,31 @@ function module:start(gameName, Hversion)
 					end)
 				end
 				togBt.MouseButton1Click:Connect(function()
-					value = not value
-					G.Settings[text] = value
-					changeVisual()
-					callback(value)
+					local execute = true
+					if typeof(premium) == "boolean" and premium and not isPremium then
+						execute = false
+					end
+					if execute then
+						value = not value
+						G.Settings[text] = value
+						changeVisual()
+						if typeof(premium) == "function" then
+							premium(value)
+						elseif typeof(premium) == "boolean" then
+							callback(value)
+						end
+					else
+						module:OkWarn("This is a premium feature!")
+					end
 				end)
 			end
 			
-			function folder:addClick(text, description, callback)
+			function folder:addClick(text, description, premium, callback)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
-				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
+				if premium then
+					createPremiumBg(clickBt.Parent)
+				end
+				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 				if description ~= '' then
 					helpIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -2268,7 +2359,17 @@ function module:start(gameName, Hversion)
 						cloneFrame.HelpFrame.Visible = false
 					end)
 				end
-				clickBt.MouseButton1Click:Connect(callback)
+				clickBt.MouseButton1Click:Connect(function()
+					local execute = true
+
+					if execute then
+						if typeof(premium) == "function" then
+							premium()
+						elseif typeof(premium) == "boolean" then
+							callback()
+						end
+					end
+				end)	
 			end
 			
 			function folder:addCombo(text, description, opts)
