@@ -1289,6 +1289,7 @@ local function createPremiumBg(parent)
 	UIStroke.Thickness = 1
 	UIStroke.Color = Color3.fromRGB(255,255,255)
 	
+	parent.ClipsDescendants = true
 	parent.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 
 	UICorner.Parent = ImageLabel
