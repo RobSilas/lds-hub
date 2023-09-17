@@ -1853,6 +1853,15 @@ function module:start(gameName, Hversion, isPremium)
 	if UIS.TouchEnabled then
 		activeMobileUi()
 	end
+	if isPremium then
+		UIGradient1.Enabled = true
+		UIGradient2.Enabled = true
+		UIGradient3.Enabled = true
+	else
+		UIGradient1.Enabled = false
+		UIGradient2.Enabled = false
+		UIGradient3.Enabled = false
+	end
 	Frame.Draggable = true
 	Frame.Selectable = true
 	Frame.Active = true
