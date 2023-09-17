@@ -1287,6 +1287,9 @@ local function createPremiumBg(parent)
 	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
 	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
 	UIStroke.Thickness = 1
+	UIStroke.Color = Color3.fromRGB(255,255,255)
+	
+	parent.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 
 	UICorner.Parent = ImageLabel
 
@@ -1996,8 +1999,11 @@ function module:start(gameName, Hversion, isPremium)
 		tab.MenuFrame = cloneFrame
 		tab.OptionFrame = cloneFrame.Options
 
-		function tab:addToggle(text, description, premium, callback)
+		function tab:addToggle(text, description, size, premium, callback)
 			local togBt, modBt, helpIcon = createToggleButton(text, description, tab.MenuFrame.ScrollingFrame)
+			if size == "small" then
+				togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
+			end
 			local value
 			if premium then
 				createPremiumBg(togBt.Parent)
@@ -2010,11 +2016,13 @@ function module:start(gameName, Hversion, isPremium)
 					task.spawn(function()
 						modBt.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 						modBt:TweenPosition(UDim2.new(0.5, 0, 0.064, 0))
+						modBt.Position = UDim2.new(0.5, 0, 0.064, 0)
 					end)
 				else
 					task.spawn(function()
 						modBt.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 						modBt:TweenPosition(UDim2.new(0.057, 0, 0.064, 0))
+						modBt.Position = UDim2.new(0.057, 0, 0.064, 0)
 					end)
 				end
 			end
@@ -2055,8 +2063,11 @@ function module:start(gameName, Hversion, isPremium)
 			end)
 		end
 
-		function tab:addClick(text, description, premium, callback)
+		function tab:addClick(text, description, size, premium, callback)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
+			if size == "small" then
+				clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
+			end
 			if premium then
 				createPremiumBg(clickBt.Parent)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
@@ -2306,9 +2317,12 @@ function module:start(gameName, Hversion, isPremium)
 			-- Funções / Folder
 			local folder = {}
 			
-			function folder:addToggle(text, description, premium, callback)
+			function folder:addToggle(text, description, size, premium, callback)
 				local togBt, modBt, helpIcon = createToggleButton(text, description, cloneScroll)
 				local value
+				if size == "small" then
+					togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
+				end
 				if premium then
 					createPremiumBg(togBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
@@ -2365,8 +2379,11 @@ function module:start(gameName, Hversion, isPremium)
 				end)
 			end
 			
-			function folder:addClick(text, description, premium, callback)
+			function folder:addClick(text, description, size, premium, callback)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
+				if size == "small" then
+					clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
+				end
 				if premium then
 					createPremiumBg(clickBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
