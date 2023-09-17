@@ -1267,6 +1267,7 @@ end
 
 local function createPremiumBg(parent)
 	local ImageLabel = Instance.new("ImageLabel")
+	local UIStroke = Instance.new("UIStroke")
 	local UICorner = Instance.new("UICorner")
 
 	--Properties:
@@ -1281,18 +1282,23 @@ local function createPremiumBg(parent)
 	ImageLabel.ZIndex = 0
 	ImageLabel.Image = "rbxassetid://14762391343"
 	ImageLabel.ImageTransparency = 0.510
+	
+	UIStroke.Parent = parent
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke.Thickness = 1
 
 	UICorner.Parent = ImageLabel
 
 	-- Scripts:
 
 	local function ENAIZ_fake_script() -- ImageLabel.LocalScript 
-		local script = Instance.new('LocalScript', ImageLabel)
+		local object = script.Parent
+		object.AnchorPoint = Vector2.new(0.5, 0.5)
 
-		local img = script.Parent
-		local TweenService = game:GetService("TweenService")
-
-		TweenService:Create(img, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1), {Position = UDim2.new(0, -52, 0, -52)}):Play()
+		object.MouseButton1Click:Connect(function()
+			object:TweenPosition(UDim2.new(0.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint)
+		end)
 	end
 	coroutine.wrap(ENAIZ_fake_script)()
 
@@ -1986,6 +1992,7 @@ function module:start(gameName, Hversion, isPremium)
 			local value
 			if premium then
 				createPremiumBg(togBt.Parent)
+				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
@@ -2043,6 +2050,7 @@ function module:start(gameName, Hversion, isPremium)
 			local clickBt, helpIcon = createClickButton(text, description, tab.MenuFrame.ScrollingFrame)
 			if premium then
 				createPremiumBg(clickBt.Parent)
+				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
@@ -2294,6 +2302,7 @@ function module:start(gameName, Hversion, isPremium)
 				local value
 				if premium then
 					createPremiumBg(togBt.Parent)
+					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
 				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
@@ -2351,6 +2360,7 @@ function module:start(gameName, Hversion, isPremium)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
 				if premium then
 					createPremiumBg(clickBt.Parent)
+					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
 				updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
