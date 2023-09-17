@@ -1298,11 +1298,6 @@ local function createPremiumBg(parent)
 
 	local function ENAIZ_fake_script() -- ImageLabel.LocalScript 
 		local object = script.Parent
-		object.AnchorPoint = Vector2.new(0.5, 0.5)
-
-		object.MouseButton1Click:Connect(function()
-			object:TweenPosition(UDim2.new(0.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint)
-		end)
 	end
 	coroutine.wrap(ENAIZ_fake_script)()
 
