@@ -1278,7 +1278,7 @@ local function createPremiumBg(parent)
 	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	ImageLabel.BorderSizePixel = 0
 	ImageLabel.Position = UDim2.new(1.19955956e-07, 0, 5.61482693e-07, 0)
-	ImageLabel.Size = UDim2.new(1, 0, 1, 0)
+	ImageLabel.Size = UDim2.new(0.998, 0,0.771, 0)
 	ImageLabel.ZIndex = 0
 	ImageLabel.Image = "rbxassetid://14762391343"
 	ImageLabel.ImageTransparency = 0.510
