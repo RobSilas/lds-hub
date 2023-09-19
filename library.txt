@@ -1297,8 +1297,7 @@ local function createPremiumBg(parent)
 	-- Scripts:
 
 	local function ENAIZ_fake_script() -- ImageLabel.LocalScript 
-		local object = script.Parent
-		local img = script.Parent
+		local img = ImageLabel
 		local TweenService = game:GetService("TweenService")
 
 		TweenService:Create(img, TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1), {Position = UDim2.new(0, 0, -1, 0)}):Play()
