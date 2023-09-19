@@ -1280,7 +1280,7 @@ local function createPremiumBg(parent)
 	ImageLabel.Position = UDim2.new(1.19955956e-07, 0, 5.61482693e-07, 0)
 	ImageLabel.Size = UDim2.new(0.998, 0,7.785, 0)
 	ImageLabel.ZIndex = 0
-	ImageLabel.Image = "rbxassetid://14762391343"
+	ImageLabel.Image = "http://www.roblox.com/asset/?id=14762333689"
 	ImageLabel.ImageTransparency = 0.510
 	
 	UIStroke.Parent = parent
