@@ -2003,7 +2003,7 @@ function module:start(gameName, Hversion, isPremium)
 				togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 			end
 			local value
-			if typeof(premium) == "boolean" then
+			if typeof(premium) == "boolean" and premium then
 				createPremiumBg(togBt.Parent)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2066,7 +2066,7 @@ function module:start(gameName, Hversion, isPremium)
 			if size == "small" then
 				clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 			end
-			if typeof(premium) == "boolean" then
+			if typeof(premium) == "boolean" and premium then
 				createPremiumBg(clickBt.Parent)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2321,7 +2321,7 @@ function module:start(gameName, Hversion, isPremium)
 				if size == "small" then
 					togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 				end
-				if typeof(premium) == "boolean" then
+				if typeof(premium) == "boolean" and premium then
 					createPremiumBg(togBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2382,7 +2382,7 @@ function module:start(gameName, Hversion, isPremium)
 				if size == "small" then
 					clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 				end
-				if typeof(premium) == "boolean" then
+				if typeof(premium) == "boolean" and premium then
 					createPremiumBg(clickBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
