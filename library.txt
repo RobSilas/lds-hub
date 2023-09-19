@@ -1028,6 +1028,519 @@ G.Settings = {
 
 -- Menu Creation
 
+local function createAWSSettings()
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local SettingsAWS = Instance.new("Frame")
+	local UICornerSettings = Instance.new("UICorner")
+	local SettingsTxt = Instance.new("TextLabel")
+	local IDK = Instance.new("Frame")
+	local UICornerSettings_2 = Instance.new("UICorner")
+	local AntAFKButton = Instance.new("TextButton")
+	local UICornerSettings_3 = Instance.new("UICorner")
+	local TextLabelSettings = Instance.new("TextLabel")
+	local TextLabelSettings_2 = Instance.new("TextLabel")
+	local AntiAFKFrameColor = Instance.new("Frame")
+	local UICornerSettings_4 = Instance.new("UICorner")
+	local IDK_2 = Instance.new("Frame")
+	local UICornerSettings_5 = Instance.new("UICorner")
+	local DeleteButton = Instance.new("TextButton")
+	local UICornerSettings_6 = Instance.new("UICorner")
+	local TextLabelSettings_3 = Instance.new("TextLabel")
+	local TextLabelSettings_4 = Instance.new("TextLabel")
+	local DeleteButtonFrameColor = Instance.new("Frame")
+	local UICornerSettings_7 = Instance.new("UICorner")
+	local IDK_3 = Instance.new("Frame")
+	local UICornerSettings_8 = Instance.new("UICorner")
+	local SaveButton = Instance.new("TextButton")
+	local UICornerSettings_9 = Instance.new("UICorner")
+	local TextLabelSettings_5 = Instance.new("TextLabel")
+	local TextLabelSettings_6 = Instance.new("TextLabel")
+	local SaveFrameColor = Instance.new("Frame")
+	local UICornerSettings_10 = Instance.new("UICorner")
+	local ResetSaveButton = Instance.new("TextButton")
+	local UICornerSettings_11 = Instance.new("UICorner")
+	local IDK_4 = Instance.new("Frame")
+	local UICornerSettings_12 = Instance.new("UICorner")
+	local FPSButton = Instance.new("TextButton")
+	local UICornerSettings_13 = Instance.new("UICorner")
+	local TextLabelSettings_7 = Instance.new("TextLabel")
+	local TextLabelSettings_8 = Instance.new("TextLabel")
+	local FPSFrameColor = Instance.new("Frame")
+	local UICornerSettings_14 = Instance.new("UICorner")
+	local IDK_5 = Instance.new("Frame")
+	local UICornerSettings_15 = Instance.new("UICorner")
+	local StatusButton = Instance.new("TextButton")
+	local UICornerSettings_16 = Instance.new("UICorner")
+	local TextLabelSettings_9 = Instance.new("TextLabel")
+	local TextLabelSettings_10 = Instance.new("TextLabel")
+	local StatusFrameColor = Instance.new("Frame")
+	local UICornerSettings_17 = Instance.new("UICorner")
+	local IDK_6 = Instance.new("Frame")
+	local UICornerSettings_18 = Instance.new("UICorner")
+	local IDKButton = Instance.new("TextButton")
+	local UICornerSettings_19 = Instance.new("UICorner")
+	local TextLabelSettings_11 = Instance.new("TextLabel")
+	local TextLabelSettings_12 = Instance.new("TextLabel")
+	local IDKFrameColor = Instance.new("Frame")
+	local UICornerSettings_20 = Instance.new("UICorner")
+
+	--Properties:
+
+	SettingsAWS.Name = "Settings (AWS)"
+	SettingsAWS.Parent = Frame
+	SettingsAWS.Visible = false
+	SettingsAWS.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	SettingsAWS.Position = UDim2.new(0.273959696, 0, 0.0941176489, 0)
+	SettingsAWS.Size = UDim2.new(0.707664907, 0, 0.871586502, 0)
+
+	UICornerSettings.Name = "UICornerSettings"
+	UICornerSettings.Parent = SettingsAWS
+
+	SettingsTxt.Name = "SettingsTxt"
+	SettingsTxt.Parent = SettingsAWS
+	SettingsTxt.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SettingsTxt.BackgroundTransparency = 1.000
+	SettingsTxt.Position = UDim2.new(-3.46731395e-05, 0, -0.0708646849, 0)
+	SettingsTxt.Size = UDim2.new(0.407053292, 0, 0.165350974, 0)
+	SettingsTxt.Font = Enum.Font.Unknown
+	SettingsTxt.Text = "Settings"
+	SettingsTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
+	SettingsTxt.TextScaled = true
+	SettingsTxt.TextSize = 14.000
+	SettingsTxt.TextWrapped = true
+
+	IDK.Name = "IDK "
+	IDK.Parent = SettingsAWS
+	IDK.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK.Position = UDim2.new(0.0164319985, 0, 0.161976233, 0)
+	IDK.Size = UDim2.new(0.306447297, 0, 0.362217754, 0)
+
+	UICornerSettings_2.Name = "UICornerSettings"
+	UICornerSettings_2.Parent = IDK
+
+	AntAFKButton.Name = "AntAFKButton"
+	AntAFKButton.Parent = IDK
+	AntAFKButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	AntAFKButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	AntAFKButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	AntAFKButton.Font = Enum.Font.SourceSans
+	AntAFKButton.Text = ""
+	AntAFKButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	AntAFKButton.TextSize = 14.000
+
+	UICornerSettings_3.Name = "UICornerSettings"
+	UICornerSettings_3.Parent = AntAFKButton
+
+	TextLabelSettings.Name = "TextLabelSettings"
+	TextLabelSettings.Parent = AntAFKButton
+	TextLabelSettings.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings.BackgroundTransparency = 1.000
+	TextLabelSettings.Position = UDim2.new(-0.398266196, 0, -1.02436781, 0)
+	TextLabelSettings.Size = UDim2.new(1.77940321, 0, 1.02436817, 0)
+	TextLabelSettings.Font = Enum.Font.FredokaOne
+	TextLabelSettings.Text = "Anti AFK"
+	TextLabelSettings.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings.TextScaled = true
+	TextLabelSettings.TextSize = 14.000
+	TextLabelSettings.TextWrapped = true
+
+	TextLabelSettings_2.Name = "TextLabelSettings"
+	TextLabelSettings_2.Parent = AntAFKButton
+	TextLabelSettings_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_2.BackgroundTransparency = 1.000
+	TextLabelSettings_2.Position = UDim2.new(-0.543569267, 0, 1, 0)
+	TextLabelSettings_2.Size = UDim2.new(2.10750294, 0, 1.21227443, 0)
+	TextLabelSettings_2.Font = Enum.Font.FredokaOne
+	TextLabelSettings_2.Text = "When activated you will not be kicked for inactivity"
+	TextLabelSettings_2.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_2.TextScaled = true
+	TextLabelSettings_2.TextSize = 14.000
+	TextLabelSettings_2.TextWrapped = true
+
+	AntiAFKFrameColor.Name = "AntiAFKFrameColor"
+	AntiAFKFrameColor.Parent = AntAFKButton
+	AntiAFKFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	AntiAFKFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	AntiAFKFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_4.Name = "UICornerSettings"
+	UICornerSettings_4.Parent = AntiAFKFrameColor
+
+	IDK_2.Name = "IDK"
+	IDK_2.Parent = SettingsAWS
+	IDK_2.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK_2.Position = UDim2.new(0.673806965, 0, 0.161976233, 0)
+	IDK_2.Size = UDim2.new(0.307413667, 0, 0.362217754, 0)
+
+	UICornerSettings_5.Name = "UICornerSettings"
+	UICornerSettings_5.Parent = IDK_2
+
+	DeleteButton.Name = "DeleteButton"
+	DeleteButton.Parent = IDK_2
+	DeleteButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	DeleteButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	DeleteButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	DeleteButton.Font = Enum.Font.SourceSans
+	DeleteButton.Text = ""
+	DeleteButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	DeleteButton.TextSize = 14.000
+
+	UICornerSettings_6.Name = "UICornerSettings"
+	UICornerSettings_6.Parent = DeleteButton
+
+	TextLabelSettings_3.Name = "TextLabelSettings"
+	TextLabelSettings_3.Parent = DeleteButton
+	TextLabelSettings_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_3.BackgroundTransparency = 1.000
+	TextLabelSettings_3.Position = UDim2.new(-0.398266196, 0, -0.882007003, 0)
+	TextLabelSettings_3.Size = UDim2.new(1.80090857, 0, 0.882007301, 0)
+	TextLabelSettings_3.Font = Enum.Font.FredokaOne
+	TextLabelSettings_3.Text = "Delete Hub"
+	TextLabelSettings_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_3.TextScaled = true
+	TextLabelSettings_3.TextSize = 14.000
+	TextLabelSettings_3.TextWrapped = true
+
+	TextLabelSettings_4.Name = "TextLabelSettings"
+	TextLabelSettings_4.Parent = DeleteButton
+	TextLabelSettings_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_4.BackgroundTransparency = 1.000
+	TextLabelSettings_4.Position = UDim2.new(-0.543569267, 0, 1, 0)
+	TextLabelSettings_4.Size = UDim2.new(2.10750294, 0, 1.21227443, 0)
+	TextLabelSettings_4.Font = Enum.Font.FredokaOne
+	TextLabelSettings_4.Text = "Delete the Hub"
+	TextLabelSettings_4.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_4.TextScaled = true
+	TextLabelSettings_4.TextSize = 14.000
+	TextLabelSettings_4.TextWrapped = true
+
+	DeleteButtonFrameColor.Name = "DeleteButtonFrameColor"
+	DeleteButtonFrameColor.Parent = DeleteButton
+	DeleteButtonFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	DeleteButtonFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	DeleteButtonFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_7.Name = "UICornerSettings"
+	UICornerSettings_7.Parent = DeleteButtonFrameColor
+
+	IDK_3.Name = "IDK "
+	IDK_3.Parent = SettingsAWS
+	IDK_3.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK_3.Position = UDim2.new(0.345275521, 0, 0.161976233, 0)
+	IDK_3.Size = UDim2.new(0.306447297, 0, 0.362217754, 0)
+
+	UICornerSettings_8.Name = "UICornerSettings"
+	UICornerSettings_8.Parent = IDK_3
+
+	SaveButton.Name = "SaveButton"
+	SaveButton.Parent = IDK_3
+	SaveButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	SaveButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	SaveButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	SaveButton.Font = Enum.Font.SourceSans
+	SaveButton.Text = ""
+	SaveButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	SaveButton.TextSize = 14.000
+
+	UICornerSettings_9.Name = "UICornerSettings"
+	UICornerSettings_9.Parent = SaveButton
+
+	TextLabelSettings_5.Name = "TextLabelSettings"
+	TextLabelSettings_5.Parent = SaveButton
+	TextLabelSettings_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_5.BackgroundTransparency = 1.000
+	TextLabelSettings_5.Position = UDim2.new(-0.398266196, 0, -1.02436781, 0)
+	TextLabelSettings_5.Size = UDim2.new(1.77940321, 0, 1.02436817, 0)
+	TextLabelSettings_5.Font = Enum.Font.FredokaOne
+	TextLabelSettings_5.Text = "Save Hub"
+	TextLabelSettings_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_5.TextScaled = true
+	TextLabelSettings_5.TextSize = 14.000
+	TextLabelSettings_5.TextWrapped = true
+
+	TextLabelSettings_6.Name = "TextLabelSettings"
+	TextLabelSettings_6.Parent = SaveButton
+	TextLabelSettings_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_6.BackgroundTransparency = 1.000
+	TextLabelSettings_6.Position = UDim2.new(-0.576017261, 0, 1, 0)
+	TextLabelSettings_6.Size = UDim2.new(2.10750318, 0, 0.757729053, 0)
+	TextLabelSettings_6.Font = Enum.Font.FredokaOne
+	TextLabelSettings_6.Text = "Save hub settings"
+	TextLabelSettings_6.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_6.TextScaled = true
+	TextLabelSettings_6.TextSize = 14.000
+	TextLabelSettings_6.TextWrapped = true
+
+	SaveFrameColor.Name = "SaveFrameColor"
+	SaveFrameColor.Parent = SaveButton
+	SaveFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	SaveFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	SaveFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_10.Name = "UICornerSettings"
+	UICornerSettings_10.Parent = SaveFrameColor
+
+	ResetSaveButton.Name = "ResetSaveButton"
+	ResetSaveButton.Parent = SaveButton
+	ResetSaveButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	ResetSaveButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ResetSaveButton.BorderSizePixel = 0
+	ResetSaveButton.Position = UDim2.new(-0.0161938183, 0, 1.63636363, 0)
+	ResetSaveButton.Size = UDim2.new(0.98782289, 0, 0.575757563, 0)
+	ResetSaveButton.Font = Enum.Font.FredokaOne
+	ResetSaveButton.Text = "Reset Save"
+	ResetSaveButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ResetSaveButton.TextScaled = true
+	ResetSaveButton.TextSize = 14.000
+	ResetSaveButton.TextStrokeTransparency = 0.000
+	ResetSaveButton.TextWrapped = true
+
+	UICornerSettings_11.Name = "UICornerSettings"
+	UICornerSettings_11.Parent = ResetSaveButton
+
+	IDK_4.Name = "IDK "
+	IDK_4.Parent = SettingsAWS
+	IDK_4.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK_4.Position = UDim2.new(0.0164319985, 0, 0.563542783, 0)
+	IDK_4.Size = UDim2.new(0.306447297, 0, 0.362217754, 0)
+
+	UICornerSettings_12.Name = "UICornerSettings"
+	UICornerSettings_12.Parent = IDK_4
+
+	FPSButton.Name = "FPSButton"
+	FPSButton.Parent = IDK_4
+	FPSButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	FPSButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	FPSButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	FPSButton.Font = Enum.Font.SourceSans
+	FPSButton.Text = ""
+	FPSButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	FPSButton.TextSize = 14.000
+
+	UICornerSettings_13.Name = "UICornerSettings"
+	UICornerSettings_13.Parent = FPSButton
+
+	TextLabelSettings_7.Name = "TextLabelSettings"
+	TextLabelSettings_7.Parent = FPSButton
+	TextLabelSettings_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_7.BackgroundTransparency = 1.000
+	TextLabelSettings_7.Position = UDim2.new(-0.398266196, 0, -1.02436781, 0)
+	TextLabelSettings_7.Size = UDim2.new(1.77940321, 0, 1.02436817, 0)
+	TextLabelSettings_7.Font = Enum.Font.FredokaOne
+	TextLabelSettings_7.Text = "FPS Booster"
+	TextLabelSettings_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_7.TextScaled = true
+	TextLabelSettings_7.TextSize = 14.000
+	TextLabelSettings_7.TextWrapped = true
+
+	TextLabelSettings_8.Name = "TextLabelSettings"
+	TextLabelSettings_8.Parent = FPSButton
+	TextLabelSettings_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_8.BackgroundTransparency = 1.000
+	TextLabelSettings_8.Position = UDim2.new(-0.543569267, 0, 1, 0)
+	TextLabelSettings_8.Size = UDim2.new(2.10750294, 0, 1.21227443, 0)
+	TextLabelSettings_8.Font = Enum.Font.FredokaOne
+	TextLabelSettings_8.Text = "By activating these options, your game will be lighter"
+	TextLabelSettings_8.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_8.TextScaled = true
+	TextLabelSettings_8.TextSize = 14.000
+	TextLabelSettings_8.TextWrapped = true
+
+	FPSFrameColor.Name = "FPSFrameColor"
+	FPSFrameColor.Parent = FPSButton
+	FPSFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	FPSFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	FPSFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_14.Name = "UICornerSettings"
+	UICornerSettings_14.Parent = FPSFrameColor
+
+	IDK_5.Name = "IDK "
+	IDK_5.Parent = SettingsAWS
+	IDK_5.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK_5.Position = UDim2.new(0.346705288, 0, 0.563542783, 0)
+	IDK_5.Size = UDim2.new(0.306447297, 0, 0.362217754, 0)
+
+	UICornerSettings_15.Name = "UICornerSettings"
+	UICornerSettings_15.Parent = IDK_5
+
+	StatusButton.Name = "StatusButton"
+	StatusButton.Parent = IDK_5
+	StatusButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	StatusButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	StatusButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	StatusButton.Font = Enum.Font.SourceSans
+	StatusButton.Text = ""
+	StatusButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	StatusButton.TextSize = 14.000
+
+	UICornerSettings_16.Name = "UICornerSettings"
+	UICornerSettings_16.Parent = StatusButton
+
+	TextLabelSettings_9.Name = "TextLabelSettings"
+	TextLabelSettings_9.Parent = StatusButton
+	TextLabelSettings_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_9.BackgroundTransparency = 1.000
+	TextLabelSettings_9.Position = UDim2.new(-0.398266196, 0, -1.02436781, 0)
+	TextLabelSettings_9.Size = UDim2.new(1.77940321, 0, 1.02436817, 0)
+	TextLabelSettings_9.Font = Enum.Font.FredokaOne
+	TextLabelSettings_9.Text = "Status"
+	TextLabelSettings_9.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_9.TextScaled = true
+	TextLabelSettings_9.TextSize = 14.000
+	TextLabelSettings_9.TextWrapped = true
+
+	TextLabelSettings_10.Name = "TextLabelSettings"
+	TextLabelSettings_10.Parent = StatusButton
+	TextLabelSettings_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_10.BackgroundTransparency = 1.000
+	TextLabelSettings_10.Position = UDim2.new(-0.543569267, 0, 1, 0)
+	TextLabelSettings_10.Size = UDim2.new(2.10750294, 0, 1.21227443, 0)
+	TextLabelSettings_10.Font = Enum.Font.FredokaOne
+	TextLabelSettings_10.Text = "Activate the Statistics"
+	TextLabelSettings_10.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_10.TextScaled = true
+	TextLabelSettings_10.TextSize = 14.000
+	TextLabelSettings_10.TextWrapped = true
+
+	StatusFrameColor.Name = "StatusFrameColor"
+	StatusFrameColor.Parent = StatusButton
+	StatusFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	StatusFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	StatusFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_17.Name = "UICornerSettings"
+	UICornerSettings_17.Parent = StatusFrameColor
+
+	IDK_6.Name = "IDK "
+	IDK_6.Parent = SettingsAWS
+	IDK_6.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
+	IDK_6.Position = UDim2.new(0.674619496, 0, 0.5669173, 0)
+	IDK_6.Size = UDim2.new(0.306447297, 0, 0.362217754, 0)
+
+	UICornerSettings_18.Name = "UICornerSettings"
+	UICornerSettings_18.Parent = IDK_6
+
+	IDKButton.Name = "IDKButton"
+	IDKButton.Parent = IDK_6
+	IDKButton.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+	IDKButton.Position = UDim2.new(0.25792107, 0, 0.314927578, 0)
+	IDKButton.Size = UDim2.new(0.474495292, 0, 0.307436049, 0)
+	IDKButton.Font = Enum.Font.SourceSans
+	IDKButton.Text = ""
+	IDKButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	IDKButton.TextSize = 14.000
+
+	UICornerSettings_19.Name = "UICornerSettings"
+	UICornerSettings_19.Parent = IDKButton
+
+	TextLabelSettings_11.Name = "TextLabelSettings"
+	TextLabelSettings_11.Parent = IDKButton
+	TextLabelSettings_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_11.BackgroundTransparency = 1.000
+	TextLabelSettings_11.Position = UDim2.new(-0.398266196, 0, -1.02436781, 0)
+	TextLabelSettings_11.Size = UDim2.new(1.77940321, 0, 1.02436817, 0)
+	TextLabelSettings_11.Font = Enum.Font.FredokaOne
+	TextLabelSettings_11.Text = "Coming Soon"
+	TextLabelSettings_11.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_11.TextScaled = true
+	TextLabelSettings_11.TextSize = 14.000
+	TextLabelSettings_11.TextWrapped = true
+
+	TextLabelSettings_12.Name = "TextLabelSettings"
+	TextLabelSettings_12.Parent = IDKButton
+	TextLabelSettings_12.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelSettings_12.BackgroundTransparency = 1.000
+	TextLabelSettings_12.Position = UDim2.new(-0.543569267, 0, 1, 0)
+	TextLabelSettings_12.Size = UDim2.new(2.10750294, 0, 1.21227443, 0)
+	TextLabelSettings_12.Font = Enum.Font.FredokaOne
+	TextLabelSettings_12.Text = "..."
+	TextLabelSettings_12.TextColor3 = Color3.fromRGB(170, 0, 255)
+	TextLabelSettings_12.TextScaled = true
+	TextLabelSettings_12.TextSize = 14.000
+	TextLabelSettings_12.TextWrapped = true
+
+	IDKFrameColor.Name = "IDKFrameColor"
+	IDKFrameColor.Parent = IDKButton
+	IDKFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	IDKFrameColor.Position = UDim2.new(0.0568263568, 0, 0.1777464, 0)
+	IDKFrameColor.Size = UDim2.new(0.45161289, 0, 0.696969688, 0)
+
+	UICornerSettings_20.Name = "UICornerSettings"
+	UICornerSettings_20.Parent = IDKFrameColor
+	
+	--//Functions//--
+	AntAFKButton.MouseButton1Click:Connect(function()
+		afkActive = not afkActive
+		local bb = game:GetService('VirtualUser')
+		local afkFunc
+		if afkActive then
+			AntiAFKFrameColor.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			afkFunc = game:GetService('Players').LocalPlayer.Idled:Connect(function()
+				bb:CaptureController()
+				bb:ClickButton2(Vector2.new())
+			end)
+		else
+			AntiAFKFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			afkFunc:Disconnect()
+			afkFunc = nil
+		end
+	end)
+	
+	StatusButton.MouseButton1Click:Connect(function()
+		StatusFrameColor.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/LDSHUBscripts/scripts/main/Status"))()
+		wait(2)
+		StatusFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	end)
+	
+	FPSButton.MouseButton1Click:Connect(function()
+		local decalsyeeted = true
+		local g = game
+		local w = g.Workspace
+		local l = g.Lighting
+		local t = w.Terrain
+		t.WaterWaveSize = 0
+		t.WaterWaveSpeed = 0
+		t.WaterReflectance = 0
+		t.WaterTransparency = 0
+		l.GlobalShadows = false
+		l.FogEnd = 9e9
+		l.Brightness = 0
+		settings().Rendering.QualityLevel = "Level01"
+		for i, v in pairs(g:GetDescendants()) do
+			if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+			elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+				v.Transparency = 1
+			elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+				v.Lifetime = NumberRange.new(0)
+			elseif v:IsA("Explosion") then
+				v.BlastPressure = 1
+				v.BlastRadius = 1
+			elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			elseif v:IsA("MeshPart") then
+				v.Material = "Plastic"
+				v.Reflectance = 0
+				v.TextureID = 10385902758728957
+			end
+		end
+		for i, e in pairs(l:GetChildren()) do
+			if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+				e.Enabled = false
+			end
+		end
+	end)
+	
+	return SettingsAWS
+end
+
 local function createMenuFrame(name)
 	-- Gui to Lua
 	-- Version: 3.2
@@ -1851,6 +2364,7 @@ end
 local UIS = game:GetService("UserInputService")
 
 function module:start(gameName, Hversion, isPremium)
+	local awsframe
 	if UIS.TouchEnabled then
 		activeMobileUi()
 	end
@@ -1862,6 +2376,9 @@ function module:start(gameName, Hversion, isPremium)
 		UIGradient1.Enabled = false
 		UIGradient2.Enabled = false
 		UIGradient3.Enabled = false
+	end
+	if game.GameId == 4582358979 then
+		local awsframe = createAWSSettings()
 	end
 	Frame.Draggable = true
 	Frame.Selectable = true
@@ -1887,7 +2404,11 @@ function module:start(gameName, Hversion, isPremium)
 	_998Settings.MouseButton1Click:Connect(function()
 		offMenus()
 		_998Settings.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
-		frame.SettingsUI.Visible = true
+		if awsframe then
+			awsframe.Visible = true
+		else
+			frame.SettingsUI.Visible = true
+		end
 	end)
 	_999UpdateNotes.MouseButton1Click:Connect(function()
 		offMenus()
