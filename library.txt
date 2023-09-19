@@ -1288,7 +1288,6 @@ local function createPremiumBg(parent)
 	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
 	UIStroke.Thickness = 1
 	UIStroke.Color = Color3.fromRGB(255,255,255)
-	
 	parent.ClipsDescendants = true
 	parent.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 
@@ -2004,7 +2003,7 @@ function module:start(gameName, Hversion, isPremium)
 				togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 			end
 			local value
-			if premium then
+			if typeof(premium) == "boolean" then
 				createPremiumBg(togBt.Parent)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2067,7 +2066,7 @@ function module:start(gameName, Hversion, isPremium)
 			if size == "small" then
 				clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 			end
-			if premium then
+			if typeof(premium) == "boolean" then
 				createPremiumBg(clickBt.Parent)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2322,7 +2321,7 @@ function module:start(gameName, Hversion, isPremium)
 				if size == "small" then
 					togBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 				end
-				if premium then
+				if typeof(premium) == "boolean" then
 					createPremiumBg(togBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
@@ -2383,7 +2382,7 @@ function module:start(gameName, Hversion, isPremium)
 				if size == "small" then
 					clickBt.Parent.Size = UDim2.new(0.839, 0,0.058, 0)
 				end
-				if premium then
+				if typeof(premium) == "boolean" then
 					createPremiumBg(clickBt.Parent)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
