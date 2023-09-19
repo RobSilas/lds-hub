@@ -1091,7 +1091,7 @@ local function createMenuFrame(name)
 
 	UIListLayout.Parent = ScrollingFrame
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.Padding = UDim.new(0, 2)
+	UIListLayout.Padding = UDim.new(0, 4)
 
 	HelpFrame.Name = "HelpFrame"
 	HelpFrame.Parent = MenuFrame
