@@ -1472,7 +1472,7 @@ local function createAWSSettings()
 
 	UICornerSettings_20.Name = "UICornerSettings"
 	UICornerSettings_20.Parent = IDKFrameColor
-	
+
 	--//Functions//--
 	AntAFKButton.MouseButton1Click:Connect(function()
 		afkActive = not afkActive
@@ -1490,14 +1490,14 @@ local function createAWSSettings()
 			afkFunc = nil
 		end
 	end)
-	
+
 	StatusButton.MouseButton1Click:Connect(function()
 		StatusFrameColor.BackgroundColor3 = Color3.fromRGB(85, 255, 0)
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/LDSHUBscripts/scripts/main/Status"))()
 		wait(2)
 		StatusFrameColor.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 	end)
-	
+
 	FPSButton.MouseButton1Click:Connect(function()
 		local decalsyeeted = true
 		local g = game
@@ -1537,7 +1537,7 @@ local function createAWSSettings()
 			end
 		end
 	end)
-	
+
 	return SettingsAWS
 end
 
@@ -1753,9 +1753,9 @@ local function createMenuButton(name)
 	local UICorner = Instance.new("UICorner")
 
 	--Properties:
-	
+
 	local numberZeros = ""
-	
+
 	for i=92, menusCount+1, -1 do
 		numberZeros = numberZeros.."0"
 	end
@@ -1795,7 +1795,7 @@ local function createPremiumBg(parent)
 	ImageLabel.ZIndex = 0
 	ImageLabel.Image = "http://www.roblox.com/asset/?id=14762333689"
 	ImageLabel.ImageTransparency = 0.510
-	
+
 	UIStroke.Parent = parent
 	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
 	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
@@ -1881,7 +1881,7 @@ local function createFolderButton(text, parent)
 	UICorner_2.Parent = FolderBt
 	return Button
 end
-	
+
 local function createClickButton(text, desc, parent)
 	-- Gui to Lua
 	-- Version: 3.2
@@ -2433,7 +2433,7 @@ function module:start(gameName, Hversion, isPremium)
 			Duration = 6,
 		})
 	end)
-	
+
 	-- Settings botões
 	LoadSettings()
 	AntAFKButton.MouseButton1Click:Connect(function()
@@ -2468,7 +2468,7 @@ function module:start(gameName, Hversion, isPremium)
 			})
 		end
 	end)
-	
+
 	ResetSaveButton.MouseButton1Click:Connect(function()
 		G.Settings = {}
 		if SaveSettings() == true then
@@ -2545,14 +2545,14 @@ function module:start(gameName, Hversion, isPremium)
 					end)
 				end
 			end
-			
+
 			if table.find(G.Settings, text) then
 				value = G.Settings[text]
 				changeVisual()
 			else
 				value = false
 			end
-			
+
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -2636,14 +2636,14 @@ function module:start(gameName, Hversion, isPremium)
 			end
 			selectBt.MouseButton1Click:Connect(function()
 				local execute = true
-				
+
 				tab.MenuFrame.ScrollingFrame.Visible = false
 				local scroll = tab.OptionFrame.ScrollableOpt
 				local baseOption = scroll.Option
 				tab.OptionFrame.ComboTitle.Text = text
-				
+
 				-- Funções da gui
-				
+
 				local searchBox = tab.OptionFrame.SearchBox
 				local searchF
 				searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
@@ -2661,7 +2661,7 @@ function module:start(gameName, Hversion, isPremium)
 							newOpt.Text = v
 							newOpt.Parent = scroll
 							newOpt.Visible = true
-							
+
 							newOpt.MouseButton1Click:Connect(function()
 								value = v
 								G.Settings[text] = v
@@ -2679,7 +2679,7 @@ function module:start(gameName, Hversion, isPremium)
 						end
 					end
 				end)
-				
+
 				local closeF
 				closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
 					tab.OptionFrame.Visible = false
@@ -2693,9 +2693,9 @@ function module:start(gameName, Hversion, isPremium)
 					searchF:Disconnect()
 					closeF:Disconnect()
 				end)
-				
-				
-				
+
+
+
 				--  Funções / Opções
 				for _, v in pairs(opts) do
 					print(v)
@@ -2727,16 +2727,16 @@ function module:start(gameName, Hversion, isPremium)
 			end
 			return combo
 		end
-		
+
 		function tab:addSlider(text, description, min, max, callback)
 			local mouse = game.Players.LocalPlayer:GetMouse()
 			local movingSlider = false
 			local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, tab.MenuFrame.ScrollingFrame)
 			local value = min
-			
+
 			local snapAmount = 1
 			local pixelsFromEdge = 0
-			
+
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
 			if description ~= '' then
 				DescIcon.MouseEnter:Connect(function()
@@ -2759,7 +2759,7 @@ function module:start(gameName, Hversion, isPremium)
 					movingSlider = false
 				end
 			end)
-			
+
 			mouse.Move:Connect(function()
 				if movingSlider then
 
@@ -2785,16 +2785,16 @@ function module:start(gameName, Hversion, isPremium)
 					end
 				end
 			end)
-			
+
 			local sliderReturn = {}
-			
+
 			function sliderReturn:getValue()
 				return value
 			end
-			
+
 			return sliderReturn
 		end
-		
+
 		function tab:addInputBox(text)
 			local TextBox = createInputBox(text, tab.MenuFrame.ScrollingFrame)
 			local textboxM = {}
@@ -2803,7 +2803,7 @@ function module:start(gameName, Hversion, isPremium)
 			end
 			return textboxM
 		end
-		
+
 		function tab:addFolder(text)
 			local folderBt = createFolderButton(text, tab.MenuFrame)
 			updateCanvasSize(tab.MenuFrame.ScrollingFrame, tab.MenuFrame.ScrollingFrame.UIListLayout)
@@ -2818,7 +2818,7 @@ function module:start(gameName, Hversion, isPremium)
 					v:Destroy()
 				end
 			end
-			
+
 			-- Função / Botão
 			folderBt.MouseButton1Click:Connect(function()
 				local menuName = tab.MenuFrame.MenuTitle.Text
@@ -2835,7 +2835,7 @@ function module:start(gameName, Hversion, isPremium)
 			end)
 			-- Funções / Folder
 			local folder = {}
-			
+
 			function folder:addToggle(text, description, size, premium, callback)
 				local togBt, modBt, helpIcon = createToggleButton(text, description, cloneScroll)
 				local value
@@ -2897,7 +2897,7 @@ function module:start(gameName, Hversion, isPremium)
 					end
 				end)
 			end
-			
+
 			function folder:addClick(text, description, size, premium, callback)
 				local clickBt, helpIcon = createClickButton(text, description, cloneScroll)
 				if size == "small" then
@@ -2930,7 +2930,7 @@ function module:start(gameName, Hversion, isPremium)
 					end
 				end)	
 			end
-			
+
 			function folder:addCombo(text, description, opts)
 				local selectBt, helpIcon = createComboButton(text, description, cloneScroll)
 				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
@@ -3039,7 +3039,7 @@ function module:start(gameName, Hversion, isPremium)
 				end
 				return combo
 			end
-			
+
 			function tab:addSlider(text, description, min, max, callback)
 				local mouse = game.Players.LocalPlayer:GetMouse()
 				local movingSlider = false
@@ -3060,7 +3060,7 @@ function module:start(gameName, Hversion, isPremium)
 				SliderClick.MouseButton1Down:Connect(function()
 					movingSlider = true
 				end)
-				SliderClick.MouseButton1Up:Connect(function()
+				Frame.MouseButton1Up:Connect(function()
 					movingSlider = false
 				end)
 				UIS.InputEnded:Connect(function(input, gameProcessedEvent)
@@ -3106,7 +3106,7 @@ function module:start(gameName, Hversion, isPremium)
 
 				return sliderReturn
 			end
-			
+
 			function tab:addInputBox(text)
 				local TextBox = createInputBox(text, cloneScroll)
 				local textboxM = {}
@@ -3115,7 +3115,7 @@ function module:start(gameName, Hversion, isPremium)
 				end
 				return textboxM
 			end
-			
+
 			return folder
 		end
 
