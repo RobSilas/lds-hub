@@ -988,8 +988,8 @@ TextButton.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
 TextButton.BackgroundTransparency = 0.300
 TextButton.BorderColor3 = Color3.fromRGB(49, 49, 49)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.0399999991, 0, 0.0526313782, 0)
-TextButton.Size = UDim2.new(0, 33, 0, 33)
+TextButton.Position = UDim2.new(4.864, 0,-0.722, 0)
+TextButton.Size = UDim2.new(1.09, 0,0.947, 0)
 TextButton.Font = Enum.Font.FredokaOne
 TextButton.Text = "-"
 TextButton.TextColor3 = Color3.fromRGB(170, 0, 255)
@@ -1006,10 +1006,10 @@ TextLabel_18.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel_18.BackgroundTransparency = 1.000
 TextLabel_18.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel_18.BorderSizePixel = 0
-TextLabel_18.Position = UDim2.new(1.20000017, 0, -0.0109091094, 0)
-TextLabel_18.Size = UDim2.new(0, 149, 0, 33)
+TextLabel_18.Position = UDim2.new(0.156, 0,0.11, 0)
+TextLabel_18.Size = UDim2.new(0.786, 0,0.758, 0)
 TextLabel_18.Font = Enum.Font.FredokaOne
-TextLabel_18.Text = "Hide LDS hub!"
+TextLabel_18.Text = "Hide LDS hub"
 TextLabel_18.TextColor3 = Color3.fromRGB(170, 0, 255)
 TextLabel_18.TextScaled = true
 TextLabel_18.TextSize = 14.000
@@ -1026,17 +1026,14 @@ G.Settings = {
 
 };
 
+global.IgnoreGuiInset = true
+
 -- Menu Creation
 
 local defaultButtonSize = UDim2.new(0.943, 0,0.033, 0)
 
 local function updateCanvasSize(Canvas, Constraint)
-	if Constraint:IsA("UIGridLayout") then
-		Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
-	end
-	if Constraint == nil then
-		Canvas.CanvasSize = UDim2.new(0, 0, Canvas.CanvasSize.X.Offset+0.2, 0)
-	end
+	return true
 end
 
 local function createAWSSettings()
