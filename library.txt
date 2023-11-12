@@ -1028,6 +1028,8 @@ G.Settings = {
 
 -- Menu Creation
 
+local defaultButtonSize = UDim2.new(0.943, 0,0.033, 0)
+
 local function updateCanvasSize(Canvas, Constraint)
 	if Constraint:IsA("UIGridLayout") then
 		Canvas.CanvasSize = UDim2.new(0, Constraint.AbsoluteContentSize.X, 0, Constraint.AbsoluteContentSize.Y+20)
@@ -1773,7 +1775,7 @@ local function createMenuButton(name)
 	MenuButton.Parent = GButtons
 	MenuButton.BackgroundColor3 = Color3.fromRGB(126, 126, 126)
 	MenuButton.Position = UDim2.new(0.0382463485, 0, 0, 0)
-	MenuButton.Size = UDim2.new(0.943000019, 0, 0.0329999998, 0)
+	MenuButton.Size = defaultButtonSize
 	MenuButton.Font = Enum.Font.DenkOne
 	MenuButton.Text = name
 	MenuButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1841,7 +1843,7 @@ local function createFolderButton(text, parent)
 	local UICorner_2 = Instance.new("UICorner")
 
 	--Properties:
-	
+
 	updateCanvasSize(parent, nil)
 
 	FolderBt.Name = text
@@ -1906,7 +1908,7 @@ local function createClickButton(text, desc, parent)
 	local DescIcon = Instance.new("ImageLabel")
 	local ImageLabel = Instance.new("ImageLabel")
 	local UICorner_2 = Instance.new("UICorner")
-	
+
 	updateCanvasSize(parent, nil)
 
 	--Properties:
@@ -1985,10 +1987,10 @@ local function createToggleButton(text, desc, parent)
 	local UICorner_3 = Instance.new("UICorner")
 
 	--Properties:
-	
+
 	updateCanvasSize(parent, nil)
-	
-	
+
+
 	ToggleBt.Name = text
 	ToggleBt.Parent = parent
 	ToggleBt.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
@@ -2067,7 +2069,7 @@ local function createComboButton(text, desc, parent)
 	local UICorner_2 = Instance.new("UICorner")
 
 	--Properties:
-	
+
 	updateCanvasSize(parent, nil)
 
 	ComboBt.Name = "ComboBt"
@@ -2157,7 +2159,7 @@ local function createSlider(text, desc, parent)
 	local SliderValue = Instance.new("TextLabel")
 
 	--Properties:
-	
+
 	updateCanvasSize(parent, nil)
 
 	Slider.Name = text
@@ -2252,7 +2254,7 @@ local function createInputBox(text, parent)
 	local UICorner_2 = Instance.new("UICorner")
 
 	--Properties:
-	
+
 	updateCanvasSize(parent, nil)
 
 	InputBox.Name = "InputBox"
@@ -2369,7 +2371,7 @@ function module:OkWarn(text)
 	end)
 end
 
-local defaultButtonSize = UDim2.new(0.943, 0,0.033, 0)
+
 
 function activeMobileUi()
 	_1Home.Size = UDim2.new(0.854, 0,0.047, 0)
@@ -2377,6 +2379,8 @@ function activeMobileUi()
 	_999UpdateNotes.Size = UDim2.new(0.854, 0,0.047, 0)
 	defaultButtonSize = UDim2.new(0.854, 0,0.047, 0)
 	LE.Size = UDim2.new(0.362, 0,1, 0)
+	LE.Position = UDim2.new(-0.124, 0,0.008, 0)
+	Frame.Size = UDim2.new(0.495, 0,0.52, 0)
 end
 
 local UIS = game:GetService("UserInputService")
@@ -2547,7 +2551,7 @@ function module:start(gameName, Hversion, isPremium)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
-			
+
 			local function changeVisual() 
 				if value == true then
 					task.spawn(function()
@@ -2610,7 +2614,7 @@ function module:start(gameName, Hversion, isPremium)
 				helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 				clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 			end
-			
+
 			if description ~= '' then
 				helpIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -2636,7 +2640,7 @@ function module:start(gameName, Hversion, isPremium)
 		function tab:addCombo(text, description, opts)
 			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame.ScrollingFrame)
 			local value
-			
+
 			if table.find(G.Settings, text) then
 				value = G.Settings[text]
 				selectBt.Text = value
@@ -2754,7 +2758,7 @@ function module:start(gameName, Hversion, isPremium)
 			local snapAmount = 1
 			local pixelsFromEdge = 0
 
-			
+
 			if description ~= '' then
 				DescIcon.MouseEnter:Connect(function()
 					cloneFrame.HelpFrame.HelpText.Text = description
@@ -2823,7 +2827,7 @@ function module:start(gameName, Hversion, isPremium)
 
 		function tab:addFolder(text)
 			local folderBt = createFolderButton(text, tab.MenuFrame)
-			
+
 			-- Função / Criação do scrollFrame
 			local cloneScroll = tab.MenuFrame.ScrollingFrame:Clone()
 			cloneScroll.Parent = tab.MenuFrame
@@ -2864,7 +2868,7 @@ function module:start(gameName, Hversion, isPremium)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					togBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
-				
+
 				local function changeVisual() 
 					if value == true then
 						task.spawn(function()
@@ -2925,7 +2929,7 @@ function module:start(gameName, Hversion, isPremium)
 					helpIcon.ImageColor3 = Color3.fromRGB(52, 52, 52)
 					clickBt.Parent.BackgroundColor3 = Color3.fromRGB(186, 107, 255)
 				end
-				
+
 				if description ~= '' then
 					helpIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
@@ -3027,7 +3031,7 @@ function module:start(gameName, Hversion, isPremium)
 
 					--  Funções / Opções
 					for _, v in pairs(opts) do
-						
+
 						local clone = baseOption:Clone()
 						clone.Parent = scroll
 						clone.Visible = true
@@ -3063,7 +3067,7 @@ function module:start(gameName, Hversion, isPremium)
 				local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, cloneScroll)
 				updateCanvasSize(cloneScroll, cloneScroll.UIListLayout)
 				local value = min
-				
+
 				if description ~= '' then
 					DescIcon.MouseEnter:Connect(function()
 						cloneFrame.HelpFrame.HelpText.Text = description
