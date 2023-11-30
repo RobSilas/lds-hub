@@ -2368,7 +2368,14 @@ function module:OkWarn(text)
 	end)
 end
 
-
+function module:DevWarn()
+	Warn.Visible = true
+	Wwarn.Visible = true
+	Okay.MouseButton1Click:Connect(function()
+		Warn.Visible = false
+		Wwarn.Visible = false
+	end)
+end
 
 function activeMobileUi()
 	_1Home.Size = UDim2.new(0.854, 0,0.047, 0)
