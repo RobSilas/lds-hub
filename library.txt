@@ -1648,6 +1648,7 @@ local function createMenuFrame(name)
 	Options.Position = UDim2.new(0.03968402, 0, 0.0938331932, 0)
 	Options.Size = UDim2.new(0.916345239, 0, 0.833459556, 0)
 	Options.Visible = false
+	Options.ZIndex = 5
 
 	ScrollableOpt.Name = "ScrollableOpt"
 	ScrollableOpt.Parent = Options
@@ -2514,7 +2515,11 @@ function module:start(gameName, Hversion, isPremium)
 
 	DeleteButton.MouseButton1Click:Connect(function()
 		local function dstroy()
+			for i, v in pairs(G.Settings) do
+				G.Settings[i] = false
+			end
 			global:Destroy()
+			script:Destroy()
 		end
 		module:ConfirmWarn(dstroy)
 	end)
