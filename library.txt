@@ -2981,7 +2981,7 @@ function module:start(gameName, Hversion, isPremium)
 					end)
 				end
 				selectBt.MouseButton1Click:Connect(function()
-					tab.MenuFrame.ScrollingFrame.Visible = false
+					cloneScroll.Visible = false
 					local scroll = tab.OptionFrame.ScrollableOpt
 					local baseOption = scroll.Option
 					tab.OptionFrame.ComboTitle.Text = text
@@ -3032,7 +3032,7 @@ function module:start(gameName, Hversion, isPremium)
 								v:Destroy()
 							end
 						end
-						tab.MenuFrame.ScrollingFrame.Visible = true
+						cloneScroll.Visible = true
 						searchBox.Text = ""
 						searchF:Disconnect()
 						closeF:Disconnect()
@@ -3050,7 +3050,7 @@ function module:start(gameName, Hversion, isPremium)
 							value = v
 							selectBt.Text = tostring(v)
 							tab.OptionFrame.Visible = false
-							tab.MenuFrame.ScrollingFrame.Visible = true
+							cloneScroll.Visible = true
 							for _, v in pairs(scroll:GetChildren()) do
 								if v.Name == "NewOption" then
 									v:Destroy()
