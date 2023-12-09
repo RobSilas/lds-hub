@@ -1028,11 +1028,11 @@ G.Settings = {
 
 global.IgnoreGuiInset = true
 
-UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-UIListLayout.HorizontalFlex = Enum.UIFlexMode.Fill
-UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
-UIListLayout.VerticalFlex = Enum.UIFlexMode.Fill
-GButtons.CanvasSize = UDim2.new(0,0,0.4,0)
+--UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+--UIListLayout.HorizontalFlex = Enum.UIFlexMode.Fill
+--UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Top
+--UIListLayout.VerticalFlex = Enum.UIFlexMode.Fill
+--GButtons.CanvasSize = UDim2.new(0,0,0.4,0)
 
 -- Menu Creation
 
@@ -1786,7 +1786,7 @@ local function createMenuButton(name)
 	MenuButton.TextScaled = true
 	MenuButton.TextSize = 14.000
 	MenuButton.TextWrapped = true
-	GButtons.CanvasSize = UDim2.new(0,0,GButtons.CanvasSize.Y.Scale+0.17,0)
+	--GButtons.CanvasSize = UDim2.new(0,0,GButtons.CanvasSize.Y.Scale+0.17,0)
 
 	UICorner.Parent = MenuButton
 
