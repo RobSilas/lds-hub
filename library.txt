@@ -146,10 +146,41 @@ UICorner.Parent = Frame
 LE.Name = "LE"
 LE.Parent = Frame
 LE.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
-LE.Position = UDim2.new(-0.00166725798, 0, 0, 0)
-LE.Size = UDim2.new(0.263566554, 0, 1.00000012, 0)
+LE.Position = UDim2.new(0, 0, 0, 0)
+LE.Size = UDim2.new(0.263566554, 0, 1, 0)
 
 UICorner_2.Parent = LE
+
+local noel = Instance.new("ImageButton")
+
+noel.Parent = LE
+noel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+noel.BackgroundTransparency = 1.000
+noel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+noel.BorderSizePixel = 0
+noel.Position = UDim2.new(0.148074657, 0, -0.0529411733, 0)
+noel.Rotation = 18.000
+noel.Size = UDim2.new(0.386282265, 0, 0.176470578, 0)
+noel.Image = "rbxassetid://15730634304"
+
+
+
+local lima = Instance.new("ImageLabel")
+
+
+lima.Name = "lima"
+lima.Parent = LE
+lima.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+lima.BackgroundTransparency = 1.000
+lima.BorderColor3 = Color3.fromRGB(0, 0, 0)
+lima.BorderSizePixel = 0
+lima.Position = UDim2.new(0.104585581, 0, 0.100114524, 0)
+lima.Rotation = 18.000
+lima.Size = UDim2.new(0.35194695, 0, 0.0165440813, 0)
+lima.ZIndex = 0
+lima.Image = "rbxassetid://15737229591"
+
+
 
 Logo.Name = "Logo"
 Logo.Parent = LE
@@ -2391,7 +2422,7 @@ function activeMobileUi()
 	_999UpdateNotes.Size = UDim2.new(0.854, 0,0.047, 0)
 	defaultButtonSize = UDim2.new(0.854, 0,0.047, 0)
 	LE.Size = UDim2.new(0.362, 0,1, 0)
-	LE.Position = UDim2.new(-0.124, 0,0.008, 0)
+	LE.Position = UDim2.new(-0.124, 0,0, 0)
 	Frame.Size = UDim2.new(0.495, 0,0.52, 0)
 end
 
@@ -2428,6 +2459,25 @@ function module:start(gameName, Hversion, isPremium)
 	})
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
+
+	-- EasterEgg Natalino
+	lima.Visible = false
+	
+	local limasOriginal = {lima.Position, lima.Size}
+	local chapeuOriginalPos = noel.Position
+
+	local limasPos = {UDim2.new(0.166, 0,-0.115, 0), UDim2.new(0.352, 0,0.237, 0)}
+	local chapeuPos = UDim2.new(0.231, 0,-0.145, 0)
+	
+	noel.MouseButton1Click:Connect(function()
+		lima.Visible = true
+		lima:TweenSizeAndPosition(limasPos[2], limasPos[1], Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
+		noel:TweenPosition(chapeuPos, Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
+		task.wait(1)
+		lima:TweenSizeAndPosition(limasOriginal[2], limasOriginal[1], Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
+		noel:TweenPosition(chapeuOriginalPos, Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
+		lima.Visible = false
+	end)
 
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
