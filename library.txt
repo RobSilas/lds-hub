@@ -151,37 +151,6 @@ LE.Size = UDim2.new(0.263566554, 0, 1, 0)
 
 UICorner_2.Parent = LE
 
-local noel = Instance.new("ImageButton")
-
-noel.Parent = LE
-noel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-noel.BackgroundTransparency = 1.000
-noel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-noel.BorderSizePixel = 0
-noel.Position = UDim2.new(0.148074657, 0, -0.0529411733, 0)
-noel.Rotation = 18.000
-noel.Size = UDim2.new(0.386282265, 0, 0.176470578, 0)
-noel.Image = "rbxassetid://15730634304"
-
-
-
-local lima = Instance.new("ImageLabel")
-
-
-lima.Name = "lima"
-lima.Parent = LE
-lima.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-lima.BackgroundTransparency = 1.000
-lima.BorderColor3 = Color3.fromRGB(0, 0, 0)
-lima.BorderSizePixel = 0
-lima.Position = UDim2.new(0.104585581, 0, 0.100114524, 0)
-lima.Rotation = 18.000
-lima.Size = UDim2.new(0.35194695, 0, 0.0165440813, 0)
-lima.ZIndex = 0
-lima.Image = "rbxassetid://15737229591"
-
-
-
 Logo.Name = "Logo"
 Logo.Parent = LE
 Logo.BackgroundColor3 = Color3.fromRGB(170, 0, 255)
@@ -2460,25 +2429,6 @@ function module:start(gameName, Hversion, isPremium)
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
 
-	-- EasterEgg Natalino
-	lima.Visible = false
-	
-	local limasOriginal = {lima.Position, lima.Size}
-	local chapeuOriginalPos = noel.Position
-
-	local limasPos = {UDim2.new(0.166, 0,-0.115, 0), UDim2.new(0.352, 0,0.237, 0)}
-	local chapeuPos = UDim2.new(0.231, 0,-0.145, 0)
-	
-	noel.MouseButton1Click:Connect(function()
-		lima.Visible = true
-		lima:TweenSizeAndPosition(limasPos[2], limasPos[1], Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
-		noel:TweenPosition(chapeuPos, Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
-		task.wait(1)
-		lima:TweenSizeAndPosition(limasOriginal[2], limasOriginal[1], Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
-		noel:TweenPosition(chapeuOriginalPos, Enum.EasingDirection.In, Enum.EasingStyle.Quart, 0.5)
-		lima.Visible = false
-	end)
-
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
 		offMenus()
@@ -2891,6 +2841,154 @@ function module:start(gameName, Hversion, isPremium)
 			return textboxM
 		end
 
+		function tab:addMultiCombo(text,description, opts)
+			local selectBt, helpIcon = createComboButton(text, description, tab.MenuFrame.ScrollingFrame)
+			local value = {}
+			
+			if description ~= '' then
+				helpIcon.MouseEnter:Connect(function()
+					cloneFrame.HelpFrame.HelpText.Text = description
+					cloneFrame.HelpFrame.Visible = true
+				end)
+				helpIcon.MouseLeave:Connect(function()
+					cloneFrame.HelpFrame.Visible = false
+				end)
+			end
+			
+			selectBt.MouseButton1Click:Connect(function()
+				local execute = true
+
+				tab.MenuFrame.ScrollingFrame.Visible = false
+				local scroll = tab.OptionFrame.ScrollableOpt
+				local baseOption = scroll.Option
+				tab.OptionFrame.ComboTitle.Text = text.." (Multi Selection)"
+
+				-- Funções da gui
+
+				local searchBox = tab.OptionFrame.SearchBox
+				local searchF
+				searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+					for _, v in pairs(scroll:GetChildren()) do
+						if v.Name == "NewOption" then
+							v:Destroy()
+						end
+					end
+
+					local search = searchBox.Text:lower()
+					for i, v in pairs(opts) do
+						if string.sub(v:lower(), 1, #search) == search then
+							local newOpt = baseOption:Clone()
+							newOpt.Name = "NewOption"
+							newOpt.Text = v
+							newOpt.Parent = scroll
+							newOpt.Visible = true
+							local stroke = Instance.new("UIStroke")
+							stroke.Parent = newOpt
+							stroke.Enabled = false
+							stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+							stroke.Thickness = 3
+							stroke.Color = Color3.fromRGB(56, 255, 21)
+
+							newOpt.MouseButton1Click:Connect(function()
+								if stroke.Enabled == false then
+									stroke.Enabled = true
+									table.insert(value, newOpt.Text)
+								else
+									stroke.Enabled = false
+									table.remove(value, table.find(value, newOpt.Text))
+									if scroll.AllOptions.UIStroke.Enabled then
+										scroll.AllOptions.UIStroke.Enabled = false
+									end
+								end
+								if #value > 0 then
+									selectBt.Text = "..."
+								end
+							end)
+						end
+					end
+					
+					
+				end)
+
+				local closeF
+				closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
+					tab.OptionFrame.Visible = false
+					for _, v in pairs(scroll:GetChildren()) do
+						if v.Name == "NewOption" or v.Name == "AllOptions" then
+							v:Destroy()
+						end
+					end
+					tab.MenuFrame.ScrollingFrame.Visible = true
+					searchBox.Text = ""
+					searchF:Disconnect()
+					closeF:Disconnect()
+				end)
+
+
+
+				--  Funções / Opções
+				for _, v in pairs(opts) do
+					local clone = baseOption:Clone()
+					clone.Parent = scroll
+					clone.Visible = true
+					clone.Name = "NewOption"
+					clone.Text = v
+					local stroke = Instance.new("UIStroke")
+					stroke.Parent = clone
+					stroke.Enabled = false
+					stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+					stroke.Thickness = 3
+					stroke.Color = Color3.fromRGB(56, 255, 21)
+					clone.MouseButton1Click:Connect(function()
+						if stroke.Enabled == false then
+							stroke.Enabled = true
+							table.insert(value, clone.Text)
+						else
+							stroke.Enabled = false
+							table.remove(value, table.find(value, clone.Text))
+							if scroll.AllOptions.UIStroke.Enabled then
+								scroll.AllOptions.UIStroke.Enabled = false
+							end
+						end
+						if #value > 0 then
+							selectBt.Text = "..."
+						end
+					end)
+				end
+				local allOpt = baseOption:Clone()
+				allOpt.Name = "AllOptions"
+				allOpt.LayoutOrder = -10
+				allOpt.Text = "All Options"
+				allOpt.Parent = scroll
+				allOpt.Visible = true
+				local strokeAll = Instance.new("UIStroke")
+				strokeAll.Parent = allOpt
+				strokeAll.Enabled = false
+				strokeAll.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+				strokeAll.Thickness = 3
+				strokeAll.Color = Color3.fromRGB(56, 255, 21)
+				allOpt.MouseButton1Click:Connect(function()
+					for _,v in pairs(scroll:GetChildren()) do
+						if v:IsA("TextButton") then
+							if strokeAll.Enabled then
+								v.UIStroke.Enabled = false
+								value = {}
+							else
+								v.UIStroke.Enabled = true
+								value = opts
+							end
+						end
+					end
+				end)
+				tab.OptionFrame.Visible = true
+			end)
+			local combo = {}
+			function combo:getValue()
+				return value
+			end
+			return combo
+		end
+
 		function tab:addFolder(text)
 			local folderBt = createFolderButton(text, tab.MenuFrame)
 
@@ -3127,7 +3225,7 @@ function module:start(gameName, Hversion, isPremium)
 				return combo
 			end
 
-			function tab:addSlider(text, description, min, max, callback)
+			function folder:addSlider(text, description, min, max, callback)
 				local mouse = game.Players.LocalPlayer:GetMouse()
 				local movingSlider = false
 				local SliderClick, DescIcon, sliderBG, SliderValue = createSlider(text, description, cloneScroll)
@@ -3194,13 +3292,161 @@ function module:start(gameName, Hversion, isPremium)
 				return sliderReturn
 			end
 
-			function tab:addInputBox(text)
+			function folder:addInputBox(text)
 				local TextBox = createInputBox(text, cloneScroll)
 				local textboxM = {}
 				function textboxM:getValue()
 					return TextBox.Text
 				end
 				return textboxM
+			end
+
+			function folder:addMultiCombo(text,description, opts)
+				local selectBt, helpIcon = createComboButton(text, description, cloneScroll)
+				local value = {}
+
+				if description ~= '' then
+					helpIcon.MouseEnter:Connect(function()
+						cloneFrame.HelpFrame.HelpText.Text = description
+						cloneFrame.HelpFrame.Visible = true
+					end)
+					helpIcon.MouseLeave:Connect(function()
+						cloneFrame.HelpFrame.Visible = false
+					end)
+				end
+
+				selectBt.MouseButton1Click:Connect(function()
+					local execute = true
+
+					cloneScroll.Visible = false
+					local scroll = tab.OptionFrame.ScrollableOpt
+					local baseOption = scroll.Option
+					tab.OptionFrame.ComboTitle.Text = text.." (Multi Selection)"
+
+					-- Funções da gui
+
+					local searchBox = tab.OptionFrame.SearchBox
+					local searchF
+					searchF = searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+						for _, v in pairs(scroll:GetChildren()) do
+							if v.Name == "NewOption" then
+								v:Destroy()
+							end
+						end
+
+						local search = searchBox.Text:lower()
+						for i, v in pairs(opts) do
+							if string.sub(v:lower(), 1, #search) == search then
+								local newOpt = baseOption:Clone()
+								newOpt.Name = "NewOption"
+								newOpt.Text = v
+								newOpt.Parent = scroll
+								newOpt.Visible = true
+								local stroke = Instance.new("UIStroke")
+								stroke.Parent = newOpt
+								stroke.Enabled = false
+								stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+								stroke.Thickness = 3
+								stroke.Color = Color3.fromRGB(56, 255, 21)
+
+								newOpt.MouseButton1Click:Connect(function()
+									if stroke.Enabled == false then
+										stroke.Enabled = true
+										table.insert(value, newOpt.Text)
+									else
+										stroke.Enabled = false
+										table.remove(value, table.find(value, newOpt.Text))
+										if scroll.AllOptions.UIStroke.Enabled then
+											scroll.AllOptions.UIStroke.Enabled = false
+										end
+									end
+									if #value > 0 then
+										selectBt.Text = "..."
+									end
+								end)
+							end
+						end
+
+
+					end)
+
+					local closeF
+					closeF = tab.OptionFrame.Close.MouseButton1Click:Connect(function()
+						tab.OptionFrame.Visible = false
+						for _, v in pairs(scroll:GetChildren()) do
+							if v.Name == "NewOption" then
+								v:Destroy()
+							end
+						end
+						cloneScroll.Visible = true
+						searchBox.Text = ""
+						searchF:Disconnect()
+						closeF:Disconnect()
+					end)
+
+
+
+					--  Funções / Opções
+					for _, v in pairs(opts) do
+						local clone = baseOption:Clone()
+						clone.Parent = scroll
+						clone.Visible = true
+						clone.Name = "NewOption"
+						clone.Text = v
+						local stroke = Instance.new("UIStroke")
+						stroke.Parent = clone
+						stroke.Enabled = false
+						stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+						stroke.Thickness = 3
+						stroke.Color = Color3.fromRGB(56, 255, 21)
+						clone.MouseButton1Click:Connect(function()
+							if stroke.Enabled == false then
+								stroke.Enabled = true
+								table.insert(value, clone.Text)
+							else
+								stroke.Enabled = false
+								table.remove(value, table.find(value, clone.Text))
+								if scroll.AllOptions.UIStroke.Enabled then
+									scroll.AllOptions.UIStroke.Enabled = false
+								end
+							end
+							if #value > 0 then
+								selectBt.Text = "..."
+							end
+						end)
+					end
+					local allOpt = baseOption:Clone()
+					allOpt.Name = "AllOptions"
+					allOpt.LayoutOrder = -10
+					allOpt.Text = "All Options"
+					allOpt.Parent = scroll
+					allOpt.Visible = true
+					local strokeAll = Instance.new("UIStroke")
+					strokeAll.Parent = allOpt
+					strokeAll.Enabled = false
+					strokeAll.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+					strokeAll.Thickness = 3
+					strokeAll.Color = Color3.fromRGB(56, 255, 21)
+					allOpt.MouseButton1Click:Connect(function()
+						for _,v in pairs(scroll:GetChildren()) do
+							if v:IsA("TextButton") then
+								if strokeAll.Enabled then
+									v.UIStroke.Enabled = false
+									value = {}
+								else
+									v.UIStroke.Enabled = true
+									value = opts
+								end
+							end
+						end
+					end)
+					tab.OptionFrame.Visible = true
+				end)
+				local combo = {}
+				function combo:getValue()
+					return value
+				end
+				return combo
 			end
 
 			return folder
