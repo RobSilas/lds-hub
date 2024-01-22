@@ -2385,6 +2385,25 @@ function module:DevWarn()
 	end)
 end
 
+function module:activatedWarn()
+	Warn.Visible = true
+	Swarn.Visible = true
+	TextLabel_13.Text = "Activate the desired mode!"
+	Okay_2.MouseButton1Click:Connect(function()
+		Warn.Visible = false
+		Swarn.Visible = false
+	end)
+end
+
+function module:bannedWarn()
+	Warn.Visible = true
+	Bwarn.Visible = true
+	Okay_3.MouseButton1Click:Connect(function()
+		Warn.Visible = false
+		Bwarn.Visible = false
+	end)
+end
+
 function activeMobileUi()
 	_1Home.Size = UDim2.new(0.854, 0,0.047, 0)
 	_998Settings.Size = UDim2.new(0.854, 0,0.047, 0)
@@ -2618,6 +2637,14 @@ function module:start(gameName, Hversion, isPremium)
 					module:OkWarn("This is a premium feature!")
 				end
 			end)
+			local toggle = {}
+			
+			function toggle:Disable()
+				value = false
+				G.Settings[text] = value
+				changeVisual()
+			end
+			return toggle
 		end
 
 		function tab:addClick(text, description, size, premium, callback)
@@ -2968,14 +2995,19 @@ function module:start(gameName, Hversion, isPremium)
 				strokeAll.Thickness = 3
 				strokeAll.Color = Color3.fromRGB(56, 255, 21)
 				allOpt.MouseButton1Click:Connect(function()
+					if strokeAll.Enabled then
+						strokeAll.Enabled = false
+					else
+						strokeAll.Enabled = true
+					end
 					for _,v in pairs(scroll:GetChildren()) do
 						if v:IsA("TextButton") then
 							if strokeAll.Enabled then
 								v.UIStroke.Enabled = false
-								value = {}
-							else
-								v.UIStroke.Enabled = true
 								value = opts
+							else
+								v.UIStroke.Enabled = false
+								value = {}
 							end
 						end
 					end
@@ -3081,6 +3113,14 @@ function module:start(gameName, Hversion, isPremium)
 						module:OkWarn("This is a premium feature!")
 					end
 				end)
+				local toggle = {}
+
+				function toggle:Disable()
+					value = false
+					G.Settings[text] = value
+					changeVisual()
+				end
+				return toggle
 			end
 
 			function folder:addClick(text, description, size, premium, callback)
@@ -3428,14 +3468,19 @@ function module:start(gameName, Hversion, isPremium)
 					strokeAll.Thickness = 3
 					strokeAll.Color = Color3.fromRGB(56, 255, 21)
 					allOpt.MouseButton1Click:Connect(function()
+						if strokeAll.Enabled then
+							strokeAll.Enabled = false
+						else
+							strokeAll.Enabled = true
+						end
 						for _,v in pairs(scroll:GetChildren()) do
 							if v:IsA("TextButton") then
 								if strokeAll.Enabled then
 									v.UIStroke.Enabled = false
-									value = {}
-								else
-									v.UIStroke.Enabled = true
 									value = opts
+								else
+									v.UIStroke.Enabled = false
+									value = {}
 								end
 							end
 						end
