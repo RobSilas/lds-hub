@@ -1016,6 +1016,296 @@ TextLabel_18.TextSize = 14.000
 TextLabel_18.TextStrokeTransparency = 0.000
 TextLabel_18.TextWrapped = true
 
+local Teleports = Instance.new("Frame")
+local FrameButtonsTp = Instance.new("Frame")
+local UIListLayoutTp = Instance.new("UIListLayout")
+local UICorner_2Tp = Instance.new("UICorner")
+local TextLabelTp = Instance.new("TextLabel")
+local TextLabel_2Tp = Instance.new("TextLabel")
+local ButtonLeftTp = Instance.new("TextButton")
+local UICorner_3Tp = Instance.new("UICorner")
+local ButtonRightTp = Instance.new("TextButton")
+local UICorner_4Tp = Instance.new("UICorner")
+
+Teleports.Name = "Teleports"
+Teleports.Parent = Frame
+Teleports.Visible = false
+Teleports.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+Teleports.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Teleports.BorderSizePixel = 0
+Teleports.Position = UDim2.new(0.547195375, 0, -0.853371561, 0)
+Teleports.Size = UDim2.new(0.703990459, 0, 0.153587863, 0)
+
+FrameButtonsTp.Name = "FrameButtons"
+FrameButtonsTp.Parent = Teleports
+FrameButtonsTp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameButtonsTp.BackgroundTransparency = 1.000
+FrameButtonsTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+FrameButtonsTp.BorderSizePixel = 0
+FrameButtonsTp.Position = UDim2.new(0.0472813249, 0, 0.134615391, 0)
+FrameButtonsTp.Size = UDim2.new(0.931442082, 0, 0.730769217, 0)
+
+UIListLayoutTp.Parent = FrameButtonsTp
+UIListLayoutTp.FillDirection = Enum.FillDirection.Horizontal
+UIListLayoutTp.HorizontalAlignment = Enum.HorizontalAlignment.Right
+UIListLayoutTp.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayoutTp.Padding = UDim.new(0.0199999996, 0)
+
+UICorner_2Tp.Parent = Teleports
+
+TextLabelTp.Parent = Teleports
+TextLabelTp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabelTp.BackgroundTransparency = 1.000
+TextLabelTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabelTp.BorderSizePixel = 0
+TextLabelTp.Position = UDim2.new(-0.0537403747, 0, -0.284444958, 0)
+TextLabelTp.Size = UDim2.new(0.489361703, 0, 0.538461566, 0)
+TextLabelTp.Font = Enum.Font.Unknown
+TextLabelTp.Text = "Fast Teleport "
+TextLabelTp.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabelTp.TextScaled = true
+TextLabelTp.TextSize = 14.000
+TextLabelTp.TextStrokeTransparency = 0.000
+TextLabelTp.TextWrapped = true
+
+TextLabel_2Tp.Parent = Teleports
+TextLabel_2Tp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2Tp.BackgroundTransparency = 1.000
+TextLabel_2Tp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2Tp.BorderSizePixel = 0
+TextLabel_2Tp.Position = UDim2.new(0.615290344, 0, 0.850170434, 0)
+TextLabel_2Tp.Size = UDim2.new(0.489361703, 0, 0.442307681, 0)
+TextLabel_2Tp.Font = Enum.Font.Unknown
+TextLabel_2Tp.Text = "LDS HUB!"
+TextLabel_2Tp.TextColor3 = Color3.fromRGB(170, 0, 255)
+TextLabel_2Tp.TextScaled = true
+TextLabel_2Tp.TextSize = 14.000
+TextLabel_2Tp.TextStrokeTransparency = 0.000
+TextLabel_2Tp.TextWrapped = true
+
+ButtonLeftTp.Name = "ButtonLeft"
+ButtonLeftTp.Parent = Teleports
+ButtonLeftTp.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+ButtonLeftTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ButtonLeftTp.BorderSizePixel = 0
+ButtonLeftTp.Position = UDim2.new(0.0164538082, 0, 1.17307687, 0)
+ButtonLeftTp.Size = UDim2.new(0.0709219873, 0, 0.576923072, 0)
+ButtonLeftTp.Font = Enum.Font.FredokaOne
+ButtonLeftTp.Text = "<"
+ButtonLeftTp.TextColor3 = Color3.fromRGB(255, 255, 255)
+ButtonLeftTp.TextSize = 14.000
+ButtonLeftTp.TextStrokeTransparency = 0.000
+
+UICorner_3Tp.Parent = ButtonLeftTp
+
+ButtonRightTp.Name = "ButtonRight"
+ButtonRightTp.Parent = Teleports
+ButtonRightTp.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
+ButtonRightTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ButtonRightTp.BorderSizePixel = 0
+ButtonRightTp.Position = UDim2.new(0.11101646, 0, 1.17307687, 0)
+ButtonRightTp.Size = UDim2.new(0.0709219873, 0, 0.576923072, 0)
+ButtonRightTp.Font = Enum.Font.FredokaOne
+ButtonRightTp.Text = ">"
+ButtonRightTp.TextColor3 = Color3.fromRGB(255, 255, 255)
+ButtonRightTp.TextSize = 14.000
+ButtonRightTp.TextStrokeTransparency = 0.000
+
+UICorner_4Tp.Parent = ButtonRightTp
+
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local Notify = Instance.new("Frame")
+
+local UIListLayout = Instance.new("UIListLayout")
+local Frame_2 = Instance.new("Frame")
+local UIGradient_3 = Instance.new("UIGradient")
+local UICorner_3 = Instance.new("UICorner")
+local NameButton_2 = Instance.new("TextLabel")
+local TextLabel_5 = Instance.new("TextLabel")
+local TextLabel_6 = Instance.new("TextLabel")
+
+Notify.Name = "Notify"
+Notify.Parent = global
+Notify.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Notify.BackgroundTransparency = 1.000
+Notify.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Notify.BorderSizePixel = 0
+Notify.Position = UDim2.new(0.83157897, 0, 0.58654654, 0)
+Notify.Size = UDim2.new(0.16842106, 0, 0.401691318, 0)
+
+--Properties:
+
+UIListLayout.Parent = Notify
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+UIListLayout.Padding = UDim.new(0.0199999996, 0)
+
+local notGreenColor = Color3.fromRGB(0, 255, 127)
+local notRedColor = Color3.fromRGB(255, 0, 127)
+
+local function addBtFastTP(Image)
+	local TeleportButtonTp = Instance.new("ImageButton")
+	local UICornerTp = Instance.new("UICorner")
+	TeleportButtonTp.Name = "TeleportButton"
+	TeleportButtonTp.Parent = FrameButtonsTp
+	TeleportButtonTp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TeleportButtonTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TeleportButtonTp.BorderSizePixel = 0
+	TeleportButtonTp.Position = UDim2.new(0.126903549, 0, 0, 0)
+	TeleportButtonTp.Size = UDim2.new(0.0964467004, 0, 1, 0)
+	TeleportButtonTp.Image = Image
+
+	UICornerTp.Parent = TeleportButtonTp
+	return TeleportButtonTp
+end
+
+function module:addTPButton(image, pos: CFrame)
+	local tpBt = addBtFastTP(image)
+	tpBt.MouseButton1Click:Connect(function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+	end)
+end
+
+local function createNotBt(msg, btName, enabled)
+	local FrameNot = Instance.new("Frame")
+	local UICornerNot = Instance.new("UICorner")
+	local UIGradientNot = Instance.new("UIGradient")
+	local TextLabelNot = Instance.new("TextLabel")
+	local TextLabel_2Not = Instance.new("TextLabel")
+	local NameButtonNot = Instance.new("TextLabel")
+
+	FrameNot.Parent = Notify
+	FrameNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	FrameNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	FrameNot.BorderSizePixel = 0
+	FrameNot.Position = UDim2.new(0.0441176482, 0, 0.673684239, 0)
+	FrameNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
+
+	UICornerNot.CornerRadius = UDim.new(0, 25)
+	UICornerNot.Parent = Frame
+
+	UIGradientNot.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
+	UIGradientNot.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.50, 0.26), NumberSequenceKeypoint.new(0.75, 0.48), NumberSequenceKeypoint.new(1.00, 0.69)}
+	UIGradientNot.Parent = Frame
+
+	TextLabelNot.Parent = Frame
+	TextLabelNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelNot.BackgroundTransparency = 1.000
+	TextLabelNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabelNot.BorderSizePixel = 0
+	TextLabelNot.Position = UDim2.new(0.145161286, 0, 0.0394736826, 0)
+	TextLabelNot.Size = UDim2.new(0.709677398, 0, 0.236842111, 0)
+	TextLabelNot.Font = Enum.Font.SciFi
+	TextLabelNot.Text = "LDS HUB Notify!"
+	TextLabelNot.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabelNot.TextScaled = true
+	TextLabelNot.TextSize = 14.000
+	TextLabelNot.TextStrokeTransparency = 0.000
+	TextLabelNot.TextWrapped = true
+
+	local color 
+	if enabled then
+		color = notGreenColor
+	else
+		color = notRedColor
+	end
+
+
+
+	TextLabel_2Not.Parent = Frame
+	TextLabel_2Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_2Not.BackgroundTransparency = 1.000
+	TextLabel_2Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel_2Not.BorderSizePixel = 0
+	TextLabel_2Not.Position = UDim2.new(0.0645161271, 0, 0.276315778, 0)
+	TextLabel_2Not.Size = UDim2.new(0.854838729, 0, 0.473684222, 0)
+	TextLabel_2Not.Font = Enum.Font.SciFi
+	TextLabel_2Not.Text = msg
+	TextLabel_2Not.TextColor3 = color
+	TextLabel_2Not.TextScaled = true
+	TextLabel_2Not.TextSize = 14.000
+	TextLabel_2Not.TextStrokeTransparency = 0.000
+	TextLabel_2Not.TextWrapped = true
+	TextLabel_2Not.TextYAlignment = Enum.TextYAlignment.Top
+
+	NameButtonNot.Name = "NameButton"
+	NameButtonNot.Parent = Frame
+	NameButtonNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	NameButtonNot.BackgroundTransparency = 1.000
+	NameButtonNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	NameButtonNot.BorderSizePixel = 0
+	NameButtonNot.Position = UDim2.new(0.145161286, 0, 0.684210539, 0)
+	NameButtonNot.Size = UDim2.new(0.709677398, 0, 0.236842111, 0)
+	NameButtonNot.Font = Enum.Font.SciFi
+	NameButtonNot.Text = btName
+	NameButtonNot.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NameButtonNot.TextScaled = true
+	NameButtonNot.TextSize = 14.000
+	NameButtonNot.TextStrokeTransparency = 0.000
+	NameButtonNot.TextWrapped = true
+	return FrameNot
+end
+
+local function createCredits()
+	local CreditsNot = Instance.new("Frame")
+	local UICorner_2Not = Instance.new("UICorner")
+	local UIGradient_2Not = Instance.new("UIGradient")
+	local TextLabel_3Not = Instance.new("TextLabel")
+	local TextLabel_4Not = Instance.new("TextLabel")
+	
+	CreditsNot.Name = "Credits"
+	CreditsNot.Parent = Notify
+	CreditsNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CreditsNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CreditsNot.BorderSizePixel = 0
+	CreditsNot.Position = UDim2.new(0.0441176482, 0, 0.673684239, 0)
+	CreditsNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
+
+	UICorner_2Not.CornerRadius = UDim.new(0, 25)
+	UICorner_2Not.Parent = Credits
+
+	UIGradient_2Not.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
+	UIGradient_2Not.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.50, 0.26), NumberSequenceKeypoint.new(0.75, 0.48), NumberSequenceKeypoint.new(1.00, 0.69)}
+	UIGradient_2Not.Parent = Credits
+
+	TextLabel_3Not.Parent = Credits
+	TextLabel_3Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_3Not.BackgroundTransparency = 1.000
+	TextLabel_3Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel_3Not.BorderSizePixel = 0
+	TextLabel_3Not.Position = UDim2.new(0.145161286, 0, 0.0394736826, 0)
+	TextLabel_3Not.Size = UDim2.new(0.709677398, 0, 0.236842111, 0)
+	TextLabel_3Not.Font = Enum.Font.SciFi
+	TextLabel_3Not.Text = "LDS HUB Notify!"
+	TextLabel_3Not.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_3Not.TextScaled = true
+	TextLabel_3Not.TextSize = 14.000
+	TextLabel_3Not.TextStrokeTransparency = 0.000
+	TextLabel_3Not.TextWrapped = true
+
+	TextLabel_4Not.Parent = Credits
+	TextLabel_4Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel_4Not.BackgroundTransparency = 1.000
+	TextLabel_4Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel_4Not.BorderSizePixel = 0
+	TextLabel_4Not.Position = UDim2.new(0, 0, 0.276315778, 0)
+	TextLabel_4Not.Size = UDim2.new(1, 0, 0.723684192, 0)
+	TextLabel_4Not.Font = Enum.Font.SciFi
+	TextLabel_4Not.Text = "By: Sr. LDS and Aliscreative"
+	TextLabel_4Not.TextColor3 = Color3.fromRGB(170, 255, 255)
+	TextLabel_4Not.TextScaled = true
+	TextLabel_4Not.TextSize = 14.000
+	TextLabel_4Not.TextStrokeTransparency = 0.000
+	TextLabel_4Not.TextWrapped = true
+	TextLabel_4Not.TextYAlignment = Enum.TextYAlignment.Top
+	return CreditsNot
+end
+
 -- Script
 
 local menusCount = 0
@@ -2404,6 +2694,22 @@ function module:bannedWarn()
 	end)
 end
 
+function module:SendNotification(msg,buttonName, enabled)
+	local notifFrame = createNotBt(msg,buttonName, enabled)
+	task.spawn(function()
+		task.wait(3)
+		notifFrame:Destroy()
+	end)
+end
+
+function module:showFastTP()
+	Teleports.Visible = true
+end
+
+function module:hideFastTP()
+	Teleports.Visible = false
+end
+
 function activeMobileUi()
 	_1Home.Size = UDim2.new(0.854, 0,0.047, 0)
 	_998Settings.Size = UDim2.new(0.854, 0,0.047, 0)
@@ -2440,11 +2746,11 @@ function module:start(gameName, Hversion, isPremium)
 	HubVersion.Text = "v. " .. Hversion
 	UpdatesVTXT.Text = "v. " .. Hversion
 	global.Enabled = true
-	game.StarterGui:SetCore("SendNotification", {
-		Title = "LDS HUB",
-		Text = "By Sr LDS and Aliscreative",
-		Duration = 8,
-	})
+	local creditosss = createCredits()
+	task.spawn(function()
+		task.wait(2)
+		creditosss:Destroy()
+	end)
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
 
