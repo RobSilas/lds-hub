@@ -1131,7 +1131,7 @@ local TextLabel_6 = Instance.new("TextLabel")
 Notify.Name = "Notify"
 Notify.Parent = global
 Notify.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Notify.BackgroundTransparency = 1.000
+Notify.BackgroundTransparency = 1
 Notify.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Notify.BorderSizePixel = 0
 Notify.Position = UDim2.new(0.83157897, 0, 0.58654654, 0)
@@ -1187,13 +1187,13 @@ local function createNotBt(msg, btName, enabled)
 	FrameNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
 
 	UICornerNot.CornerRadius = UDim.new(0, 25)
-	UICornerNot.Parent = Frame
+	UICornerNot.Parent = FrameNot
 
 	UIGradientNot.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
 	UIGradientNot.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.50, 0.26), NumberSequenceKeypoint.new(0.75, 0.48), NumberSequenceKeypoint.new(1.00, 0.69)}
-	UIGradientNot.Parent = Frame
+	UIGradientNot.Parent = FrameNot
 
-	TextLabelNot.Parent = Frame
+	TextLabelNot.Parent = FrameNot
 	TextLabelNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabelNot.BackgroundTransparency = 1.000
 	TextLabelNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1217,7 +1217,7 @@ local function createNotBt(msg, btName, enabled)
 
 
 
-	TextLabel_2Not.Parent = Frame
+	TextLabel_2Not.Parent = FrameNot
 	TextLabel_2Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel_2Not.BackgroundTransparency = 1.000
 	TextLabel_2Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1234,7 +1234,7 @@ local function createNotBt(msg, btName, enabled)
 	TextLabel_2Not.TextYAlignment = Enum.TextYAlignment.Top
 
 	NameButtonNot.Name = "NameButton"
-	NameButtonNot.Parent = Frame
+	NameButtonNot.Parent = FrameNot
 	NameButtonNot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	NameButtonNot.BackgroundTransparency = 1.000
 	NameButtonNot.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1267,13 +1267,13 @@ local function createCredits()
 	CreditsNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
 
 	UICorner_2Not.CornerRadius = UDim.new(0, 25)
-	UICorner_2Not.Parent = Credits
+	UICorner_2Not.Parent = CreditsNot
 
 	UIGradient_2Not.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(170, 0, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 0, 0))}
 	UIGradient_2Not.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.50, 0.26), NumberSequenceKeypoint.new(0.75, 0.48), NumberSequenceKeypoint.new(1.00, 0.69)}
-	UIGradient_2Not.Parent = Credits
+	UIGradient_2Not.Parent = CreditsNot
 
-	TextLabel_3Not.Parent = Credits
+	TextLabel_3Not.Parent = CreditsNot
 	TextLabel_3Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel_3Not.BackgroundTransparency = 1.000
 	TextLabel_3Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -1288,7 +1288,7 @@ local function createCredits()
 	TextLabel_3Not.TextStrokeTransparency = 0.000
 	TextLabel_3Not.TextWrapped = true
 
-	TextLabel_4Not.Parent = Credits
+	TextLabel_4Not.Parent = CreditsNot
 	TextLabel_4Not.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TextLabel_4Not.BackgroundTransparency = 1.000
 	TextLabel_4Not.BorderColor3 = Color3.fromRGB(0, 0, 0)
