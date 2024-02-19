@@ -1036,6 +1036,13 @@ Teleports.BorderSizePixel = 0
 Teleports.Position = UDim2.new(0.547195375, 0, -0.853371561, 0)
 Teleports.Size = UDim2.new(0.703990459, 0, 0.153587863, 0)
 
+
+local uistroke = Instance.new("UIStroke")
+uistroke.Color = Color3.new(0.105882, 0.105882, 0.105882)
+uistroke.Thickness = 6
+uistroke.Parent = Teleports
+
+
 FrameButtonsTp.Name = "FrameButtons"
 FrameButtonsTp.Parent = Teleports
 FrameButtonsTp.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1148,6 +1155,10 @@ UIListLayout.Padding = UDim.new(0.0199999996, 0)
 local notGreenColor = Color3.fromRGB(0, 255, 127)
 local notRedColor = Color3.fromRGB(255, 0, 127)
 
+local tpPageNow = 1
+local maxPages = 1
+local pages = {}
+
 local function addBtFastTP(Image)
 	local TeleportButtonTp = Instance.new("ImageButton")
 	local UICornerTp = Instance.new("UICorner")
@@ -1159,6 +1170,17 @@ local function addBtFastTP(Image)
 	TeleportButtonTp.Position = UDim2.new(0.126903549, 0, 0, 0)
 	TeleportButtonTp.Size = UDim2.new(0.0964467004, 0, 1, 0)
 	TeleportButtonTp.Image = Image
+	
+	if pages == nil then
+		pages[1] = {TeleportButtonTp}
+	else
+		if #pages[maxPages] < 9 then
+			table.insert(pages[maxPages],TeleportButtonTp)
+		else
+			maxPages += 1
+			pages[maxPages] = {TeleportButtonTp}
+		end
+	end
 
 	UICornerTp.Parent = TeleportButtonTp
 	return TeleportButtonTp
@@ -1169,6 +1191,19 @@ function module:addTPButton(image, pos: CFrame)
 	tpBt.MouseButton1Click:Connect(function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
 	end)
+end
+
+function module:removeTPButton(image)
+	local function findByImage(img)
+		for _,v in pairs(FrameButtonsTp:GetChildren()) do
+			if v.Image == img then
+				return v
+			end
+		end
+	end
+	if findByImage() then
+		findByImage():Destroy()
+	end
 end
 
 local function createNotBt(msg, btName, enabled)
@@ -1185,6 +1220,11 @@ local function createNotBt(msg, btName, enabled)
 	FrameNot.BorderSizePixel = 0
 	FrameNot.Position = UDim2.new(0.0441176482, 0, 0.673684239, 0)
 	FrameNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
+	
+	local uistroke = Instance.new("UIStroke")
+	uistroke.Color = Color3.new(1, 1, 1)
+	uistroke.Thickness = 2.0999999046325684
+	uistroke.Parent = FrameNot
 
 	UICornerNot.CornerRadius = UDim.new(0, 25)
 	UICornerNot.Parent = FrameNot
@@ -1265,6 +1305,11 @@ local function createCredits()
 	CreditsNot.BorderSizePixel = 0
 	CreditsNot.Position = UDim2.new(0.0441176482, 0, 0.673684239, 0)
 	CreditsNot.Size = UDim2.new(0.911764681, 0, 0.200000003, 0)
+	
+	local uistroke = Instance.new("UIStroke")
+	uistroke.Color = Color3.new(1, 1, 1)
+	uistroke.Thickness = 2.0999999046325684
+	uistroke.Parent = CreditsNot
 
 	UICorner_2Not.CornerRadius = UDim.new(0, 25)
 	UICorner_2Not.Parent = CreditsNot
@@ -2753,6 +2798,31 @@ function module:start(gameName, Hversion, isPremium)
 	end)
 	local frame = global.Frame
 	frame.HomeUi.Visible = true
+
+	local function renderPage(page)
+		for _,v in pairs(FrameButtonsTp:GetChildren()) do
+			if v:IsA("ImageButton") then
+				v.Visible = false
+			end
+		end
+		for _,v in pairs(pages[page]) do
+			v.Visible = true
+		end
+	end
+	
+	ButtonLeftTp.MouseButton1Click:Connect(function()
+		if tpPageNow > 1 then
+			tpPageNow -= 1
+			renderPage(tpPageNow)
+		end
+	end)
+	
+	ButtonRightTp.MouseButton1Click:Connect(function()
+		if tpPageNow < maxPages then
+			tpPageNow += 1
+			renderPage(tpPageNow)
+		end
+	end)
 
 	-- Funções principais da gui global
 	_1Home.MouseButton1Click:Connect(function()
